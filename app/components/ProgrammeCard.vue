@@ -17,27 +17,27 @@
       <div v-for="day in days" :key="day.date" class="flex flex-col gap-0">
         <!-- Day header -->
         <div class="flex items-center gap-4 mb-6">
-          <div :class="['hidden sm:block w-3 h-3 rounded-full shrink-0', day.dotColor]"></div>
-          <div class="flex flex-col sm:flex-row sm:items-baseline">
+          <div :class="['hidden min-[860px]:block w-3 h-3 rounded-full shrink-0', day.dotColor]"></div>
+          <div class="flex flex-col min-[860px]:flex-row min-[860px]:items-baseline">
             <span class="text-2xl lg:text-3xl font-condensed font-bold uppercase tracking-wide text-neutral-700">
               {{ day.label }}
             </span>
-            <span :class="['text-lg lg:text-xl font-condensed font-bold italic sm:ml-3 tracking-wide', day.themeColor]">
+            <span :class="['text-lg lg:text-xl font-condensed font-bold italic min-[860px]:ml-3 tracking-wide', day.themeColor]">
               {{ day.theme }}
             </span>
           </div>
         </div>
 
         <!-- Events for the day -->
-        <div class="flex flex-col gap-0 sm:gap-6 sm:pl-7">
+        <div class="flex flex-col gap-0 min-[860px]:gap-6 min-[860px]:pl-7">
           <div
             v-for="event in day.events"
             :key="event.speaker"
-            :class="['group relative rounded-xl p-5 sm:p-6 md:p-8 transition-all duration-300 hover:shadow-lg cursor-pointer max-sm:mt-20', 'bg-bg-default']"
+            :class="['group relative rounded-xl p-5 min-[860px]:p-8 transition-all duration-300 hover:shadow-lg cursor-pointer max-[859px]:mt-20', 'bg-bg-default']"
           >
-            <div class="flex flex-col md:flex-row gap-0 sm:gap-8">
+            <div class="flex flex-col min-[860px]:flex-row gap-0 min-[860px]:gap-8">
               <!-- Avatar -->
-              <div class="shrink-0 flex flex-col items-center md:items-start max-sm:absolute max-sm:top-0 max-sm:left-1/2 max-sm:-translate-x-1/2 max-sm:-translate-y-1/2">
+              <div class="shrink-0 flex flex-col items-center min-[860px]:items-start max-[859px]:absolute max-[859px]:top-0 max-[859px]:left-1/2 max-[859px]:-translate-x-1/2 max-[859px]:-translate-y-1/2">
                 <button
                   @click="openSpeakerModal(event, day)"
                   :class="['w-30 h-30 rounded-full overflow-hidden ring-6 ring-offset-3 ring-offset-bg-default cursor-pointer hover:scale-105 transition-transform', day.ringColor]"
@@ -50,15 +50,15 @@
                 </button>
               </div>
               <!-- Mobile spacer: reserves height below the floating avatar -->
-              <div class="h-16 sm:hidden"></div>
+              <div class="h-16 min-[860px]:hidden"></div>
 
               <!-- Content -->
               <div class="flex-1 min-w-0">
-                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-3">
+                <div class="flex flex-col min-[860px]:flex-row min-[860px]:items-center gap-2 min-[860px]:gap-4 mb-3">
                   <h3 class="text-2xl font-condensed font-bold text-neutral-700 uppercase tracking-wide">
                     {{ event.speaker }}
                   </h3>
-                  <span :class="['inline-flex self-start sm:self-center items-center px-3 py-1 rounded-full text-base font-condensed font-bold uppercase tracking-wider text-white whitespace-nowrap', day.badgeColor]">
+                  <span :class="['inline-flex self-start min-[860px]:self-center items-center px-3 py-1 rounded-full text-base font-condensed font-bold uppercase tracking-wider text-white whitespace-nowrap', day.badgeColor]">
                     {{ event.time }}
                   </span>
                 </div>
