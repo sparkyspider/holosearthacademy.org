@@ -8,22 +8,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { computed, onMounted, onUnmounted } from 'vue'
 
 // 20 May 2026 at 19:00 CET (UTC+1) = 18:00 UTC
 const targetDate = new Date('2026-05-20T18:00:00Z')
 
-const now = ref(Date.now())
-let timer: ReturnType<typeof setInterval>
+const now = useState<number>('countdown-now', () => Date.now())
+let timer: ReturnType<typeof setInterval> | undefined
 
 onMounted(() => {
+  now.value = Date.now()
   timer = setInterval(() => {
     now.value = Date.now()
   }, 1000)
 })
 
 onUnmounted(() => {
-  clearInterval(timer)
+  if (timer) clearInterval(timer)
 })
 
 const units = computed(() => {
