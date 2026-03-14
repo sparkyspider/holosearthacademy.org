@@ -13,7 +13,7 @@
 
     <!-- ===================== DESKTOP (860px+) ===================== -->
     <div class="hidden min-[860px]:absolute min-[860px]:inset-0 min-[860px]:flex z-10 items-center">
-      <div class="w-full max-w-7xl mx-auto px-16 flex items-center gap-12">
+      <div class="w-full max-w-7xl mx-auto px-16 flex items-center justify-center gap-12">
 
         <!-- Left: Date -->
         <div class="font-condensed font-light text-white leading-none shrink-0 text-right">

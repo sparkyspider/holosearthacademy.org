@@ -10,11 +10,11 @@
           <img
             :src="speaker.image"
             :alt="speaker.name"
-class="w-[4.5rem] h-[4.5rem] rounded-lg object-cover object-top shrink-0"
+            class="w-[4.5rem] h-[4.5rem] rounded-lg object-cover object-top shrink-0"
           />
           <div>
             <div class="text-white text-lg font-roboto font-bold leading-tight whitespace-nowrap">{{ speaker.name }}</div>
-            <div class="text-white/70 text-sm font-roboto leading-snug">{{ speaker.line1 }}<br />{{ speaker.line2 }}</div>
+            <div class="text-white/70 text-sm font-roboto font-light leading-snug">{{ speaker.line1 }}<br />{{ speaker.line2 }}</div>
           </div>
         </div>
       </div>

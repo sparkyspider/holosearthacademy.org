@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   fonts: {
     families: [
       { name: 'Roboto Condensed', weights: [300, 400, 700] },
-      { name: 'Roboto', weights: [700] }
+{ name: 'Roboto', weights: [300, 700] }
     ]
   },
   css: ['~/assets/css/main.css'],
