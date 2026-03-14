@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --font-condensed: 'Roboto Condensed', sans-serif;
+
+  --color-bg-default: #F1F0F0;
+
+  --color-trim-purple: #A27CB8;
+  --color-trim-blue: #7CA5DD;
+  --color-trim-teal: #62BDB1;
+  --color-trim-green: #6EB189;
+  --color-trim-yellow: #DDC66E;
+}
