@@ -2,12 +2,21 @@
 
 @theme {
   --font-condensed: 'Roboto Condensed', sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
 
   --color-bg-default: #F1F0F0;
+--color-ticker-bg: #6E6C6A;
 
   --color-trim-purple: #A27CB8;
   --color-trim-blue: #7CA5DD;
   --color-trim-teal: #62BDB1;
   --color-trim-green: #6EB189;
   --color-trim-yellow: #DDC66E;
+
+  --animate-ticker: ticker 90s linear infinite;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }

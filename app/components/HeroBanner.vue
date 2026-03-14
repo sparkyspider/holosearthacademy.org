@@ -31,8 +31,8 @@
             OF HOLISM &amp; EVOLUTION
           </div>
 
-          <!-- Gradient line -->
-          <div class="h-[9px] my-4 w-[calc(100%-0.5rem)] bg-[linear-gradient(to_right,#DDC66E,#6EB189,#62BDB1,#7CA5DD,#A27CB8)] rounded-full"></div>
+          <!-- Line -->
+          <div class="h-[9px] my-4 w-[calc(100%-0.5rem)] bg-white/50 rounded-full"></div>
 
           <!-- Subtitle -->
           <div class="font-condensed font-normal text-white text-2xl tracking-[0.442em] uppercase">
@@ -58,8 +58,8 @@
         <div class="font-condensed font-bold text-white text-[3.35rem] uppercase leading-tight text-center">HOLISM &amp;</div>
         <div class="font-condensed font-bold text-white text-[2.85rem] uppercase leading-tight text-center">EVOLUTION</div>
 
-        <!-- Gradient line — width matches widest title line above -->
-        <div class="h-[6px] my-3 w-full bg-[linear-gradient(to_right,#DDC66E,#6EB189,#62BDB1,#7CA5DD,#A27CB8)] rounded-full"></div>
+        <!-- Line — width matches widest title line above -->
+        <div class="h-[6px] my-3 w-full bg-white/50 rounded-full"></div>
       </div>
 
       <!-- Subtitle -->

@@ -8,7 +8,8 @@ export default defineNuxtConfig({
   modules: ['@nuxt/fonts'],
   fonts: {
     families: [
-      { name: 'Roboto Condensed', weights: [300, 400, 700] }
+      { name: 'Roboto Condensed', weights: [300, 400, 700] },
+      { name: 'Roboto', weights: [700] }
     ]
   },
   css: ['~/assets/css/main.css'],
