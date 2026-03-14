@@ -1,14 +1,7 @@
 <template>
-  <section class="relative w-full overflow-hidden h-[340px]">
+  <section class="relative w-full overflow-hidden h-[400px] min-[860px]:h-[340px]">
 
-    <!-- Background image -->
-    <img
-      src="/space-option-1.png"
-      alt=""
-      class="absolute inset-0 w-full h-full object-cover object-center"
-    />
-
-    <!-- Dark overlay -->
+    <!-- Dark overlay (background image now comes from parent) -->
     <div class="absolute inset-0 bg-black/30"></div>
 
     <!-- ===================== DESKTOP (860px+) ===================== -->
@@ -16,16 +9,16 @@
       <div class="w-full max-w-7xl mx-auto px-16 flex items-center justify-center gap-12">
 
         <!-- Left: Date -->
-        <div class="font-condensed font-light text-white leading-none shrink-0 text-right">
-          <div class="text-[3.2rem]">20-24</div>
-          <div class="text-[4.0rem]">MAY</div>
-          <div class="text-[3.7rem]">2026</div>
+        <div class="font-condensed font-light text-white leading-none shrink-0 text-right mt-3">
+          <div class="text-[3.6rem]">20-24</div>
+          <div class="text-[4.5rem]">MAY</div>
+          <div class="text-[4.15rem]">2026</div>
         </div>
 
         <!-- Right: Title + gradient line + subtitle -->
         <div class="flex flex-col justify-center w-fit">
-          <div class="font-condensed font-bold text-white text-5xl uppercase leading-tight tracking-wide">
-            INTERNATIONAL FESTIVAL
+          <div class="font-condensed font-bold text-white text-[3.6rem] uppercase leading-tight tracking-wide">
+            CENTENARY FESTIVAL
           </div>
           <div class="font-condensed font-bold text-white text-[2.93rem] uppercase leading-tight tracking-[0.07em]">
             OF HOLISM &amp; EVOLUTION
@@ -53,7 +46,7 @@
 
       <!-- Title lines + bar: w-fit so bar width matches the widest title line -->
       <div class="flex flex-col w-fit">
-        <div class="font-condensed font-bold text-white text-[2rem] uppercase leading-tight text-center">INTERNATIONAL</div>
+        <div class="font-condensed font-bold text-white text-[2.75rem] uppercase leading-tight text-center">CENTENARY</div>
         <div class="font-condensed font-bold text-white text-[2.6rem] uppercase leading-tight text-center">FESTIVAL OF</div>
         <div class="font-condensed font-bold text-white text-[3.35rem] uppercase leading-tight text-center">HOLISM &amp;</div>
         <div class="font-condensed font-bold text-white text-[2.85rem] uppercase leading-tight text-center">EVOLUTION</div>
