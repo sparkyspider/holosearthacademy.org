@@ -1,5 +1,5 @@
 <template>
-  <div id="programme" class="bg-white rounded-xl shadow-[0_8px_40px_rgba(0,0,0,0.08)] w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-8 md:px-12 py-14">
+  <div id="programme" class="bg-white rounded-xl shadow-[0_8px_40px_rgba(0,0,0,0.08)] w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-4 sm:px-8 md:px-12 py-10 md:py-14">
     <!-- Header -->
     <h2 class="text-4xl lg:text-5xl font-condensed font-bold uppercase tracking-wide text-trim-purple text-left mb-4">
       The Programme
@@ -29,11 +29,11 @@
         </div>
 
         <!-- Events for the day -->
-        <div class="flex flex-col gap-6 pl-7">
+        <div class="flex flex-col gap-6 pl-4 sm:pl-7">
           <div
             v-for="event in day.events"
             :key="event.speaker"
-            :class="['group relative rounded-xl p-6 md:p-8 transition-all duration-300 hover:shadow-lg cursor-pointer', 'bg-bg-default']"
+            :class="['group relative rounded-xl p-5 sm:p-6 md:p-8 transition-all duration-300 hover:shadow-lg cursor-pointer', 'bg-bg-default']"
           >
             <div class="flex flex-col md:flex-row gap-8">
               <!-- Avatar -->
@@ -52,7 +52,7 @@
 
               <!-- Content -->
               <div class="flex-1 min-w-0">
-                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-2">
+                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-3">
                   <h3 class="text-2xl font-condensed font-bold text-neutral-700 uppercase tracking-wide">
                     {{ event.speaker }}
                   </h3>
