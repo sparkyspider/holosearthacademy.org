@@ -4,13 +4,13 @@
     <h2 class="text-4xl lg:text-5xl font-condensed font-bold uppercase tracking-wide text-trim-purple text-left mb-4">
       The Programme
     </h2>
-    <p class="text-lg font-roboto font-normal text-neutral-500 leading-relaxed mb-4">
-      Select the sessions you'd like to attend by clicking <span class="font-bold text-trim-teal">Add to Calendar</span> on each talk. Your calendar entry will include the <span class="font-bold text-trim-blue">Zoom link</span> to join the session.
-    </p>
-    <a href="#about-festival" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-condensed font-bold uppercase tracking-wider bg-trim-teal/10 text-trim-teal transition hover:opacity-80 cursor-pointer mb-12">
+    <a href="#about-festival" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-condensed font-bold uppercase tracking-wider bg-trim-teal/10 text-trim-teal transition hover:opacity-80 cursor-pointer mb-4">
       <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4M12 8h.01" /></svg>
       Jump to: More about the Festival
     </a>
+    <p class="text-lg font-roboto font-normal text-neutral-500 leading-relaxed mb-12">
+      <span class="text-red-700">Please make sure you have <a :href="config.registrationUrl" target="_blank" rel="noopener noreferrer" class="underline hover:text-red-700 transition">registered</a></span> then select the sessions you'd like to attend by clicking <span class="font-bold text-trim-teal">Add to Calendar</span> on each talk. Your calendar entry will include the <span class="font-bold text-trim-blue">Zoom link</span> to join the session.
+    </p>
 
     <!-- Days -->
     <div class="flex flex-col gap-12">
@@ -114,6 +114,8 @@
 import { ref, onMounted } from 'vue'
 import { days, findSpeakerBySlug } from '~/data/speakers'
 import type { SpeakerEvent, Day } from '~/data/speakers'
+
+const config = useRuntimeConfig().public
 
 const modalOpen = ref(false)
 const modalSpeaker = ref({
