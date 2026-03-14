@@ -17,7 +17,7 @@
       <div v-for="day in days" :key="day.date" class="flex flex-col gap-0">
         <!-- Day header -->
         <div class="flex items-center gap-4 mb-6">
-          <div :class="['w-3 h-3 rounded-full shrink-0', day.dotColor]"></div>
+          <div :class="['hidden sm:block w-3 h-3 rounded-full shrink-0', day.dotColor]"></div>
           <div>
             <span class="text-2xl lg:text-3xl font-condensed font-bold uppercase tracking-wide text-neutral-700">
               {{ day.label }}
@@ -29,7 +29,7 @@
         </div>
 
         <!-- Events for the day -->
-        <div class="flex flex-col gap-6 pl-4 sm:pl-7">
+        <div class="flex flex-col gap-6 sm:pl-7">
           <div
             v-for="event in day.events"
             :key="event.speaker"
