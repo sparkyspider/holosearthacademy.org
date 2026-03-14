@@ -16,13 +16,13 @@
     <div class="flex flex-col gap-12">
       <div v-for="day in days" :key="day.date" class="flex flex-col gap-0">
         <!-- Day header -->
-        <div class="flex items-center gap-4 mb-6">
+        <div class="flex items-center gap-4 mb-6 justify-center min-[860px]:justify-start">
           <div :class="['hidden min-[860px]:block w-3 h-3 rounded-full shrink-0', day.dotColor]"></div>
           <div class="flex flex-col min-[860px]:flex-row min-[860px]:items-baseline text-center min-[860px]:text-left">
-            <span class="text-3xl min-[860px]:text-3xl lg:text-4xl font-condensed font-bold uppercase tracking-wide text-neutral-700">
+            <span class="text-4xl min-[860px]:text-3xl lg:text-4xl font-condensed font-bold uppercase tracking-wide text-neutral-700">
               {{ day.label }}
             </span>
-            <span :class="['text-xl min-[860px]:text-lg lg:text-xl font-condensed font-bold italic min-[860px]:ml-3 tracking-wide', day.themeColor]">
+            <span :class="['text-xl min-[860px]:text-lg lg:text-xl font-condensed font-bold italic min-[860px]:ml-3 tracking-wide text-center min-[860px]:text-left', day.themeColor]">
               {{ day.theme }}
             </span>
           </div>
