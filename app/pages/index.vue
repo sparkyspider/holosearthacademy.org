@@ -14,8 +14,8 @@
       <!-- Dark overlay -->
       <div class="absolute inset-0 bg-black/30"></div>
 
-      <!-- ===================== DESKTOP (lg: 1024px+) ===================== -->
-      <div class="hidden lg:absolute lg:inset-0 lg:flex z-10 items-center">
+      <!-- ===================== DESKTOP (860px+) ===================== -->
+      <div class="hidden min-[860px]:absolute min-[860px]:inset-0 min-[860px]:flex z-10 items-center">
         <div class="w-full max-w-7xl mx-auto px-16 flex items-center gap-12">
 
           <!-- Left: Date -->
@@ -46,8 +46,8 @@
         </div>
       </div>
 
-      <!-- ===================== MOBILE / TABLET (below lg: < 1024px) ===================== -->
-      <div class="lg:hidden absolute inset-0 z-10 flex flex-col justify-center items-center px-10">
+      <!-- ===================== MOBILE / TABLET (below 860px) ===================== -->
+      <div class="min-[860px]:hidden absolute inset-0 z-10 flex flex-col justify-center items-center px-10">
 
         <!-- Date (single row) -->
         <div class="font-condensed font-light text-white leading-none mb-3 text-[1.55rem] tracking-wide uppercase text-center">
