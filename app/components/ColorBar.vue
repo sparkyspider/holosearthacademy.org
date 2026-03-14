@@ -1,17 +1,6 @@
 <template>
-  <div class="h-2 w-full flex overflow-hidden">
-    <div
-      v-for="(color, i) in repeatedColors"
-      :key="i"
-      class="h-full w-[60px] shrink-0"
-      :style="{ backgroundColor: color }"
-    />
-  </div>
+  <div
+    class="h-2 w-full"
+    style="background: repeating-linear-gradient(to right, #DDC66E 0 60px, #6EB189 60px 120px, #62BDB1 120px 180px, #7CA5DD 180px 240px, #A27CB8 240px 300px)"
+  />
 </template>
-
-<script setup lang="ts">
-const palette = ['#DDC66E', '#6EB189', '#62BDB1', '#7CA5DD', '#A27CB8']
-
-// Repeat enough times to always fill the viewport
-const repeatedColors = Array.from({ length: 80 }, (_, i) => palette[i % palette.length])
-</script>

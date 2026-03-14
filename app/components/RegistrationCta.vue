@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white rounded-xl shadow-[0_8px_40px_rgba(0,0,0,0.08)] w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-12 py-14 flex flex-col lg:flex-row items-center lg:items-start gap-12">
+  <div class="bg-white rounded-xl shadow-[0_8px_40px_rgba(0,0,0,0.08)] w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-6 sm:px-8 md:px-12 py-10 md:py-14 flex flex-col lg:flex-row items-center lg:items-start gap-12">
     <!-- Left: Register Now + Steps -->
     <div class="flex flex-col items-center lg:items-start gap-8 min-w-0 flex-1">
       <h2 class="text-4xl lg:text-5xl font-condensed font-bold uppercase tracking-wide text-trim-purple text-center lg:text-left">

@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-bg-default">
+  <div class="min-h-screen bg-bg-default max-w-[100vw] overflow-x-hidden">
     <!-- Hero image extends behind both banner and ticker -->
     <div class="relative">
       <img src="/space-option-1.png" alt="" class="absolute inset-0 w-full h-full object-cover object-center" />
@@ -17,7 +17,7 @@
         <!--
       <VerticalColorBar />
       -->
-      <div class="flex-1 py-16 px-8 flex flex-col items-center gap-10">
+      <div class="flex-1 py-10 md:py-16 px-4 sm:px-6 md:px-8 flex flex-col items-center gap-10">
         <IntroCard />
         <RegistrationCta />
         <ProgrammeCard />
