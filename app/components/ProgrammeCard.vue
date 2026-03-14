@@ -1,5 +1,5 @@
 <template>
-  <div id="programme" class="bg-white rounded-xl shadow-[0_8px_40px_rgba(0,0,0,0.08)] w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-4 sm:px-8 md:px-12 py-10 md:py-14">
+  <div id="programme" class="min-[860px]:bg-white min-[860px]:rounded-xl min-[860px]:shadow-[0_8px_40px_rgba(0,0,0,0.08)] w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-4 min-[860px]:px-8 md:px-12 py-8 min-[860px]:py-14">
     <!-- Header -->
     <h2 class="text-4xl lg:text-5xl font-condensed font-bold uppercase tracking-wide text-trim-purple text-left mb-4">
       The Programme
@@ -33,14 +33,14 @@
           <div
             v-for="event in day.events"
             :key="event.speaker"
-            :class="['group relative rounded-xl p-5 min-[860px]:p-8 transition-all duration-300 hover:shadow-lg cursor-pointer max-[859px]:mt-20', 'bg-bg-default']"
+            :class="['group relative rounded-xl p-5 min-[860px]:p-8 transition-all duration-300 hover:shadow-lg cursor-pointer max-[859px]:mt-20 bg-white max-[859px]:shadow-[0_4px_20px_rgba(0,0,0,0.06)] min-[860px]:bg-bg-default min-[860px]:shadow-none']"
           >
             <div class="flex flex-col min-[860px]:flex-row gap-0 min-[860px]:gap-8">
               <!-- Avatar -->
               <div class="shrink-0 flex flex-col items-center min-[860px]:items-start max-[859px]:absolute max-[859px]:top-0 max-[859px]:left-1/2 max-[859px]:-translate-x-1/2 max-[859px]:-translate-y-1/2">
                 <button
                   @click="openSpeakerModal(event, day)"
-                  :class="['w-30 h-30 rounded-full overflow-hidden ring-6 ring-offset-3 ring-offset-bg-default cursor-pointer hover:scale-105 transition-transform', day.ringColor]"
+                  :class="['w-30 h-30 rounded-full overflow-hidden ring-6 ring-offset-3 max-[859px]:ring-offset-white ring-offset-bg-default cursor-pointer hover:scale-105 transition-transform', day.ringColor]"
                 >
                   <img
                     :src="event.image"

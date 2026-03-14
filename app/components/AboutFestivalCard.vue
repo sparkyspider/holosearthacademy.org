@@ -1,5 +1,5 @@
 <template>
-  <div id="about-festival" class="bg-white rounded-xl shadow-[0_8px_40px_rgba(0,0,0,0.08)] w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-8 md:px-12 py-14">
+  <div id="about-festival" class="min-[860px]:bg-white min-[860px]:rounded-xl min-[860px]:shadow-[0_8px_40px_rgba(0,0,0,0.08)] w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-4 min-[860px]:px-8 md:px-12 py-8 min-[860px]:py-14">
     <!-- Header -->
     <h2 class="text-4xl lg:text-5xl font-condensed font-bold uppercase tracking-wide text-trim-teal text-left mb-4">
       More About the Festival
@@ -58,8 +58,8 @@
       </div>
     </div>
 
-    <!-- Three pillars -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- Three pillars (hidden for now) -->
+    <div class="hidden grid-cols-1 md:grid-cols-3 gap-8">
       <!-- What is Holos.Earth? -->
       <div class="bg-bg-default rounded-xl p-8 flex flex-col">
         <div class="w-12 h-12 rounded-full bg-trim-teal flex items-center justify-center mb-5">

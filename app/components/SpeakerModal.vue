@@ -10,13 +10,14 @@
     >
       <div
         v-if="open"
-        class="fixed inset-0 z-[100] flex items-center justify-center px-6 py-12"
+        class="fixed inset-0 z-[100] flex items-start justify-center px-4 py-6 overflow-y-auto"
+        @click="$emit('close')"
       >
         <!-- Backdrop — click to close, no blur -->
-        <div class="absolute inset-0 bg-black/40" @click="$emit('close')"></div>
+        <div class="fixed inset-0 bg-black/40" @click="$emit('close')"></div>
 
         <!-- Modal wrapper — drop-shadow covers the circle + card as one unified shape -->
-        <div class="relative z-10 drop-shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
+        <div class="relative z-10 drop-shadow-[0_20px_60px_rgba(0,0,0,0.3)] my-auto shrink-0 w-full max-w-lg">
           <!-- Floating avatar — sits half outside the card -->
           <div class="flex justify-center -mb-20 relative z-20">
             <div :class="['w-40 h-40 rounded-full ring-6 ring-offset-4 ring-offset-white', ringColor]">
@@ -31,7 +32,7 @@
           </div>
 
           <!-- Card body -->
-          <div class="bg-white rounded-2xl pt-28 pb-8 px-8 md:px-10 max-w-lg w-full relative">
+          <div class="bg-white rounded-2xl pt-28 pb-8 px-6 md:px-10 w-full relative" @click.stop>
             <!-- Close button -->
             <button
               @click="$emit('close')"
@@ -85,7 +86,9 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+import { watch } from 'vue'
+
+const props = defineProps<{
   open: boolean
   name: string
   image: string
@@ -105,4 +108,12 @@ defineProps<{
 defineEmits<{
   close: []
 }>()
+
+// Lock scroll when modal is open (both html + body for mobile browsers)
+watch(() => props.open, (isOpen) => {
+  if (typeof document === 'undefined') return
+  const val = isOpen ? 'hidden' : ''
+  document.documentElement.style.overflow = val
+  document.body.style.overflow = val
+})
 </script>
