@@ -8,8 +8,11 @@
       <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4M12 8h.01" /></svg>
       Jump to: More about the Festival
     </a>
-    <p class="text-lg font-roboto font-normal text-neutral-500 leading-relaxed mb-12">
+    <p class="text-lg font-roboto font-normal text-neutral-500 leading-relaxed mb-4">
       <span class="text-red-700">Please make sure you have <a :href="config.registrationUrl" target="_blank" rel="noopener noreferrer" class="underline hover:text-red-700 transition">registered</a></span> then select the sessions you'd like to attend by clicking <span class="font-bold text-trim-teal">Add to Calendar</span> on each talk. Your calendar entry will include the <span class="font-bold text-trim-blue">Zoom link</span> to join the session.
+    </p>
+    <p class="text-sm font-roboto text-neutral-400 mb-12">
+      All times in CEST (Central European Summer Time, UTC+2) — same as South African time (SAST).
     </p>
 
     <!-- Days -->

@@ -74,7 +74,7 @@ interface Props {
   theme: string
   /** ISO date string, e.g. '2026-05-20' */
   date: string
-  /** Time string like '19h00 CET' or '10h00 CET' */
+  /** Time string like '19h00 CEST' or '10h00 CEST' */
   time: string
   location?: string
   /** Duration in minutes (default 90) */
@@ -154,11 +154,29 @@ function formatLocal(date: string, h: number, m: number): string {
   return `${d}T${hh}${mm}00`
 }
 
-/** Format as ISO datetime string for Outlook */
-function formatISO(date: string, h: number, m: number): string {
-  const hh = String(h).padStart(2, '0')
-  const mm = String(m).padStart(2, '0')
-  return `${date}T${hh}:${mm}:00`
+/**
+ * Convert a Berlin-local time to a UTC Date object.
+ * Uses the Intl API to determine the correct CET/CEST offset automatically.
+ */
+function berlinToUTC(date: string, h: number, m: number): Date {
+  const [year, mon, day] = date.split('-').map(Number)
+  // Start with a UTC guess equal to the local time values
+  const guess = new Date(Date.UTC(year, mon - 1, day, h, m, 0))
+  // Determine what Berlin-local time that UTC instant corresponds to
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: TIMEZONE,
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  }).formatToParts(guess)
+  const bH = parseInt(parts.find(p => p.type === 'hour')!.value)
+  const bM = parseInt(parts.find(p => p.type === 'minute')!.value)
+  // Offset in minutes (Berlin is ahead of UTC)
+  let offsetMin = (bH * 60 + bM) - (h * 60 + m)
+  if (offsetMin > 720) offsetMin -= 1440
+  if (offsetMin < -720) offsetMin += 1440
+  // Correct UTC = guess − offset
+  return new Date(guess.getTime() - offsetMin * 60000)
 }
 
 const googleUrl = computed(() => {
@@ -176,12 +194,14 @@ const googleUrl = computed(() => {
 
 const outlookUrl = computed(() => {
   const { startH, startM, endH, endM } = parseLocalTime()
+  const startUTC = berlinToUTC(props.date, startH, startM)
+  const endUTC = berlinToUTC(props.date, endH, endM)
   const params = new URLSearchParams({
     path: '/calendar/action/compose',
     rru: 'addevent',
     subject: calendarTitle.value,
-    startdt: formatISO(props.date, startH, startM),
-    enddt: formatISO(props.date, endH, endM),
+    startdt: startUTC.toISOString(),
+    enddt: endUTC.toISOString(),
     body: fullDescription.value,
     location: props.location,
   })
@@ -197,6 +217,7 @@ const yahooUrl = computed(() => {
     et: formatLocal(props.date, endH, endM),
     desc: fullDescription.value,
     in_loc: props.location,
+    tz: TIMEZONE,
   })
   return `https://calendar.yahoo.com/?${params}`
 })
@@ -208,6 +229,23 @@ function generateIcs(): string {
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
     'PRODID:-//Holos Earth Academy//Event//EN',
+    'BEGIN:VTIMEZONE',
+    `TZID:${TIMEZONE}`,
+    'BEGIN:DAYLIGHT',
+    'DTSTART:19700329T020000',
+    'RRULE:FREQ=YEARLY;BYDAY=-1SU;BYMONTH=3',
+    'TZOFFSETFROM:+0100',
+    'TZOFFSETTO:+0200',
+    'TZNAME:CEST',
+    'END:DAYLIGHT',
+    'BEGIN:STANDARD',
+    'DTSTART:19701025T030000',
+    'RRULE:FREQ=YEARLY;BYDAY=-1SU;BYMONTH=10',
+    'TZOFFSETFROM:+0200',
+    'TZOFFSETTO:+0100',
+    'TZNAME:CET',
+    'END:STANDARD',
+    'END:VTIMEZONE',
     'BEGIN:VEVENT',
     `UID:${uid}`,
     `DTSTART;TZID=${TIMEZONE}:${formatLocal(props.date, startH, startM)}`,
