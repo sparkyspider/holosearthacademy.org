@@ -29,15 +29,15 @@
         </div>
 
         <!-- Events for the day -->
-        <div class="flex flex-col gap-0 md:gap-6 sm:pl-7">
+        <div class="flex flex-col gap-0 sm:gap-6 sm:pl-7">
           <div
             v-for="event in day.events"
             :key="event.speaker"
-            :class="['group relative rounded-xl p-5 sm:p-6 md:p-8 transition-all duration-300 hover:shadow-lg cursor-pointer mt-20 md:mt-0', 'bg-bg-default']"
+            :class="['group relative rounded-xl p-5 sm:p-6 md:p-8 transition-all duration-300 hover:shadow-lg cursor-pointer mt-20 sm:mt-0', 'bg-bg-default']"
           >
-            <div class="flex flex-col md:flex-row gap-0 md:gap-8">
+            <div class="flex flex-col md:flex-row gap-0 sm:gap-8">
               <!-- Avatar -->
-              <div class="shrink-0 flex flex-col items-center absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:items-start md:transform-none">
+              <div class="shrink-0 flex flex-col items-center absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:static sm:transform-none md:items-start">
                 <button
                   @click="openSpeakerModal(event, day)"
                   :class="['w-30 h-30 rounded-full overflow-hidden ring-6 ring-offset-3 ring-offset-bg-default cursor-pointer hover:scale-105 transition-transform', day.ringColor]"
@@ -50,7 +50,7 @@
                 </button>
               </div>
               <!-- Mobile spacer: reserves height below the floating avatar -->
-              <div class="h-16 md:hidden"></div>
+              <div class="h-16 sm:hidden"></div>
 
               <!-- Content -->
               <div class="flex-1 min-w-0">
