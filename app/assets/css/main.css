@@ -13,6 +13,12 @@
   --color-trim-green: #6EB189;
   --color-trim-yellow: #DDC66E;
 
+  --color-trim-purple-dark: #6B4D7D;
+  --color-trim-green-dark: #4A7A5E;
+  --color-trim-teal-dark: #3D8A7E;
+  --color-trim-blue-dark: #4E7AB0;
+  --color-trim-yellow-dark: #A89444;
+
   --animate-ticker: ticker 90s linear infinite;
 }
 

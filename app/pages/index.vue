@@ -20,9 +20,37 @@
       <div class="flex-1 py-16 px-8 flex flex-col items-center gap-10">
         <IntroCard />
         <RegistrationCta />
+        <ProgrammeCard />
+        <AboutFestivalCard />
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
+const config = useRuntimeConfig().public
+const siteUrl = config.siteUrl as string
+
+const title = 'Centenary Festival of Holism & Evolution | Holos Earth Academy'
+const description = 'A free online global dialogue on the meaning and application of holism. 20–24 May 2026. Seven speakers across five days exploring science, spirituality, ethics and the legacy of Jan Smuts.'
+
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogImage: `${siteUrl}/opengraph.png`,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  ogType: 'website',
+  ogUrl: siteUrl,
+  ogSiteName: 'Holos Earth Academy',
+  twitterCard: 'summary_large_image',
+  twitterTitle: title,
+  twitterDescription: description,
+  twitterImage: `${siteUrl}/opengraph.png`,
+})
+
+useHead({
+  link: [{ rel: 'canonical', href: siteUrl }],
+})
 </script>

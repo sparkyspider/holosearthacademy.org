@@ -28,8 +28,8 @@ const speakers = [
   { name: 'Jeff Blumberg', image: '/images/speakers/jeff-blumberg.png', line1: 'Author on Holism', line2: '& Evolution' },
   { name: 'Marcus Link', image: '/images/speakers/marcus-link.png', line1: 'Founder', line2: 'Ecological Intelligence' },
   { name: 'Dr Jude Currivan', image: '/images/speakers/jude-currivan.png', line1: 'Cosmologist', line2: 'WholeWorld-View Co-founder' },
+  { name: 'Dr Claudius van Wyk', image: '/images/speakers/claudius-van-wyk.png', line1: 'Holistic Systems', line2: 'Practice Expert' },
   { name: 'David Lorimer', image: '/images/speakers/david-lorimer.png', line1: 'Programme Director', line2: 'Scientific & Medical Network' },
   { name: 'Dr Rhett Gayle', image: '/images/speakers/rhett-gayle.png', line1: 'Philosopher', line2: '& Wisdom Researcher' },
-  { name: 'Dr Claudius van Wyk', image: '/images/speakers/claudius-van-wyk.png', line1: 'Holistic Systems', line2: 'Practice Expert' },
 ]
 </script>

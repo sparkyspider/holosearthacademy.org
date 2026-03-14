@@ -7,7 +7,7 @@
       </h2>
 
       <!-- Step 1 -->
-      <a href="#" class="group flex items-center gap-6 transition w-full">
+      <a :href="config.registrationUrl" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-6 transition w-full">
         <div class="w-16 h-16 rounded-full bg-trim-teal flex items-center justify-center shrink-0 group-hover:scale-110 transition">
           <span class="text-3xl font-condensed font-bold text-white leading-none">1</span>
         </div>
@@ -18,13 +18,13 @@
       </a>
 
       <!-- Step 2 -->
-      <a href="#" class="group flex items-center gap-6 transition w-full">
+      <a href="#programme" class="group flex items-center gap-6 transition w-full">
         <div class="w-16 h-16 rounded-full bg-trim-blue flex items-center justify-center shrink-0 group-hover:scale-110 transition">
           <span class="text-3xl font-condensed font-bold text-white leading-none">2</span>
         </div>
         <div>
           <span class="text-2xl font-condensed font-bold text-neutral-600 group-hover:text-trim-blue transition uppercase tracking-wide">Choose your sessions below</span>
-          <p class="text-lg font-roboto font-normal text-neutral-500 mt-1">Select the talks you would like to attend from the programme below</p>
+          <p class="text-lg font-roboto font-normal text-neutral-500 mt-1"><span class="text-trim-blue underline font-bold">Click me</span> to scroll down and select the talks you want to attend</p>
         </div>
       </a>
 
@@ -50,3 +50,7 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const config = useRuntimeConfig().public
+</script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="h-2 w-full flex">
+  <div class="h-2 w-full flex overflow-hidden">
     <div
       v-for="(color, i) in repeatedColors"
       :key="i"
