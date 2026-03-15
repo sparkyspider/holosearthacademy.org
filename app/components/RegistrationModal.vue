@@ -134,9 +134,16 @@
                   <!-- Submit -->
                   <button
                     type="submit"
-                    class="w-full py-3 px-6 rounded-xl bg-trim-purple text-white font-condensed font-bold uppercase tracking-wider text-lg transition hover:bg-trim-purple-dark cursor-pointer"
+                    :disabled="isSubmitting"
+                    :class="[
+                      'w-full py-3 px-6 rounded-xl font-condensed font-bold uppercase tracking-wider text-lg transition cursor-pointer',
+                      isSubmitted  ? 'bg-trim-green text-white'          :
+                      errorState   ? 'bg-red-700 text-white'             :
+                      isSubmitting ? 'bg-trim-purple/50 text-white/70 cursor-not-allowed' :
+                                     'bg-trim-purple text-white hover:bg-trim-purple-dark',
+                    ]"
                   >
-                    Register Now
+                    {{ isSubmitted ? 'Registered!' : errorState ? 'Something went wrong' : isSubmitting ? 'Registering…' : 'Register Now' }}
                   </button>
 
                 </form>
@@ -196,7 +203,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, computed, watch } from 'vue'
+import { ref, reactive, computed, watch } from 'vue'
 
 const props = defineProps<{ open: boolean }>()
 defineEmits<{ close: [] }>()
@@ -214,6 +221,10 @@ const touched = reactive({
   email: false,
 })
 
+const isSubmitting = ref(false)
+const isSubmitted = ref(false)
+const errorState = ref(false)
+
 function touchField(field: 'name' | 'email') {
   touched[field] = true
 }
@@ -230,11 +241,40 @@ const errors = computed(() => {
   return e
 })
 
-function handleSubmit() {
+async function handleSubmit() {
   touched.name = true
   touched.email = true
   if (errors.value.name || errors.value.email) return
-  // Submission will be wired up later
+
+  isSubmitting.value = true
+  errorState.value = false
+
+  try {
+    const res = await fetch('https://576l7bs7a37yqrkc55h35jx4hu0wlftm.lambda-url.eu-west-1.on.aws/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: form.name.trim(),
+        email: form.email.trim(),
+        seminal_space: form.seminalSpace,
+        practice_course: form.practiceCourse,
+        holism_book: form.holismBook,
+        source: 'holosearthacademy.org',
+        happiness: generateHappiness(),
+      }),
+    })
+
+    if (!res.ok) throw new Error(await res.text())
+
+    isSubmitted.value = true
+    setTimeout(() => { isSubmitted.value = false }, 4000)
+  } catch (err) {
+    console.error('Registration failed:', err)
+    errorState.value = true
+    setTimeout(() => { errorState.value = false }, 4000)
+  } finally {
+    isSubmitting.value = false
+  }
 }
 
 function resetForm() {
@@ -245,6 +285,8 @@ function resetForm() {
   form.holismBook = false
   touched.name = false
   touched.email = false
+  isSubmitted.value = false
+  errorState.value = false
 }
 
 // Scroll lock + reset on close
