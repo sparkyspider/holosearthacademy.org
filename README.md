@@ -16,6 +16,17 @@ Website for **holosearthacademy.org**. Static site built with Nuxt 4 and Tailwin
 
 ---
 
+## Important: Client-Only Rendering
+
+This is a **fully client-side app** (`ssr: false` in `nuxt.config.ts`). There is no server-side rendering.
+
+- Vue components are **never executed server-side** — not during dev, not during build, not during prerender
+- Prerendering (`npm run generate`) produces a static HTML shell with no component hydration on the server — the browser runs everything
+- **Never set `ssr: true`** — doing so causes Vue components to execute in Node during prerender, where browser APIs (`window`, `document`, etc.) are unavailable and will throw 500 errors
+- All browser API access (e.g. `window.gtag`, `document`) is safe to use directly in components without guards
+
+---
+
 ## 1. How We Deploy
 
 The site is a fully static Nuxt SSG build. Deployment is triggered automatically by pushing to the **`deploy`** branch on GitHub.

@@ -7,7 +7,7 @@
       </h2>
 
       <!-- Step 1 -->
-      <button @click="openModal()" class="group flex items-center gap-6 transition w-full text-left cursor-pointer">
+      <button @click="handleRegisterClick()" class="group flex items-center gap-6 transition w-full text-left cursor-pointer">
         <div class="w-16 h-16 rounded-full bg-trim-teal flex items-center justify-center shrink-0 group-hover:scale-110 transition">
           <span class="text-3xl font-condensed font-bold text-white leading-none">1</span>
         </div>
@@ -53,4 +53,10 @@
 
 <script setup lang="ts">
 const { openModal } = useRegistrationModal()
+const { track } = useAnalytics()
+
+function handleRegisterClick() {
+  track('registration_modal_open', { source: 'cta' })
+  openModal()
+}
 </script>

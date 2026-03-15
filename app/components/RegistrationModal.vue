@@ -91,7 +91,7 @@
 
                       <!-- Follow-on Seminal Space -->
                       <label class="flex items-start gap-3 cursor-pointer group">
-                        <input type="checkbox" v-model="form.seminalSpace" class="sr-only" />
+                        <input type="checkbox" v-model="form.seminalSpace" class="sr-only" @change="track('registration_checkbox_change', { checkbox: 'seminal_space', checked: form.seminalSpace })" />
                         <div :class="['w-5 h-5 rounded border-2 shrink-0 mt-0.5 transition flex items-center justify-center', form.seminalSpace ? 'bg-trim-teal border-trim-teal' : 'border-neutral-300 bg-white']">
                           <svg v-if="form.seminalSpace" class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
@@ -104,7 +104,7 @@
 
                       <!-- Holistic Systems Practice Course -->
                       <label class="flex items-start gap-3 cursor-pointer group">
-                        <input type="checkbox" v-model="form.practiceCourse" class="sr-only" />
+                        <input type="checkbox" v-model="form.practiceCourse" class="sr-only" @change="track('registration_checkbox_change', { checkbox: 'practice_course', checked: form.practiceCourse })" />
                         <div :class="['w-5 h-5 rounded border-2 shrink-0 mt-0.5 transition flex items-center justify-center', form.practiceCourse ? 'bg-trim-blue border-trim-blue' : 'border-neutral-300 bg-white']">
                           <svg v-if="form.practiceCourse" class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
@@ -117,7 +117,7 @@
 
                       <!-- Holism & Ethics Book -->
                       <label class="flex items-start gap-3 cursor-pointer group">
-                        <input type="checkbox" v-model="form.holismBook" class="sr-only" />
+                        <input type="checkbox" v-model="form.holismBook" class="sr-only" @change="track('registration_checkbox_change', { checkbox: 'holism_book', checked: form.holismBook })" />
                         <div :class="['w-5 h-5 rounded border-2 shrink-0 mt-0.5 transition flex items-center justify-center', form.holismBook ? 'bg-trim-green border-trim-green' : 'border-neutral-300 bg-white']">
                           <svg v-if="form.holismBook" class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
@@ -204,8 +204,9 @@
 
 <script setup lang="ts">
 import { ref, reactive, computed, watch } from 'vue'
+const { track } = useAnalytics()
 
-const props = defineProps<{ open: boolean }>()
+const props = defineProps
 defineEmits<{ close: [] }>()
 
 const form = reactive({
@@ -267,6 +268,11 @@ async function handleSubmit() {
     if (!res.ok) throw new Error(await res.text())
 
     isSubmitted.value = true
+    track('registration_submitted', {
+      seminal_space: form.seminalSpace,
+      practice_course: form.practiceCourse,
+      holism_book: form.holismBook,
+    })
     setTimeout(() => { isSubmitted.value = false }, 4000)
   } catch (err) {
     console.error('Registration failed:', err)

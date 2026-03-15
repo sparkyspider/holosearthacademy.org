@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   devServer: { host: '0.0.0.0' },
-  ssr: true,
+  ssr: false,
   runtimeConfig: {
     public: {
       siteUrl: '',
@@ -19,6 +19,18 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: 'en' },
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/holos-logo.svg' },
+      ],
+      script: [
+        {
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-X5VJNP98TL',
+          async: true,
+        },
+        {
+          innerHTML: `window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-X5VJNP98TL');`,
+        },
       ],
     },
   },

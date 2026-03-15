@@ -1,7 +1,7 @@
 <template>
   <div class="relative inline-block" ref="dropdownRef">
     <button
-      @click="open = !open"
+      @click="open = !open; if (!open) track('calendar_dropdown_opened', { event_title: props.title, speaker: props.speaker })"
       class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-condensed font-bold uppercase tracking-wider transition hover:opacity-80 cursor-pointer"
       :class="buttonClass"
     >
@@ -31,7 +31,7 @@
           target="_blank"
           rel="noopener noreferrer"
           class="flex items-center gap-3 px-4 py-2.5 text-sm font-roboto text-neutral-700 hover:bg-bg-default transition cursor-pointer"
-          @click="open = false"
+          @click="open = false; track('calendar_option_selected', { calendar_type: 'google', event_title: props.title, speaker: props.speaker })"
         >
           <span class="text-base">📅</span> Google Calendar
         </a>
@@ -40,7 +40,7 @@
           target="_blank"
           rel="noopener noreferrer"
           class="flex items-center gap-3 px-4 py-2.5 text-sm font-roboto text-neutral-700 hover:bg-bg-default transition cursor-pointer"
-          @click="open = false"
+          @click="open = false; track('calendar_option_selected', { calendar_type: 'outlook', event_title: props.title, speaker: props.speaker })"
         >
           <span class="text-base">📬</span> Outlook
         </a>
@@ -49,12 +49,12 @@
           target="_blank"
           rel="noopener noreferrer"
           class="flex items-center gap-3 px-4 py-2.5 text-sm font-roboto text-neutral-700 hover:bg-bg-default transition cursor-pointer"
-          @click="open = false"
+          @click="open = false; track('calendar_option_selected', { calendar_type: 'yahoo', event_title: props.title, speaker: props.speaker })"
         >
           <span class="text-base">📧</span> Yahoo Calendar
         </a>
         <button
-          @click="downloadIcs(); open = false"
+          @click="downloadIcs(); open = false; track('calendar_option_selected', { calendar_type: 'ics', event_title: props.title, speaker: props.speaker })"
           class="flex items-center gap-3 px-4 py-2.5 text-sm font-roboto text-neutral-700 hover:bg-bg-default transition w-full text-left cursor-pointer"
         >
           <span class="text-base">⬇️</span> Download .ics
@@ -66,6 +66,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+const { track } = useAnalytics()
 
 interface Props {
   title: string
