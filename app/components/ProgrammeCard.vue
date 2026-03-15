@@ -9,7 +9,7 @@
       Jump to: More about the Festival
     </a>
     <p class="text-lg font-roboto font-normal text-neutral-500 leading-relaxed mb-4">
-      <span class="text-red-700">Please make sure you have <a :href="config.registrationUrl" target="_blank" rel="noopener noreferrer" class="underline hover:text-red-700 transition">registered</a></span> then select the sessions you'd like to attend by clicking <span class="font-bold text-trim-teal">Add to Calendar</span> on each talk. Your calendar entry will include the <span class="font-bold text-trim-blue">Zoom link</span> to join the session.
+      <span class="text-red-700">Please make sure you have <button type="button" @click="openModal()" class="underline hover:text-red-700 transition font-bold cursor-pointer">registered</button></span> then select the sessions you'd like to attend by clicking <span class="font-bold text-trim-teal">Add to Calendar</span> on each talk. Your calendar entry will include the <span class="font-bold text-trim-blue">Zoom link</span> to join the session.
     </p>
     <p class="text-sm font-roboto text-neutral-400 mb-12">
       All times in CEST (Central European Summer Time, UTC+2) — same as South African time (SAST).
@@ -120,7 +120,7 @@ import { ref, onMounted } from 'vue'
 import { days, findSpeakerBySlug } from '~/data/speakers'
 import type { SpeakerEvent, Day } from '~/data/speakers'
 
-const config = useRuntimeConfig().public
+const { openModal } = useRegistrationModal()
 
 const modalOpen = ref(false)
 const modalSpeaker = ref({

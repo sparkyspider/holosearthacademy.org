@@ -10,13 +10,9 @@
           <color-bar/>
       </div>
     </div>
-      
 
-    <!-- Page body with vertical colour bar -->
+    <!-- Page body -->
     <div class="flex">
-        <!--
-      <VerticalColorBar />
-      -->
       <div class="flex-1 py-0 min-[860px]:py-16 px-0 min-[860px]:px-8 flex flex-col items-center gap-0 min-[860px]:gap-10">
         <IntroCard />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
@@ -30,26 +26,16 @@
     <RegistrationModal :open="isOpen" @close="closeModal" />
   </div>
 </template>
+
 <script setup lang="ts">
-import { watch } from 'vue'
+import { onMounted, watch } from 'vue'
 
-const { isOpen, closeModal } = useRegistrationModal()
-
-// Sync URL with modal state — mirrors speaker modal pattern
-watch(isOpen, (val) => {
-  if (typeof window === 'undefined') return
-  if (val) {
-    window.history.replaceState({}, '', '/register')
-  } else if (window.location.pathname === '/register') {
-    window.history.replaceState({}, '', '/')
-  }
-})
-
+const { isOpen, openModal, closeModal } = useRegistrationModal()
 const config = useRuntimeConfig().public
 const siteUrl = config.siteUrl as string
 
-const title = 'Centenary Festival of Holism & Evolution | Holos Earth Academy'
-const description = 'A free online global dialogue on the meaning and application of holism. 20–24 May 2026. Seven speakers across five days exploring science, spirituality, ethics and the legacy of Jan Smuts.'
+const title = 'Register | Centenary Festival of Holism & Evolution | Holos Earth Academy'
+const description = 'Register to join the Centenary Festival of Holism & Evolution — a free online global dialogue on holism. 20–24 May 2026.'
 
 useSeoMeta({
   title,
@@ -60,7 +46,7 @@ useSeoMeta({
   ogImageWidth: 1200,
   ogImageHeight: 630,
   ogType: 'website',
-  ogUrl: siteUrl,
+  ogUrl: `${siteUrl}/register`,
   ogSiteName: 'Holos Earth Academy',
   twitterCard: 'summary_large_image',
   twitterTitle: title,
@@ -69,6 +55,16 @@ useSeoMeta({
 })
 
 useHead({
-  link: [{ rel: 'canonical', href: siteUrl }],
+  link: [{ rel: 'canonical', href: `${siteUrl}/register` }],
+})
+
+onMounted(() => {
+  openModal()
+})
+
+// When modal is closed from this route, restore URL to home
+watch(isOpen, (val) => {
+  if (typeof window === 'undefined') return
+  if (!val) window.history.replaceState({}, '', '/')
 })
 </script>

@@ -7,15 +7,15 @@
       </h2>
 
       <!-- Step 1 -->
-      <a :href="config.registrationUrl" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-6 transition w-full">
+      <button @click="openModal()" class="group flex items-center gap-6 transition w-full text-left cursor-pointer">
         <div class="w-16 h-16 rounded-full bg-trim-teal flex items-center justify-center shrink-0 group-hover:scale-110 transition">
           <span class="text-3xl font-condensed font-bold text-white leading-none">1</span>
         </div>
         <div>
-          <span class="text-2xl font-condensed font-bold text-neutral-600 group-hover:text-trim-teal transition uppercase tracking-wide">Register via Zoom</span>
-          <p class="text-lg font-roboto font-normal text-neutral-500 mt-1"><span class="text-trim-teal underline font-bold">Click me</span> to open the registration form, then...</p>
+          <span class="text-2xl font-condensed font-bold text-neutral-600 group-hover:text-trim-teal transition uppercase tracking-wide">Register</span>
+          <p class="text-lg font-roboto font-normal text-neutral-500 mt-1"><span class="text-trim-teal underline font-bold">Click me</span> to fill in the registration form, then...</p>
         </div>
-      </a>
+      </button>
 
       <!-- Step 2 -->
       <a href="#programme" class="group flex items-center gap-6 transition w-full">
@@ -52,5 +52,5 @@
 </template>
 
 <script setup lang="ts">
-const config = useRuntimeConfig().public
+const { openModal } = useRegistrationModal()
 </script>

@@ -9,7 +9,6 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteUrl: '',
-      registrationUrl: '',
       zoomWebinarUrl: '',
     },
   },
@@ -35,6 +34,7 @@ export default defineNuxtConfig({
     preset: 'static',
     prerender: {
       routes: [
+        '/register',
         '/speaker/kobus-du-pisani',
         '/speaker/jeff-blumberg',
         '/speaker/marcus-link',
