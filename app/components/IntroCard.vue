@@ -8,7 +8,7 @@
       </p>
       <div class="flex flex-col items-center self-center mt-6">
         <span class="text-xs font-condensed font-normal uppercase tracking-[0.35em] text-neutral-400 mb-2">presented by</span>
-        <img src="/holos-logo.svg" alt="Holos Earth" class="w-36 md:w-48" />
+        <img src="/images/holos-logo.svg" alt="Holos Earth" class="w-36 md:w-48" />
       </div>
     </div>
 

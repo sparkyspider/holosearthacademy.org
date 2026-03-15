@@ -2,7 +2,7 @@
   <div class="min-h-[100dvh] bg-bg-default max-w-[100vw] overflow-x-hidden">
     <!-- Hero image extends behind both banner and ticker -->
     <div class="relative">
-      <img src="/space-option-1.png" alt="" class="absolute inset-0 w-full h-full object-cover object-center" />
+      <img src="/images/space-option-1.png" alt="" class="absolute inset-0 w-full h-full object-cover object-center" />
       <div class="relative z-10">
         <HeroBanner />
         <div class="h-2 w-full bg-white/50"></div>
@@ -45,7 +45,7 @@ const pageDescription = speaker
 
 const ogImage = speaker
   ? `${siteUrl}${speaker.image}`
-  : `${siteUrl}/opengraph.png`
+  : `${siteUrl}/images/opengraph.png`
 
 useSeoMeta({
   title: pageTitle,

@@ -2,7 +2,7 @@
   <div class="min-h-[100dvh] bg-bg-default max-w-[100vw] overflow-x-hidden">
     <!-- Hero image extends behind both banner and ticker -->
     <div class="relative">
-      <img src="/space-option-1.png" alt="" class="absolute inset-0 w-full h-full object-cover object-center" />
+      <img src="/images/space-option-1.png" alt="" class="absolute inset-0 w-full h-full object-cover object-center" />
       <div class="relative z-10">
         <HeroBanner />
         <div class="h-2 w-full bg-white/50"></div>
@@ -25,6 +25,7 @@
         <ProgrammeCard />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
         <AboutFestivalCard />
+        <ClaudiusCard />
         <FooterCard />
         <p class="text-xs font-roboto text-neutral-400 text-center py-4">
           © {{ new Date().getFullYear() }} Claudius van Wyk. All rights reserved.
@@ -60,7 +61,7 @@ useSeoMeta({
   description,
   ogTitle: title,
   ogDescription: description,
-  ogImage: `${siteUrl}/opengraph.png`,
+  ogImage: `${siteUrl}/images/opengraph.png`,
   ogImageWidth: 1200,
   ogImageHeight: 630,
   ogType: 'website',
@@ -69,7 +70,7 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
   twitterTitle: title,
   twitterDescription: description,
-  twitterImage: `${siteUrl}/opengraph.png`,
+  twitterImage: `${siteUrl}/images/opengraph.png`,
 })
 
 useHead({
