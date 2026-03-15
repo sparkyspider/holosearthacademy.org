@@ -79,6 +79,9 @@ Place `.vue` files in `app/pages/`. Nuxt auto-generates routes from the file str
 - **Default body text**: `text-xl lg:text-2xl` (20px mobile / 24px desktop), `font-roboto font-normal leading-relaxed`
 - Use this size for standard paragraph / descriptive text across the site
 
+## Workflow Rules
+- **Never commit or deploy unless explicitly asked.** Do not run `git commit`, `git push`, or any deploy commands unless the user specifically requests it.
+
 ## Environment Variables
 Use `runtimeConfig.public` in `nuxt.config.ts` for client-side env vars (prefixed with `NUXT_PUBLIC_`).
 Create `.env` for local dev values and `.env.production` for production values.

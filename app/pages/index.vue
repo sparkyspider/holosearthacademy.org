@@ -26,6 +26,9 @@
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
         <AboutFestivalCard />
         <FooterCard />
+        <p class="text-xs font-roboto text-neutral-400 text-center py-4">
+          © {{ new Date().getFullYear() }} Claudius van Wyk. All rights reserved.
+        </p>
       </div>
     </div>
     <RegistrationModal :open="isOpen" @close="closeModal" />
