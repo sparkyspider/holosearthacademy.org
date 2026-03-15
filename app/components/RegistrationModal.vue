@@ -204,10 +204,12 @@
 
 <script setup lang="ts">
 import { ref, reactive, computed, watch } from 'vue'
-const { track } = useAnalytics()
 
-const props = defineProps
-defineEmits<{ close: [] }>()
+const props = defineProps<{ open: boolean }>()
+const emit = defineEmits<{ close: [] }>()
+
+const { track } = useAnalytics()
+const { markRegistered } = useRegistrationModal()
 
 const form = reactive({
   name: '',
@@ -268,6 +270,8 @@ async function handleSubmit() {
     if (!res.ok) throw new Error(await res.text())
 
     isSubmitted.value = true
+    markRegistered()
+    setTimeout(() => emit('close'), 3000)
     track('registration_submitted', {
       seminal_space: form.seminalSpace,
       practice_course: form.practiceCourse,

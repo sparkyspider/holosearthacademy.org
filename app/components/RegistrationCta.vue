@@ -12,7 +12,17 @@
           <span class="text-3xl font-condensed font-bold text-white leading-none">1</span>
         </div>
         <div>
-          <span class="text-2xl font-condensed font-bold text-neutral-600 group-hover:text-trim-teal transition uppercase tracking-wide">Register</span>
+          <div class="flex items-center gap-4">
+            <span class="text-2xl font-condensed font-bold text-neutral-600 group-hover:text-trim-teal transition uppercase tracking-wide">Register</span>
+            <Transition mode="out-in" enter-active-class="transition duration-200 ease-out" enter-from-class="opacity-0 scale-75" enter-to-class="opacity-100 scale-100" leave-active-class="transition duration-150 ease-in" leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-75">
+              <svg v-if="isRegistered" key="tick" xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-trim-teal shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M3 12 L6 9 L9 12 L18 3 L21 6 L9 18 Z" />
+              </svg>
+              <svg v-else key="arrow" xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-trim-teal shrink-0 animate-nudge-right" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M2 12 L10 5 L10 9 L22 9 L22 15 L10 15 L10 19 Z" />
+              </svg>
+            </Transition>
+          </div>
           <p class="text-lg font-roboto font-normal text-neutral-500 mt-1"><span class="text-trim-teal underline font-bold">Click me</span> to fill in the registration form, then...</p>
         </div>
       </button>
@@ -23,7 +33,18 @@
           <span class="text-3xl font-condensed font-bold text-white leading-none">2</span>
         </div>
         <div>
-          <span class="text-2xl font-condensed font-bold text-neutral-600 group-hover:text-trim-blue transition uppercase tracking-wide">Choose your sessions below</span>
+          <div class="flex items-center gap-4">
+            <span class="text-2xl font-condensed font-bold text-neutral-600 group-hover:text-trim-blue transition uppercase tracking-wide">Choose your sessions below</span>
+            <Transition mode="out-in" enter-active-class="transition duration-200 ease-out" enter-from-class="opacity-0 scale-75" enter-to-class="opacity-100 scale-100" leave-active-class="transition duration-150 ease-in" leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-75">
+              <svg v-if="hasAddedCalendar" key="tick" xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-trim-blue shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M3 12 L6 9 L9 12 L18 3 L21 6 L9 18 Z" />
+              </svg>
+              <svg v-else-if="isRegistered" key="arrow" xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-trim-blue shrink-0 animate-nudge-right" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M2 12 L10 5 L10 9 L22 9 L22 15 L10 15 L10 19 Z" />
+              </svg>
+              <span v-else key="empty" />
+            </Transition>
+          </div>
           <p class="text-lg font-roboto font-normal text-neutral-500 mt-1"><span class="text-trim-blue underline font-bold">Click me</span> to scroll down and select the talks you want to attend</p>
         </div>
       </a>
@@ -52,7 +73,8 @@
 </template>
 
 <script setup lang="ts">
-const { openModal } = useRegistrationModal()
+const { openModal, isRegistered } = useRegistrationModal()
+const { hasAddedCalendar } = useCalendarProgress()
 const { track } = useAnalytics()
 
 function handleRegisterClick() {

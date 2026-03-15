@@ -20,9 +20,15 @@
   --color-trim-yellow-dark: #A89444;
 
   --animate-ticker: ticker 90s linear infinite;
+  --animate-nudge-right: nudge-right 1s ease-in-out infinite;
 }
 
 @keyframes ticker {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+@keyframes nudge-right {
+  0%, 100% { transform: translateX(0px); }
+  50% { transform: translateX(-6px); }
 }

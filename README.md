@@ -27,6 +27,38 @@ This is a **fully client-side app** (`ssr: false` in `nuxt.config.ts`). There is
 
 ---
 
+## Google Analytics
+
+**Property:** Holos Earth Academy  
+**Measurement ID:** `G-X5VJNP98TL`  
+**Account:** mark-van-wyk (GCP project: `holos-earth-academy`)  
+**Service account:** `admin-user@holos-earth-academy.iam.gserviceaccount.com`  
+**Service account key:** Downloaded locally — do not commit to git
+
+### How it's integrated
+
+The GA4 script is injected globally via `app.head.script` in `nuxt.config.ts` — no plugin or npm package needed. `window.gtag` is available on every page.
+
+Custom events are fired via the `useAnalytics` composable (`app/composables/useAnalytics.ts`), which wraps `window.gtag`.
+
+### Funnel events
+
+| Event | Fired when | Key params |
+|---|---|---|
+| `registration_modal_open` | Register button clicked | `source: 'cta' \| 'programme'` |
+| `registration_checkbox_change` | Any interest checkbox toggled | `checkbox`, `checked` |
+| `registration_submitted` | Form successfully submitted | `seminal_space`, `practice_course`, `holism_book` |
+| `calendar_dropdown_opened` | "Add to Calendar" button clicked | `event_title`, `speaker` |
+| `calendar_option_selected` | A calendar option chosen | `calendar_type: 'google'\|'outlook'\|'yahoo'\|'ics'`, `event_title`, `speaker` |
+
+### Viewing the funnel in GA4
+
+1. Go to [analytics.google.com](https://analytics.google.com) → **Explore** → **Funnel exploration**
+2. Define steps: `page_view` → `registration_modal_open` → `registration_submitted` → `calendar_option_selected`
+3. For checkbox/calendar popularity: **Reports** → **Events** → select the event → break down by the relevant parameter
+
+---
+
 ## 1. How We Deploy
 
 The site is a fully static Nuxt SSG build. Deployment is triggered automatically by pushing to the **`deploy`** branch on GitHub.
