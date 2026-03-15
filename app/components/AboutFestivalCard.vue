@@ -33,12 +33,43 @@
         <p class="text-3xl lg:text-4xl font-condensed font-normal uppercase leading-snug text-neutral-500 tracking-wide">
           The <span class="font-bold text-trim-yellow">2026</span> Festival of <span class="font-bold text-trim-teal">Holism</span> and <span class="font-bold text-trim-green">Evolution</span> explores how holism can guide a <span class="font-bold text-trim-blue">hopeful</span>, <span class="font-bold text-trim-green">regenerative</span> future.
         </p>
-        <p class="text-xl lg:text-2xl font-roboto font-normal text-neutral-500 leading-relaxed">
+        <p class="text-xl font-roboto font-normal text-neutral-600 leading-relaxed">
           We celebrate the visionary legacy of <span class="font-bold text-trim-purple">Jan Christian Smuts</span>, whose 1926 book <span class="italic font-bold text-trim-teal">Holism &amp; Evolution</span> laid the foundational groundwork for holistic thought and human understanding. His life and work continue to inspire holistic practice as a vital guide toward a new era of coherence during times of unprecedented transformation.
         </p>
-        <p class="text-xl lg:text-2xl font-roboto font-normal text-neutral-500 leading-relaxed">
+        <p class="text-xl font-roboto font-normal text-neutral-600 leading-relaxed">
           This first phase of the festival is followed by phase two, a series of informative, interactive, specialist presentations. It culminates in October 2026 with phase three, an <span class="font-bold text-trim-yellow">in-person gathering in South Africa</span>. Gathering in Cape Town we will follow in the footsteps of Smuts' rich and diverse life, that lead to him writing <span class="italic font-bold text-trim-teal">Holism and Evolution</span>.
         </p>
+        <div
+          class="h-1.5 w-full rounded-full my-4"
+          style="background: linear-gradient(to right, #DDC66E, #6EB189, #62BDB1, #7CA5DD, #A27CB8)"
+        />
+        <NewsletterCard />
+        <!-- Claudius van Wyk card -->
+        <div
+          class="h-1.5 w-full rounded-full my-4"
+          style="background: linear-gradient(to right, #DDC66E, #6EB189, #62BDB1, #7CA5DD, #A27CB8)"
+        />
+        <div class="flex items-center gap-5 flex-wrap">
+          <img
+            src="/images/speakers/claudius-van-wyk.png"
+            alt="Dr Claudius van Wyk"
+            class="w-14 h-14 rounded-full object-cover object-top shrink-0"
+          />
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-roboto font-normal text-neutral-500 leading-relaxed">
+              <span class="font-bold text-neutral-600">Dr Claudius van Wyk</span> — Holistic Systems Practice pioneer, author and speaker. Exploring coherence, complexity and the evolution of consciousness.
+            </p>
+          </div>
+          <a
+            href="https://www.linkedin.com/in/claudius-van-wyk-77997b11/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#0A66C2] text-white text-sm font-roboto font-bold hover:bg-[#004182] transition shrink-0"
+          >
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            Connect with Claudius
+          </a>
+        </div>
       </div>
 
       <!-- Right column: Saving the Soul quote -->

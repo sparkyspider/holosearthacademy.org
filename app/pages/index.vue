@@ -25,6 +25,7 @@
         <ProgrammeCard />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
         <AboutFestivalCard />
+        <FooterCard />
       </div>
     </div>
     <RegistrationModal :open="isOpen" @close="closeModal" />

@@ -8,7 +8,7 @@
       <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4M12 8h.01" /></svg>
       Jump to: More about the Festival
     </a>
-    <p class="text-lg font-roboto font-normal text-neutral-500 leading-relaxed mb-4">
+    <p class="text-xl font-roboto font-normal text-neutral-600 leading-relaxed mb-4">
       Please make sure you have <button type="button" @click="handleRegisterClick()" class="font-bold text-trim-teal underline hover:text-trim-teal-dark transition cursor-pointer">registered</button> before adding sessions to your calendar. The Zoom link will be included in the calendar.
     </p>
 
