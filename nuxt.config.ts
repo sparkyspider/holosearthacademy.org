@@ -8,8 +8,8 @@ export default defineNuxtConfig({
   ssr: false,
   runtimeConfig: {
     public: {
-      siteUrl: '',
-      zoomWebinarUrl: '',
+      siteUrl: 'https://holosearthacademy.org',
+      zoomWebinarUrl: 'https://zoom.us/j/85661408197?pwd=Holos2026',
     },
   },
   app: {
