@@ -10,13 +10,20 @@
     </a>
 
     <!-- Full-width Smuts hero image -->
-    <div class="relative w-full aspect-[1496/766] rounded-xl overflow-hidden mb-10">
-      <img src="/images/smuts.jpg" alt="Jan Christian Smuts" class="w-full h-full object-cover object-top" />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-      <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-        <h3 class="text-3xl lg:text-4xl font-condensed font-bold uppercase tracking-wide text-white mb-1">Jan Christian Smuts</h3>
-        <p class="text-sm font-condensed font-normal uppercase tracking-[0.2em] text-white/70">1870–1950</p>
+    <div class="mb-10">
+      <div class="relative w-full aspect-[1496/766] rounded-xl overflow-hidden">
+        <img src="/images/smuts.jpg" alt="Jan Christian Smuts" class="w-full h-full object-cover object-top" />
+        <!-- Overlay: 860px+ only -->
+        <div class="hidden min-[860px]:block absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+        <div class="hidden min-[860px]:block absolute bottom-0 left-0 right-0 p-6 md:p-8">
+          <h3 class="text-xl lg:text-2xl font-condensed font-bold uppercase tracking-wide text-white mb-1">Jan Christian Smuts</h3>
+          <p class="text-xl lg:text-2xl font-condensed font-normal uppercase tracking-[0.2em] text-white/70">1870–1950</p>
+        </div>
       </div>
+      <!-- Caption: below 860px only -->
+      <p class="min-[860px]:hidden mt-2 px-1 text-xl lg:text-2xl font-roboto font-normal text-neutral-400">
+        — Jan Christian Smuts (1870–1950)
+      </p>
     </div>
 
     <!-- Content below image -->
@@ -30,7 +37,7 @@
           We celebrate the visionary legacy of <span class="font-bold text-trim-purple">Jan Christian Smuts</span>, whose 1926 book <span class="italic font-bold text-trim-teal">Holism &amp; Evolution</span> laid the foundational groundwork for holistic thought and human understanding. His life and work continue to inspire holistic practice as a vital guide toward a new era of coherence during times of unprecedented transformation.
         </p>
         <p class="text-xl lg:text-2xl font-roboto font-normal text-neutral-500 leading-relaxed">
-          The festival begins with an <span class="font-bold text-trim-blue">online launch, 20–24 May 2026</span>, tracing holism's origins and significance, followed by talks and workshops from <span class="font-bold text-trim-green">June to September</span>, and culminating in an <span class="font-bold text-trim-yellow">in-person conference in South Africa</span> in October 2026.
+          This first phase of the festival is followed by phase two, a series of informative, interactive, specialist presentations. It culminates in October 2026 with phase three, an <span class="font-bold text-trim-yellow">in-person gathering in South Africa</span>. Gathering in Cape Town we will follow in the footsteps of Smuts' rich and diverse life, that lead to him writing <span class="italic font-bold text-trim-teal">Holism and Evolution</span>.
         </p>
       </div>
 
@@ -44,16 +51,16 @@
             <div class="w-1.5 shrink-0 rounded-full bg-[linear-gradient(to_bottom,#DDC66E,#6EB189,#62BDB1,#7CA5DD,#A27CB8)]"></div>
             <div class="pl-8 flex flex-col gap-4">
               <p class="text-xl lg:text-2xl font-roboto font-normal text-neutral-600 leading-relaxed">
-                Jan Smuts believed that the understanding of Holism would be essential for <span class="font-bold text-trim-purple">"saving the soul of civilisation"</span>, warning that a purely mechanistic and material view of reality risks separating humanity from the deeper living processes of life.
+                In <span class="italic font-bold text-trim-teal">Holism and Evolution</span>, Smuts warned of the fragmenting world we are experiencing today. He believed that the understanding of Holism would be essential for <span class="font-bold text-trim-purple">"saving the soul of civilisation"</span>. He warned that a purely mechanistic and material view of reality risks separating humanity from the deeper living processes of life.
               </p>
-              <p class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed italic">
+              <p class="text-xl lg:text-2xl font-roboto font-normal text-neutral-600 leading-relaxed">
                 In a time when our world once again feels fragmented and uncertain, this insight speaks with renewed relevance.
+              </p>
+              <p class="text-xl lg:text-2xl font-roboto font-normal text-neutral-600 leading-relaxed">
+                The festival highlights lessons from holistic practice and Smuts' thinking to <span class="font-bold text-trim-teal">inspire humanity for the next century</span>.
               </p>
             </div>
           </div>
-          <p class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed mt-6 text-center">
-            The festival highlights lessons from holistic practice and Smuts' thinking to <span class="font-bold text-trim-teal">inspire humanity for the next century</span>.
-          </p>
         </div>
       </div>
     </div>
@@ -111,19 +118,5 @@
       </div>
     </div>
 
-    <!-- Credits -->
-    <div class="mt-10 pt-6 border-t border-neutral-200 flex items-center justify-center gap-2">
-      <span class="text-sm font-roboto font-normal text-neutral-400">
-        Content sourced from
-      </span>
-      <a
-        href="https://holos.earth/about-festival/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-sm font-roboto font-bold text-trim-teal hover:text-trim-teal-dark transition"
-      >
-        holos.earth
-      </a>
-    </div>
   </div>
 </template>

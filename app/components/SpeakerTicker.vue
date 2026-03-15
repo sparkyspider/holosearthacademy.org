@@ -91,9 +91,9 @@ const tickerSpeakers = [
   { name: 'Jeff Blumberg', image: '/images/speakers/jeff-blumberg.png', line1: 'Author on Holism', line2: '& Evolution', slug: 'jeff-blumberg' },
   { name: 'Marcus Link', image: '/images/speakers/marcus-link.png', line1: 'Founder', line2: 'Ecological Intelligence', slug: 'marcus-link' },
   { name: 'Dr Jude Currivan', image: '/images/speakers/jude-currivan.png', line1: 'Cosmologist', line2: 'WholeWorld-View Co-founder', slug: 'jude-currivan' },
-  { name: 'Dr Claudius van Wyk', image: '/images/speakers/claudius-van-wyk.png', line1: 'Holistic Systems', line2: 'Practice Expert', slug: 'claudius-van-wyk' },
   { name: 'David Lorimer', image: '/images/speakers/david-lorimer.png', line1: 'Programme Director', line2: 'Scientific & Medical Network', slug: 'david-lorimer' },
   { name: 'Dr Rhett Gayle', image: '/images/speakers/rhett-gayle.png', line1: 'Philosopher', line2: '& Wisdom Researcher', slug: 'rhett-gayle' },
+  { name: 'Dr Claudius van Wyk', image: '/images/speakers/claudius-van-wyk.png', line1: 'Holistic Systems', line2: 'Practice Expert', slug: 'claudius-van-wyk' },
 ]
 
 const currentIndex = ref(1)

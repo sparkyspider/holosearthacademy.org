@@ -23,7 +23,7 @@
               </svg>
             </Transition>
           </div>
-          <p class="text-lg font-roboto font-normal text-neutral-500 mt-1"><span class="text-trim-teal underline font-bold">Click me</span> to fill in the registration form, then...</p>
+          <p class="text-lg font-roboto font-normal text-neutral-500 mt-1"><span class="text-trim-teal underline font-bold">Click me</span> to complete registration, then...</p>
         </div>
       </button>
 
@@ -51,7 +51,7 @@
 
       <!-- Note -->
       <p class="text-xl font-roboto font-normal text-neutral-600 mt-4 leading-relaxed">
-        <span class="font-bold text-trim-purple uppercase tracking-wide">Note:</span> Each session builds on the last, creating an <span class="font-bold text-trim-green">evolving journey of insight</span> so we'd love you to join the <span class="font-bold text-trim-teal">full experience</span>. But if time is tight, simply choose the sessions that suit your schedule. With just <span class="font-bold text-trim-blue">one or two talks per day</span>, it's designed to fit in with you.
+        <span class="font-bold text-trim-purple uppercase tracking-wide">Note:</span> Each session builds on the previous, creating an <span class="font-bold text-trim-green">evolving journey of insight</span> so we'd love you to join the <span class="font-bold text-trim-teal">full experience</span>. But if time is tight, simply choose the sessions that suit your schedule. With just <span class="font-bold text-trim-blue">one or two talks per day</span>, it's designed to fit in with you.
       </p>
     </div>
 

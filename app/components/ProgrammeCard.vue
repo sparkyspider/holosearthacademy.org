@@ -9,10 +9,7 @@
       Jump to: More about the Festival
     </a>
     <p class="text-lg font-roboto font-normal text-neutral-500 leading-relaxed mb-4">
-      Please make sure you have <button type="button" @click="handleRegisterClick()" class="font-bold text-trim-teal underline hover:text-trim-teal-dark transition cursor-pointer">registered</button>, then select the sessions you'd like to attend by clicking <span class="font-bold text-trim-blue">Add to Calendar</span> on each talk. Your calendar entry will include the <span class="font-bold text-trim-blue">Zoom link</span> to join the session.
-    </p>
-    <p class="text-sm font-roboto text-neutral-400 mb-12">
-      All times in CEST (Central European Summer Time, UTC+2) — same as South African time (SAST).
+      Please make sure you have <button type="button" @click="handleRegisterClick()" class="font-bold text-trim-teal underline hover:text-trim-teal-dark transition cursor-pointer">registered</button> before adding sessions to your calendar. The Zoom link will be included in the calendar.
     </p>
 
     <!-- Days -->
@@ -73,7 +70,7 @@
                   {{ event.subtitle }}
                 </p>
 
-                <p class="text-lg font-roboto font-light text-neutral-500 leading-relaxed line-clamp-3">
+                <p class="text-lg font-roboto font-light text-neutral-500 leading-relaxed">
                   {{ event.description }}
                 </p>
 
