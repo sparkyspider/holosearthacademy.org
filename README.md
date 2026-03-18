@@ -46,10 +46,29 @@ Custom events are fired via the `useAnalytics` composable (`app/composables/useA
 | Event | Fired when | Key params |
 |---|---|---|
 | `registration_modal_open` | Register button clicked | `source: 'cta' \| 'programme'` |
-| `registration_checkbox_change` | Any interest checkbox toggled | `checkbox`, `checked` |
-| `registration_submitted` | Form successfully submitted | `phase_2`, `cape_town`, `hsp_training`, `book_release` |
+| `registration_checkbox_change` | Any interest checkbox toggled | `checkbox: 'phase_2'\|'cape_town'\|'hsp_training'\|'book_release'`, `checked` |
+| `registration_submitted` | Form successfully submitted | `phase_2`, `cape_town`, `hsp_training`, `book_release` (booleans) |
 | `calendar_dropdown_opened` | "Add to Calendar" button clicked | `event_title`, `speaker` |
 | `calendar_option_selected` | A calendar option chosen | `calendar_type: 'google'\|'outlook'\|'yahoo'\|'ics'`, `event_title`, `speaker` |
+
+### Custom dimensions (GA4 → Admin → Custom definitions)
+
+These must be manually registered in GA4 before they appear in reports:
+
+| Dimension name | Event parameter | Description |
+|---|---|---|
+| Source | `source` | Where the register modal was opened from (`cta` or `programme`) |
+| Checkbox | `checkbox` | Which interest checkbox was toggled (`phase_2`, `cape_town`, etc.) |
+| Checked | `checked` | Whether the checkbox was ticked (`true`) or unticked (`false`) |
+| Phase 2 | `phase_2` | User selected Festival Phase II interest on submission |
+| Cape Town | `cape_town` | User selected Cape Town pilgrimage interest on submission |
+| HSP Training | `hsp_training` | User selected HSP Training interest on submission |
+| Book Release | `book_release` | User selected Claudius' book release interest on submission |
+| Event Title | `event_title` | Title of the festival talk being added to calendar |
+| Speaker | `speaker` | Speaker whose talk is being added to calendar |
+| Calendar Type | `calendar_type` | Calendar app chosen (`google`, `outlook`, `yahoo`, `ics`) |
+
+> GA4 takes 24–48 hours before new dimensions appear in reports. Data is collected in the meantime.
 
 ### Viewing the funnel in GA4
 

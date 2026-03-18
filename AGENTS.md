@@ -27,6 +27,7 @@ Website for **holosearthacademy.org**. Static site built with Nuxt and Tailwind 
 - Build command: `npm run generate`
 - Artifacts directory: `.output/public`
 - Amplify serves the static files; no server runtime needed
+- **Deployment is triggered automatically by pushing to the `deploy` branch**
 - For SPA routing, configure custom redirect rules in Amplify Console:
   `</^[^.]+$|\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|woff2|ttf|map|json)$)([^.]+$)/> → /index.html (200)`
 
