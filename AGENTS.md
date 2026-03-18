@@ -11,11 +11,11 @@ Website for **holosearthacademy.org**. Static site built with Nuxt and Tailwind 
 
 ## Architecture Decisions
 
-### No SSR / No Server Components
-- `ssr: false` in `nuxt.config.ts` — everything runs client-side only
+### SSR enabled for static pre-rendering
+- `ssr: true` in `nuxt.config.ts` — pages are pre-rendered to full HTML at build time
 - `nitro: { preset: 'static' }` — static site generation (SSG)
 - No server routes, no server middleware, no server components
-- `npm run generate` produces a fully static site in `.output/public`
+- `npm run generate` produces a fully static site in `.output/public` with pre-rendered HTML per route
 
 ### Tailwind CSS 4 via Vite Plugin
 - Tailwind is loaded as a Vite plugin (`@tailwindcss/vite`), not via PostCSS
@@ -59,7 +59,7 @@ npm run build      # Build (used by Amplify)
 These are the steps that were used to create this project:
 
 1. Created project directory and `package.json` with Nuxt 4, Vue 3, Tailwind CSS 4
-2. Created `nuxt.config.ts` with `ssr: false`, `nitro: { preset: 'static' }`, Tailwind Vite plugin
+2. Created `nuxt.config.ts` with `ssr: true`, `nitro: { preset: 'static' }`, Tailwind Vite plugin
 3. Created `app/assets/css/main.css` with `@import "tailwindcss"`
 4. Created `app/app.vue` with `<NuxtPage />`
 5. Created `app/pages/index.vue` as blank home page
