@@ -89,7 +89,7 @@ import { findSpeakerBySlug } from '~/data/speakers'
 const tickerSpeakers = [
   { name: 'Prof Kobus Du Pisani', image: '/images/speakers/kobus-du-pisani.png', line1: 'Smuts Scholar', line2: '& Historian', slug: 'kobus-du-pisani' },
   { name: 'Jeff Blumberg', image: '/images/speakers/jeff-blumberg.png', line1: 'Author on Holism', line2: '& Evolution', slug: 'jeff-blumberg' },
-  { name: 'Marcus Link', image: '/images/speakers/marcus-link.png', line1: 'Founder', line2: 'Ecological Intelligence', slug: 'marcus-link' },
+  { name: 'Marcus Link', image: '/images/speakers/markus-link.jpeg', line1: 'Founder', line2: 'Ecological Intelligence', slug: 'marcus-link' },
   { name: 'Dr Jude Currivan', image: '/images/speakers/jude-currivan.png', line1: 'Cosmologist', line2: 'WholeWorld-View Co-founder', slug: 'jude-currivan' },
   { name: 'David Lorimer', image: '/images/speakers/david-lorimer.png', line1: 'Programme Director', line2: 'Scientific & Medical Network', slug: 'david-lorimer' },
   { name: 'Dr Rhett Gayle', image: '/images/speakers/rhett-gayle.png', line1: 'Philosopher', line2: '& Wisdom Researcher', slug: 'rhett-gayle' },
