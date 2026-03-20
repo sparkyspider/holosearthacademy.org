@@ -7,6 +7,19 @@ export interface SpeakerEvent {
   time: string
   image: string
   bio: string
+  /** Override the default 90-minute duration for this event */
+  durationMinutes?: number
+}
+
+export interface DialogueEvent {
+  title: string
+  subtitle: string
+  time: string
+  durationMinutes: number
+  paragraphs: string[]
+  finalParaPre: string
+  finalParaHighlight: string
+  calendarDescription: string
 }
 
 export interface Day {
@@ -22,6 +35,7 @@ export interface Day {
   borderColor: string
   subtitleColor: string
   events: SpeakerEvent[]
+  dialogueEvent?: DialogueEvent
 }
 
 export const days: Day[] = [
@@ -137,8 +151,22 @@ export const days: Day[] = [
         time: '11h30 CEST',
         image: '/images/speakers/david-lorimer.png',
         bio: 'David Lorimer is a writer, lecturer, and editor known for his work in philosophy and education. He is the Programme Director of the Scientific and Medical Network and has authored several books on topics related to science and spirituality.',
+        durationMinutes: 75,
       },
     ],
+    dialogueEvent: {
+      title: 'A Dialogue with All Presenters',
+      subtitle: 'Bringing the insights together into lived understanding',
+      time: '13h00 CEST',
+      durationMinutes: 60,
+      paragraphs: [
+        'Join us for a summatory dialogue where the speakers come together to reflect on the deeper themes of the festival.',
+        "Together we will explore how 'Holism and Evolution' continues to unfold through ideas such as the participatory universe, humanity as a keystone species, and the role of individual agency in shaping a more regenerative relationship with life.",
+      ],
+      finalParaPre: 'This is an opportunity not only to listen, but to ',
+      finalParaHighlight: 'engage, reflect, and connect the insights to your own perspective and experience.',
+      calendarDescription: "Join us for a summatory dialogue where the speakers come together to reflect on the deeper themes of the festival.\n\nTogether we will explore how 'Holism and Evolution' continues to unfold through ideas such as the participatory universe, humanity as a keystone species, and the role of individual agency in shaping a more regenerative relationship with life.\n\nThis is an opportunity not only to listen, but to engage, reflect, and connect the insights to your own perspective and experience.",
+    },
   },
   {
     date: '2026-05-24',
@@ -163,6 +191,7 @@ export const days: Day[] = [
         time: '10h30 CEST',
         image: '/images/speakers/rhett-gayle.png',
         bio: 'Dr Rhett Gayle is a researcher, educator and philosopher who has taught at the University of Colorado and is author of several academic papers on topics ranging from Befriending Wisdom to Self-transformation.',
+        durationMinutes: 60,
       },
       {
         speaker: 'Dr Claudius van Wyk',

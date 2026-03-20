@@ -34,20 +34,20 @@
             v-for="event in day.events"
             :key="event.speaker"
             :class="['group relative rounded-xl p-5 min-[860px]:p-8 transition-all duration-300 hover:shadow-lg cursor-pointer max-[859px]:mt-20 bg-white max-[859px]:shadow-[0_4px_20px_rgba(0,0,0,0.06)] min-[860px]:bg-bg-default min-[860px]:shadow-none']"
+            @click="openSpeakerModal(event, day)"
           >
             <div class="flex flex-col min-[860px]:flex-row gap-0 min-[860px]:gap-8">
               <!-- Avatar -->
               <div class="shrink-0 flex flex-col items-center min-[860px]:items-start max-[859px]:absolute max-[859px]:top-0 max-[859px]:left-1/2 max-[859px]:-translate-x-1/2 max-[859px]:-translate-y-1/2">
-                <button
-                  @click="openSpeakerModal(event, day)"
-                  :class="['w-30 h-30 rounded-full overflow-hidden ring-6 ring-offset-3 max-[859px]:ring-offset-white ring-offset-bg-default cursor-pointer hover:scale-105 transition-transform', day.ringColor]"
+                <div
+                  :class="['w-30 h-30 rounded-full overflow-hidden ring-6 ring-offset-3 max-[859px]:ring-offset-white ring-offset-bg-default hover:scale-105 transition-transform', day.ringColor]"
                 >
                   <img
                     :src="event.image"
                     :alt="event.speaker"
                     class="w-full h-full object-cover object-top"
                   />
-                </button>
+                </div>
               </div>
               <!-- Mobile spacer: reserves height below the floating avatar -->
               <div class="h-16 min-[860px]:hidden"></div>
@@ -74,7 +74,7 @@
                   {{ event.description }}
                 </p>
 
-                <div class="mt-4">
+                <div class="mt-4" @click.stop>
                   <AddToCalendar
                     :title="event.title"
                     :speaker="event.speaker"
@@ -82,6 +82,59 @@
                     :theme="day.theme"
                     :date="day.date"
                     :time="event.time"
+                    :duration-minutes="event.durationMinutes"
+                    :button-class="`${day.calendarBtnClass}`"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Dialogue card -->
+          <div
+            v-if="day.dialogueEvent"
+            class="group relative rounded-xl p-5 min-[860px]:p-8 transition-all duration-300 hover:shadow-lg max-[859px]:mt-20 bg-white max-[859px]:shadow-[0_4px_20px_rgba(0,0,0,0.06)] min-[860px]:bg-bg-default min-[860px]:shadow-none"
+          >
+            <div class="flex flex-col min-[860px]:flex-row gap-0 min-[860px]:gap-8">
+              <!-- Icon circle -->
+              <div class="shrink-0 flex flex-col items-center min-[860px]:items-start max-[859px]:absolute max-[859px]:top-0 max-[859px]:left-1/2 max-[859px]:-translate-x-1/2 max-[859px]:-translate-y-1/2">
+                <div :class="['w-30 h-30 rounded-full flex items-center justify-center ring-6 ring-offset-3 max-[859px]:ring-offset-white ring-offset-bg-default', day.ringColor, day.calendarBtnClass]">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                  </svg>
+                </div>
+              </div>
+              <!-- Mobile spacer -->
+              <div class="h-16 min-[860px]:hidden"></div>
+
+              <!-- Content -->
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-col min-[860px]:flex-row min-[860px]:items-center gap-2 min-[860px]:gap-4 mb-3">
+                  <h3 :class="['text-2xl font-condensed font-bold uppercase tracking-wide', day.titleColor]">
+                    {{ day.dialogueEvent.title }}
+                  </h3>
+                  <span :class="['inline-flex self-start min-[860px]:self-center items-center px-3 py-1 rounded-full text-base font-condensed font-bold uppercase tracking-wider text-white whitespace-nowrap', day.badgeColor]">
+                    {{ day.dialogueEvent.time }}
+                  </span>
+                </div>
+
+                <p :class="['text-lg font-condensed font-normal italic tracking-wide pl-3 border-l-3 mb-3', day.subtitleColor, day.borderColor]">
+                  {{ day.dialogueEvent.subtitle }}
+                </p>
+
+                <div class="text-lg font-roboto font-light text-neutral-500 leading-relaxed space-y-3">
+                  <p v-for="para in day.dialogueEvent.paragraphs" :key="para">{{ para }}</p>
+                  <p>{{ day.dialogueEvent.finalParaPre }}<strong :class="['font-bold', day.titleColor]">{{ day.dialogueEvent.finalParaHighlight }}</strong></p>
+                </div>
+
+                <div class="mt-4">
+                  <AddToCalendar
+                    :title="day.dialogueEvent.title"
+                    speaker="All Presenters"
+                    :description="day.dialogueEvent.calendarDescription"
+                    :theme="day.theme"
+                    :date="day.date"
+                    :time="day.dialogueEvent.time"
+                    :duration-minutes="day.dialogueEvent.durationMinutes"
                     :button-class="`${day.calendarBtnClass}`"
                   />
                 </div>
@@ -115,7 +168,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { days, findSpeakerBySlug } from '~/data/speakers'
-import type { SpeakerEvent, Day } from '~/data/speakers'
+import type { SpeakerEvent, Day, DialogueEvent } from '~/data/speakers'
 
 const { openModal } = useRegistrationModal()
 const { track } = useAnalytics()
