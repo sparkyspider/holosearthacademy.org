@@ -48,6 +48,8 @@ export default defineNuxtConfig({
       routes: [
         '/register',
         '/phase-2',
+        '/alliance',
+        '/join',
         '/speaker/kobus-du-pisani',
         '/speaker/jeff-blumberg',
         '/speaker/marcus-link',

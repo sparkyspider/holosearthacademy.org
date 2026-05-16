@@ -1,32 +1,39 @@
 <template>
   <div class="min-h-[100dvh] bg-bg-default max-w-[100vw] overflow-x-hidden">
-    <!-- Hero image extends behind both banner and ticker -->
+    <!-- Hero image -->
     <div class="relative">
-      <img src="/images/space-option-1.png" alt="" class="absolute inset-0 w-full h-full object-cover object-center" />
+      <picture>
+        <source
+          type="image/webp"
+          srcset="
+            /images/alliance-hero-1024.webp 1024w,
+            /images/alliance-hero-1600.webp 1600w,
+            /images/alliance-hero-2400.webp 2400w
+          "
+          sizes="100vw"
+        />
+        <img
+          src="/images/alliance-hero.jpg"
+          alt=""
+          class="absolute inset-0 w-full h-full object-cover object-[50%_20%]"
+        />
+      </picture>
       <div class="relative z-10">
-        <HeroBanner />
-        <div class="h-2 w-full bg-white/50"></div>
-        <SpeakerTicker />
-          <color-bar/>
+        <HeroBannerAlliance />
       </div>
     </div>
+    <color-bar />
 
-    <!-- Page body with vertical colour bar -->
+    <!-- Page body -->
     <div class="flex">
-        <!--
-      <VerticalColorBar />
-      -->
       <div class="flex-1 py-0 min-[860px]:py-16 px-0 min-[860px]:px-8 flex flex-col items-center gap-0 min-[860px]:gap-10">
-        <IntroCard />
-        <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
         <WelcomeBackCard />
-        <RegistrationCta />
+        <IntroCardAlliance />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
-        <ProgrammeCard />
+        <AllianceBenefitsCard />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
+        <AllianceCta />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
-        <AlliancePromoCard />
-        <AboutFestivalCard />
         <ClaudiusCard />
         <FooterCard />
         <p class="text-xs font-roboto text-neutral-400 text-center py-4">
@@ -34,29 +41,31 @@
         </p>
       </div>
     </div>
-    <RegistrationModal :open="isOpen" @close="closeModal" />
+
+    <JoinAllianceModal :open="isOpen" @close="closeModal" />
   </div>
 </template>
+
 <script setup lang="ts">
 import { watch } from 'vue'
 
-const { isOpen, closeModal } = useRegistrationModal()
+const { isOpen, closeModal } = useAllianceModal()
 
-// Sync URL with modal state — mirrors speaker modal pattern
 watch(isOpen, (val) => {
   if (typeof window === 'undefined') return
   if (val) {
-    window.history.replaceState({}, '', '/register')
-  } else if (window.location.pathname === '/register') {
-    window.history.replaceState({}, '', '/')
+    window.history.replaceState({}, '', '/join')
+  } else if (window.location.pathname === '/join') {
+    window.history.replaceState({}, '', '/alliance')
   }
 })
 
 const config = useRuntimeConfig().public
 const siteUrl = config.siteUrl as string
+const pageUrl = `${siteUrl}/alliance`
 
-const title = 'Centenary Festival of Holism & Evolution | Holos Earth Academy'
-const description = 'A free online global dialogue on the meaning and application of holism. 20–24 May 2026. Seven speakers across five days exploring science, spirituality, ethics and the legacy of Jan Smuts.'
+const title = 'Holos Earth Alliance | Become a Founding Member | Holos Earth Academy'
+const description = 'Join the Holos Earth Alliance — a living continuation of the inquiry initiated by Jan Smuts. Become a founding member and help shape an evolving network exploring holistic thought and practice for humanity and Earth.'
 
 useSeoMeta({
   title,
@@ -67,7 +76,7 @@ useSeoMeta({
   ogImageWidth: 1200,
   ogImageHeight: 630,
   ogType: 'website',
-  ogUrl: siteUrl,
+  ogUrl: pageUrl,
   ogSiteName: 'Holos Earth Academy',
   twitterCard: 'summary_large_image',
   twitterTitle: title,
@@ -76,6 +85,6 @@ useSeoMeta({
 })
 
 useHead({
-  link: [{ rel: 'canonical', href: siteUrl }],
+  link: [{ rel: 'canonical', href: pageUrl }],
 })
 </script>

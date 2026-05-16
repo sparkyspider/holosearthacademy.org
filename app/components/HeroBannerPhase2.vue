@@ -1,8 +1,13 @@
 <template>
-  <section class="relative w-full overflow-hidden h-[400px] min-[860px]:h-[340px]">
+  <section
+    class="relative w-full overflow-hidden h-[400px] min-[860px]:h-[340px]"
+    style="text-shadow: 0 0 6px rgba(0,0,0,0.55), 0 0 20px rgba(0,0,0,0.40), 0 0 44px rgba(0,0,0,0.25);"
+  >
 
-    <!-- Dark overlay (background image now comes from parent) -->
-    <div class="absolute inset-0 bg-black/30"></div>
+    <!-- Gradient overlay: darker at top (where the title sits & sky is bright),
+         fading to transparent at the bottom so the people / cityscape detail
+         comes through clean. Replaces the previous uniform bg-black/30. -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-transparent"></div>
 
     <!-- ===================== DESKTOP (860px+) ===================== -->
     <div class="hidden min-[860px]:absolute min-[860px]:inset-0 min-[860px]:flex z-10 items-center">
@@ -33,7 +38,7 @@
           <div class="h-[9px] my-4 w-full bg-white/50 rounded-full"></div>
 
           <!-- Subtitle: per-letter flex so the visual right edge matches the title -->
-          <div class="font-condensed font-normal text-white text-2xl uppercase w-full flex justify-between items-center">
+          <div class="font-condensed font-bold text-white text-2xl uppercase w-full flex justify-between items-center">
             <span>L</span><span>I</span><span>M</span><span>I</span><span>N</span><span>A</span><span>L</span><span class="w-3"></span><span>S</span><span>P</span><span>A</span><span>C</span><span>E</span>
           </div>
         </div>
@@ -65,7 +70,7 @@
         <div class="h-[6px] my-3 w-full bg-white/50 rounded-full"></div>
 
         <!-- Subtitle: per-letter flex so the visual edges align with the title bar -->
-        <div class="font-condensed font-normal text-white text-[0.857rem] uppercase w-full flex justify-between items-center">
+        <div class="font-condensed font-bold text-white text-[0.857rem] uppercase w-full flex justify-between items-center">
           <span>L</span><span>I</span><span>M</span><span>I</span><span>N</span><span>A</span><span>L</span><span class="w-2"></span><span>S</span><span>P</span><span>A</span><span>C</span><span>E</span>
         </div>
 

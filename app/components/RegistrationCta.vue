@@ -49,24 +49,42 @@
         </div>
       </a>
 
-      <!-- Note -->
-      <p class="text-xl font-roboto font-normal text-neutral-600 mt-4 leading-relaxed">
+      <!-- Note — P1 only ("each session builds on the previous" framing
+           is specific to the consecutive-day Phase 1 programme) -->
+      <p v-if="currentPhase !== 'P2'" class="text-xl font-roboto font-normal text-neutral-600 mt-4 leading-relaxed">
         <span class="font-bold text-trim-purple uppercase tracking-wide">Note:</span> Each session builds on the previous, creating an <span class="font-bold text-trim-green">evolving journey of insight</span> so we'd love you to join the <span class="font-bold text-trim-teal">full experience</span>. But if time is tight, simply choose the sessions that suit your schedule. With just <span class="font-bold text-trim-blue">one or two talks per day</span>, it's designed to fit in with you.
       </p>
     </div>
 
-    <!-- Right: Countdown card — aligned with quote bar above -->
+    <!-- Right: Countdown (P1) or Liminal Space window (P2) — same outer card -->
     <div class="shrink-0 lg:w-[440px]">
       <div class="bg-bg-default rounded-xl px-6 min-[860px]:px-10 py-8 min-[860px]:py-10 flex flex-col items-center">
-        <p class="text-base font-condensed font-normal uppercase tracking-[0.3em] text-neutral-600 mb-1 text-center">See you at the</p>
-        <span class="inline-block bg-trim-purple text-white text-2xl lg:text-3xl font-condensed font-bold uppercase tracking-wide px-5 py-1.5 rounded-lg my-3">
-          Opening Event
-        </span>
-        <p class="text-base font-condensed font-normal uppercase tracking-[0.3em] text-neutral-600 mb-6 text-center">in</p>
-        <CountdownTimer />
-        <p class="text-xl lg:text-2xl font-condensed font-normal text-neutral-600 mt-6 tracking-wide text-center">
-          Starts <span class="font-bold text-trim-blue">20 May</span> at <span class="font-bold text-trim-teal">19h00 CET</span>
-        </p>
+
+        <template v-if="currentPhase === 'P1'">
+          <p class="text-base font-condensed font-normal uppercase tracking-[0.3em] text-neutral-600 mb-1 text-center">See you at the</p>
+          <span class="inline-block bg-trim-purple text-white text-2xl lg:text-3xl font-condensed font-bold uppercase tracking-wide px-5 py-1.5 rounded-lg my-3">
+            Opening Event
+          </span>
+          <p class="text-base font-condensed font-normal uppercase tracking-[0.3em] text-neutral-600 mb-6 text-center">in</p>
+          <CountdownTimer />
+          <p class="text-xl lg:text-2xl font-condensed font-normal text-neutral-600 mt-6 tracking-wide text-center">
+            Starts <span class="font-bold text-trim-blue">20 May</span> at <span class="font-bold text-trim-teal">19h00 CET</span>
+          </p>
+        </template>
+
+        <template v-else>
+          <p class="text-base font-condensed font-normal uppercase tracking-[0.3em] text-neutral-600 mb-1 text-center">Join us in the</p>
+          <span class="inline-block bg-trim-purple text-white text-2xl lg:text-3xl font-condensed font-bold uppercase tracking-wide px-5 py-1.5 rounded-lg my-3">
+            Liminal Space
+          </span>
+          <p class="text-base font-condensed font-normal uppercase tracking-[0.3em] text-neutral-600 mb-2 text-center">from</p>
+          <div class="flex flex-col items-center gap-3 text-center mt-2">
+            <span class="text-2xl lg:text-3xl font-condensed font-bold text-trim-blue tracking-wide leading-none">19 June 2026</span>
+            <span class="text-base font-condensed font-normal uppercase tracking-[0.3em] text-neutral-500 leading-none">to</span>
+            <span class="text-2xl lg:text-3xl font-condensed font-bold text-trim-teal tracking-wide leading-none">28 September 2026</span>
+          </div>
+        </template>
+
       </div>
     </div>
   </div>

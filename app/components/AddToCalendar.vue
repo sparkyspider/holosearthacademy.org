@@ -97,7 +97,7 @@
         @click="openRegister"
         class="font-condensed font-bold uppercase tracking-wider text-trim-purple underline underline-offset-2 decoration-trim-purple/40 hover:decoration-trim-purple transition cursor-pointer"
       >Register</button>
-      <span class="italic">first</span>
+      <span>first</span>
     </div>
   </div>
 </template>

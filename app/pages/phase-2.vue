@@ -33,12 +33,16 @@
       -->
       <div class="flex-1 py-0 min-[860px]:py-16 px-0 min-[860px]:px-8 flex flex-col items-center gap-0 min-[860px]:gap-10">
         <WelcomeBackCard />
-        <IntroCard />
+        <PreviouslyCard />
+        <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
+        <IntroCardPhase2 />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
         <RegistrationCta />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
-        <ProgrammeCard />
+        <ProgrammeCardPhase2 />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
+        <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
+        <AlliancePromoCard />
         <AboutFestivalCard />
         <ClaudiusCard />
         <FooterCard />

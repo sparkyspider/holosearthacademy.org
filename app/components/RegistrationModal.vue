@@ -177,15 +177,16 @@
               <div class="lg:w-[380px] bg-bg-default px-6 md:px-10 pt-8 lg:pt-10 pb-10 flex flex-col gap-7">
 
                 <div>
-                  <p class="text-xs font-condensed font-bold uppercase tracking-[0.3em] text-neutral-400 mb-1">After the Festival</p>
+                  <p v-if="phase !== 2" class="text-xs font-condensed font-bold uppercase tracking-[0.3em] text-neutral-400 mb-1">After the Festival</p>
                   <h3 class="text-2xl font-condensed font-bold uppercase tracking-wide text-neutral-700">
                     What's Coming Next
                   </h3>
                   <div class="h-0.5 w-12 rounded-full bg-trim-purple/40 mt-3"></div>
                 </div>
 
-                <!-- Festival Phase II -->
-                <div class="flex flex-col gap-1.5">
+                <!-- Festival Phase II — hidden when registering FOR Phase II
+                     (already the current phase, listing it here is redundant) -->
+                <div v-if="phase !== 2" class="flex flex-col gap-1.5">
                   <div class="flex items-center gap-2 mb-0.5">
                     <div class="w-2.5 h-2.5 rounded-full bg-trim-teal shrink-0"></div>
                     <span class="text-sm font-condensed font-bold uppercase tracking-wider text-trim-teal">Festival Phase II</span>

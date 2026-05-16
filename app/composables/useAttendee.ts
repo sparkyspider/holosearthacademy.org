@@ -19,6 +19,8 @@ export type Attendee = {
   email: string
   /** Phases the visitor has registered for. Empty = no registration yet. */
   phases: Phase[]
+  /** Whether this visitor has joined the Holos Earth Alliance. */
+  isAllianceMember?: boolean
 }
 
 const STORAGE_KEY = 'holos_attendee'
@@ -48,6 +50,7 @@ function readFromStorage(): Attendee | null {
         name: String(parsed.name || ''),
         email: String(parsed.email),
         phases: normalisePhases(parsed.phases),
+        isAllianceMember: Boolean(parsed.isAllianceMember),
       }
     }
   } catch {
@@ -98,6 +101,14 @@ export function useAttendee() {
     return computed(() => attendee.value?.phases.includes(phase) ?? false)
   }
 
+  function markAllianceMember() {
+    const current = attendee.value
+    if (!current || current.isAllianceMember) return
+    const next: Attendee = { ...current, isAllianceMember: true }
+    attendee.value = next
+    writeToStorage(next)
+  }
+
   return {
     attendee: computed(() => attendee.value),
     isKnown: computed(() => attendee.value !== null),
@@ -105,5 +116,6 @@ export function useAttendee() {
     clearAttendee,
     recordPhaseRegistration,
     hasRegisteredFor,
+    markAllianceMember,
   }
 }

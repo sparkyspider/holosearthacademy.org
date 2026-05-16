@@ -208,8 +208,170 @@ export const days: Day[] = [
   },
 ]
 
+export const daysP2: Day[] = [
+  {
+    date: '2026-06-10',
+    label: 'Wednesday 10 June',
+    theme: 'Emergent Holistic Governance',
+    dotColor: 'bg-trim-purple',
+    ringColor: 'ring-trim-purple',
+    badgeColor: 'bg-trim-purple',
+    titleColor: 'text-trim-purple',
+    themeColor: 'text-trim-purple',
+    calendarBtnClass: 'bg-trim-purple/10 text-trim-purple',
+    borderColor: 'border-trim-purple',
+    subtitleColor: 'text-trim-purple-dark',
+    events: [
+      {
+        speaker: 'Dr Glen Martin',
+        slug: 'glen-martin',
+        title: 'Holism and Eco-Systemic Governing for Planet Earth',
+        subtitle: 'Life grows through connected systems',
+        description:
+          'What if humanity could grow into greater unity without losing its diversity? An exploration into emergent holism, the Earth Constitution, and the fascinating idea of a cooperative, ecologically aware planetary future.',
+        time: '19h00 CEST',
+        image: '/images/speakers/glen-martin.jpg',
+        bio: 'Dr Glen Martin is Professor Emeritus in Philosophy at Radford University. He is President of the World Constitution and Parliament Association (WCPA), and the Earth Constitution Institute. He is also a member of the Presidium of the Provisional World Parliament, and author or editor of 15 books and multiple articles.',
+      },
+    ],
+  },
+  {
+    date: '2026-07-01',
+    label: 'Wednesday 1 July',
+    theme: 'Lessons From Aquatic Sciences',
+    dotColor: 'bg-trim-teal',
+    ringColor: 'ring-trim-teal',
+    badgeColor: 'bg-trim-teal',
+    titleColor: 'text-trim-teal',
+    themeColor: 'text-trim-teal',
+    calendarBtnClass: 'bg-trim-teal/10 text-trim-teal',
+    borderColor: 'border-trim-teal',
+    subtitleColor: 'text-trim-teal-dark',
+    events: [
+      {
+        speaker: 'Dr Anthony Turton',
+        slug: 'anthony-turton',
+        title: 'The Unintended Consequences of Newton\'s Reductionism',
+        subtitle: 'Lessons from the Aquatic Sciences and the Need for Holism',
+        description:
+          'How has modern science shaped the way we manage nature -- and where does it fall short? An exploration of how reductionist thinking has influenced water governance and why today\'s ecological challenges call for a more holistic view of ecosystems and human responsibility.',
+        time: '19h00 CEST',
+        image: '/images/speakers/anthony-turton.jpg',
+        bio: 'Dr Anthony Turton is former Unit Fellow at the South African Council for Scientific and Industrial Research and official spokesperson for the CSIR on water. He serves as a research associate Centre for Environmental Management, University of Free State and is Deputy Governor of the World Water Council where he is also editor for Africa of the Water Policy, official.',
+      },
+    ],
+  },
+  {
+    date: '2026-07-22',
+    label: 'Wednesday 22 July',
+    theme: 'Global Food Systems',
+    dotColor: 'bg-trim-green',
+    ringColor: 'ring-trim-green',
+    badgeColor: 'bg-trim-green',
+    titleColor: 'text-trim-green',
+    themeColor: 'text-trim-green',
+    calendarBtnClass: 'bg-trim-green/10 text-trim-green',
+    borderColor: 'border-trim-green',
+    subtitleColor: 'text-trim-green-dark',
+    events: [
+      {
+        speaker: 'Klaus Mager',
+        slug: 'Klaus-mager',
+        title: 'Extraction to Regeneration',
+        subtitle: 'Rethinking the Future of Food Systems as Living Networks',
+        description:
+          'Today\'s global food system delivers abundance, but at significant ecological and social cost -- from degraded soils and biodiversity loss to fragile supply chains and weakened connections between people and food. Regenerative approaches treat food as part of living systems, reconnecting agriculture with ecology, community, and innovation to support a more resilient future.',
+        time: '19h00 CEST',
+        image: '/images/speakers/Klaus-mager.jpg',
+        bio: 'Klaus Mager is an international food-systems leader spanning global food service, hospitality, wholesale, and supply-chain innovation. With practical understanding of food systems operating from farm to fork, he founded Food with Thought AI. He helps farmers, supply-chain partners, and food-system leaders co-design regenerative transitions to improve soil health, restore water cycles, support carbon outcomes, and strengthen livelihoods. For Klaus food and agriculture sit at the heart of climate resilience, public health, supply-chain security, and rural prosperity.',
+      },
+    ],
+  },
+  {
+    date: '2026-08-12',
+    label: 'Wednesday 12 August',
+    theme: 'Technology and Meaning',
+    dotColor: 'bg-trim-blue',
+    ringColor: 'ring-trim-blue',
+    badgeColor: 'bg-trim-blue',
+    titleColor: 'text-trim-blue',
+    themeColor: 'text-trim-blue',
+    calendarBtnClass: 'bg-trim-blue/10 text-trim-blue',
+    borderColor: 'border-trim-blue',
+    subtitleColor: 'text-trim-blue-dark',
+    events: [
+      {
+        speaker: 'Prof. George Rzevski',
+        slug: 'george-rzevski',
+        title: 'Holism, Complexity Science and AI',
+        subtitle: 'How Societies and Technologies Evolve Together',
+        description:
+          'Throughout history, new technologies have reshaped human capability and how societies evolve, and we are now shifting from industrial machines to digital systems that increasingly perform cognitive tasks. This transition, shaped by holism, complexity science, and artificial intelligence, shows how societies and technologies evolve together in an interconnected world, where holistic thinking is increasingly vital for understanding technological change.',
+        time: '19h00 CEST',
+        image: '/images/speakers/george-rzevski.jpg',
+        bio: 'Professor Emeritus George Rzevski of Open University leads advanced research in Complexity Science and Artificial Intelligence. His specialties include managing complexity, including design of complex adaptive organisations and systems. It encompasses knowledge discovery, ontology, AI agents; Digital twins; Semantic Search; Real-Time Adaptive Scheduling.',
+      },
+    ],
+  },
+  {
+    date: '2026-09-02',
+    label: 'Wednesday 2 September',
+    theme: 'The Future is Calling Us',
+    dotColor: 'bg-trim-purple',
+    ringColor: 'ring-trim-purple',
+    badgeColor: 'bg-trim-purple',
+    titleColor: 'text-trim-purple',
+    themeColor: 'text-trim-purple',
+    calendarBtnClass: 'bg-trim-purple/10 text-trim-purple',
+    borderColor: 'border-trim-purple',
+    subtitleColor: 'text-trim-purple-dark',
+    events: [
+      {
+        speaker: 'Richard Cox',
+        slug: 'richard-cox',
+        title: 'The Beckoning Future and the Holistic Power of Polarities',
+        subtitle: 'The Shaping of Living Wholes',
+        description:
+          'What if life is shaped not only by the past, but also by the future that calls us forward? Exploring holism across science - from biology to geology, meteorology, optics, and systems thinking - highlighting how living wholes are shaped by history and possibility. It invites a richer understanding of life grounded in interconnectedness, deeper patterns, and the relationship between human beings and the living world.',
+        time: '19h00 CEST',
+        image: '/images/speakers/richard-cox.jpg',
+        bio: 'As a teacher and author, in our age of scientific materialism, Richard Cox finds Smuts\' vision and insights indicate a clear direction to lead us back to spiritual dimensions with complete rational clarity. Richard\'s recent book \'Of Signs and Signatures: Reading Nature\'s Script with Goethe and Smuts\' is principally an overview of the various holistic insights that we find in mathematics, optics, botany and zoology.',
+      },
+    ],
+  },
+  {
+    date: '2026-09-23',
+    label: 'Wednesday 23 September',
+    theme: 'Buildings, Cities, and Infrastructure',
+    dotColor: 'bg-trim-teal',
+    ringColor: 'ring-trim-teal',
+    badgeColor: 'bg-trim-teal',
+    titleColor: 'text-trim-teal',
+    themeColor: 'text-trim-teal',
+    calendarBtnClass: 'bg-trim-teal/10 text-trim-teal',
+    borderColor: 'border-trim-teal',
+    subtitleColor: 'text-trim-teal-dark',
+    events: [
+      {
+        speaker: 'Llewellyn van Wyk',
+        slug: 'llewellyn-van-wyk',
+        title: 'Holism and Architecture',
+        subtitle: 'Moving from Isolation/Parts to Entanglement/Systems',
+        description:
+          'The built environment is under pressure from climate change, resource limits, social fragmentation, and rapid technological change, exposing the limits of fragmented approaches to design and urban development. It reframes buildings, cities, and infrastructure as living systems within ecological, cultural, and social contexts, enriching sustainability, circularity, and adaptive reuse.',
+        time: '19h00 CEST',
+        image: '/images/speakers/llewellyn-van-wyk.jpg',
+        bio: 'Llewellyn van Wyk works in architecture and related design/built environment fields, and engages deeply with architectural theory, urban systems, and design practice across multiple reflections. He is also engaged in a sustained exploration of holism as a scientific and philosophical tradition -- anchored by the centenary of Smuts\'s Holism and Evolution -- tracing the lineage through systems theory, cybernetics, complexity science, quantum non-separability, the noosphere, urban scaling laws, and architectural implications.',
+      },
+    ],
+  },
+]
+
 /** Flat list of all speaker slugs — used for pre-rendering routes */
 export const allSpeakerSlugs: string[] = days.flatMap(d => d.events.map(e => e.slug))
+
+/** Flat list of Phase 2 speaker slugs — used for pre-rendering routes */
+export const allSpeakerSlugsP2: string[] = daysP2.flatMap(d => d.events.map(e => e.slug))
 
 /** Convert a CEST time string (e.g. '19h00 CEST') to BST (UK summer time, −1 hour) */
 export function toBST(time: string): string {
@@ -220,9 +382,9 @@ export function toBST(time: string): string {
   return `${h}h${match[2]}`
 }
 
-/** Find a speaker event + its day by slug */
+/** Find a speaker event + its day by slug — searches Phase 1 then Phase 2 */
 export function findSpeakerBySlug(slug: string) {
-  for (const day of days) {
+  for (const day of [...days, ...daysP2]) {
     const event = day.events.find(e => e.slug === slug)
     if (event) return { event, day }
   }
