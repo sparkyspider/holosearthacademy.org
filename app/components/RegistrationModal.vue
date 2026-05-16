@@ -38,7 +38,7 @@
               <div class="flex-1 flex flex-col">
                 <div class="px-6 md:px-10 pt-10 pb-8">
                 <h2 class="text-3xl font-condensed font-bold uppercase tracking-wide text-trim-purple mb-1">
-                  Register for the Festival
+                  {{ phase === 2 ? 'Register for Phase II' : 'Register for the Festival' }}
                 </h2>
                 <p class="text-base font-roboto font-light text-neutral-500 mb-7 leading-relaxed">
                   Participation is via <span class="font-bold text-trim-teal">Zoom</span>.
@@ -90,8 +90,8 @@
                     </p>
                     <div class="flex flex-col gap-4">
 
-                      <!-- Festival Phase II -->
-                      <label class="flex items-start gap-3 cursor-pointer group">
+                      <!-- Festival Phase II — hidden when registering FOR Phase II (redundant interest) -->
+                      <label v-if="phase !== 2" class="flex items-start gap-3 cursor-pointer group">
                         <input type="checkbox" v-model="form.phase2" class="sr-only" @change="track('registration_checkbox_change', { checkbox: 'phase_2', checked: form.phase2 })" />
                         <div :class="['w-5 h-5 rounded border-2 shrink-0 mt-0.5 transition flex items-center justify-center', form.phase2 ? 'bg-trim-teal border-trim-teal' : 'border-neutral-300 bg-white']">
                           <svg v-if="form.phase2" class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3.5">
@@ -240,11 +240,14 @@
 <script setup lang="ts">
 import { ref, reactive, computed, watch } from 'vue'
 
-const props = defineProps<{ open: boolean }>()
+const props = withDefaults(defineProps<{ open: boolean; phase?: 1 | 2 }>(), {
+  phase: 1,
+})
 const emit = defineEmits<{ close: [] }>()
 
 const { track } = useAnalytics()
 const { markRegistered } = useRegistrationModal()
+const { attendee, setAttendee, recordPhaseRegistration } = useAttendee()
 
 const form = reactive({
   name: '',
@@ -254,6 +257,15 @@ const form = reactive({
   hspTraining: false,
   bookRelease: false,
 })
+
+// Pre-fill from persisted attendee whenever the modal opens OR when the
+// attendee hydrates after the modal is already open (SSR/CSR race).
+watch([() => props.open, attendee], ([isOpen, who]) => {
+  if (isOpen && who) {
+    if (!form.name) form.name = who.name
+    if (!form.email) form.email = who.email
+  }
+}, { immediate: true })
 
 const touched = reactive({
   name: false,
@@ -289,27 +301,53 @@ async function handleSubmit() {
   errorState.value = false
 
   try {
+    const phaseCode: 'P1' | 'P2' = props.phase === 2 ? 'P2' : 'P1'
     const res = await fetch('https://576l7bs7a37yqrkc55h35jx4hu0wlftm.lambda-url.eu-west-1.on.aws/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
+        action: 'register',
         name: form.name.trim(),
         email: form.email.trim(),
-        phase_2: form.phase2,
+        phase: phaseCode,
+        // When registering FOR phase 2, the form itself implies phase 2 interest —
+        // no separate phase_2 checkbox is shown, so force false here.
+        phase_2: props.phase === 2 ? false : form.phase2,
         cape_town: form.capeTown,
         hsp_training: form.hspTraining,
         book_release: form.bookRelease,
         source: 'holosearthacademy.org',
+        attendee_id: attendee.value?.id,
         happiness: generateHappiness(),
       }),
     })
 
     if (!res.ok) throw new Error(await res.text())
+    const body = await res.json() as { attendee_id?: string; name?: string; email?: string }
+
+    if (body.attendee_id && body.email) {
+      // Merge: keep any previously-recorded phases, add the current one.
+      const previousPhases = attendee.value?.phases ?? []
+      const mergedPhases = previousPhases.includes(phaseCode)
+        ? previousPhases
+        : [...previousPhases, phaseCode]
+      setAttendee({
+        id: body.attendee_id,
+        name: body.name || form.name.trim(),
+        email: body.email,
+        phases: mergedPhases,
+      })
+    } else {
+      // Server didn't return attendee_id (e.g. v1 fallback). Still record
+      // the phase against the existing attendee if one is present.
+      recordPhaseRegistration(phaseCode)
+    }
 
     isSubmitted.value = true
     markRegistered()
     setTimeout(() => emit('close'), 3000)
     track('registration_submitted', {
+      phase: phaseCode,
       phase_2: form.phase2,
       cape_town: form.capeTown,
       hsp_training: form.hspTraining,

@@ -1,5 +1,5 @@
 <template>
-  <div class="min-[860px]:bg-white min-[860px]:rounded-xl min-[860px]:shadow-[0_8px_40px_rgba(0,0,0,0.08)] w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-4 min-[860px]:px-8 md:px-12 py-8 min-[860px]:py-14 flex flex-col lg:flex-row items-center lg:items-start gap-12">
+  <div id="register" class="min-[860px]:bg-white min-[860px]:rounded-xl min-[860px]:shadow-[0_8px_40px_rgba(0,0,0,0.08)] w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-4 min-[860px]:px-8 md:px-12 py-8 min-[860px]:py-14 flex flex-col lg:flex-row items-center lg:items-start gap-12">
     <!-- Left: Register Now + Steps -->
     <div class="flex flex-col items-center lg:items-start gap-8 min-w-0 flex-1">
       <h2 class="text-4xl lg:text-5xl font-condensed font-bold uppercase tracking-wide text-trim-purple text-center lg:text-left">
@@ -73,9 +73,29 @@
 </template>
 
 <script setup lang="ts">
-const { openModal, isRegistered } = useRegistrationModal()
+import { computed } from 'vue'
+
+const { openModal, isRegistered: isRegisteredThisSession } = useRegistrationModal()
 const { hasAddedCalendar } = useCalendarProgress()
 const { track } = useAnalytics()
+const { attendee } = useAttendee()
+
+const route = useRoute()
+const currentPhase = computed<'P1' | 'P2'>(() =>
+  route.path.startsWith('/phase-2') ? 'P2' : 'P1'
+)
+
+/**
+ * "Has registered for THIS page's phase" — combines session-local (just
+ * clicked Register in this tab) with persistent (came back another day,
+ * localStorage knows). The arrow on the Register step disappears (and
+ * appears on Choose Sessions) once either is true.
+ */
+const isRegistered = computed(
+  () =>
+    isRegisteredThisSession.value ||
+    (attendee.value?.phases.includes(currentPhase.value) ?? false)
+)
 
 function handleRegisterClick() {
   track('registration_modal_open', { source: 'cta' })

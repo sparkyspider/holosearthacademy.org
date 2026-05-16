@@ -24,3 +24,6 @@ Thumbs.db
 
 # Amplify
 amplify-builds
+
+# Scratch / local-only workspace
+tmp

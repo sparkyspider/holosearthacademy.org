@@ -2,11 +2,26 @@
   <div class="min-h-[100dvh] bg-bg-default max-w-[100vw] overflow-x-hidden">
     <!-- Hero image extends behind both banner and ticker -->
     <div class="relative">
-      <img src="/images/space-option-1.png" alt="" class="absolute inset-0 w-full h-full object-cover object-center" />
+      <picture>
+        <source
+          type="image/webp"
+          srcset="
+            /images/phase-2-hero-1024.webp 1024w,
+            /images/phase-2-hero-1600.webp 1600w,
+            /images/phase-2-hero-2400.webp 2400w
+          "
+          sizes="100vw"
+        />
+        <img
+          src="/images/phase-2-hero.jpg"
+          alt=""
+          class="absolute inset-0 w-full h-full object-cover object-center"
+        />
+      </picture>
       <div class="relative z-10">
-        <HeroBanner />
+        <HeroBannerPhase2 />
         <div class="h-2 w-full bg-white/50"></div>
-        <SpeakerTicker />
+        <SpeakerTickerPhase2 />
           <color-bar/>
       </div>
     </div>
@@ -32,7 +47,7 @@
         </p>
       </div>
     </div>
-    <RegistrationModal :open="isOpen" @close="closeModal" />
+    <RegistrationModal :open="isOpen" :phase="2" @close="closeModal" />
   </div>
 </template>
 <script setup lang="ts">
@@ -46,12 +61,13 @@ watch(isOpen, (val) => {
   if (val) {
     window.history.replaceState({}, '', '/register')
   } else if (window.location.pathname === '/register') {
-    window.history.replaceState({}, '', '/')
+    window.history.replaceState({}, '', '/phase-2')
   }
 })
 
 const config = useRuntimeConfig().public
 const siteUrl = config.siteUrl as string
+const pageUrl = `${siteUrl}/phase-2`
 
 const title = 'Centenary Festival of Holism & Evolution | Holos Earth Academy'
 const description = 'A free online global dialogue on the meaning and application of holism. 20–24 May 2026. Seven speakers across five days exploring science, spirituality, ethics and the legacy of Jan Smuts.'
@@ -65,7 +81,7 @@ useSeoMeta({
   ogImageWidth: 1200,
   ogImageHeight: 630,
   ogType: 'website',
-  ogUrl: siteUrl,
+  ogUrl: pageUrl,
   ogSiteName: 'Holos Earth Academy',
   twitterCard: 'summary_large_image',
   twitterTitle: title,
@@ -74,6 +90,6 @@ useSeoMeta({
 })
 
 useHead({
-  link: [{ rel: 'canonical', href: siteUrl }],
+  link: [{ rel: 'canonical', href: pageUrl }],
 })
 </script>
