@@ -7,7 +7,7 @@
 
     <!-- DESKTOP (860px+) -->
     <div class="hidden min-[860px]:absolute min-[860px]:inset-0 min-[860px]:flex z-10 items-center">
-      <div class="w-full max-w-7xl mx-auto px-16 flex items-center justify-between">
+      <div class="w-full max-w-7xl mx-auto pl-16 pr-4 flex items-center justify-between">
 
         <!-- Left: eyebrow + tag -->
         <div class="font-condensed text-white leading-none shrink-0 text-center">
@@ -17,10 +17,12 @@
           </div>
         </div>
 
-        <!-- Right: Title + line + subtitle -->
-        <div class="flex flex-col justify-center w-fit">
-          <div class="font-condensed font-bold text-white text-[4.25rem] uppercase leading-tight tracking-wide">
-            HOLOS EARTH
+        <!-- Right: Title + line + subtitle — fixed width so all three rows align exactly -->
+        <div class="flex flex-col justify-center w-[480px]">
+          <div class="font-condensed font-bold text-white text-[4.25rem] uppercase leading-tight w-full flex justify-between items-center">
+            <span>H</span><span>O</span><span>L</span><span>O</span><span>S</span>
+            <span class="w-4"></span>
+            <span>E</span><span>A</span><span>R</span><span>T</span><span>H</span>
           </div>
           <div class="font-condensed font-bold text-white text-[4.25rem] uppercase leading-tight w-full flex justify-between items-center">
             <span>A</span><span>L</span><span>L</span><span>I</span><span>A</span><span>N</span><span>C</span><span>E</span>
@@ -46,7 +48,11 @@
           Continuing the Inquiry
         </div>
 
-        <div class="font-condensed font-bold text-white text-[3.44rem] uppercase leading-tight text-center">HOLOS EARTH</div>
+        <div class="font-condensed font-bold text-white text-[3.44rem] uppercase leading-tight w-full flex justify-between items-center">
+          <span>H</span><span>O</span><span>L</span><span>O</span><span>S</span>
+          <span class="w-3"></span>
+          <span>E</span><span>A</span><span>R</span><span>T</span><span>H</span>
+        </div>
         <div class="font-condensed font-bold text-white text-[3.44rem] uppercase leading-tight w-full flex justify-between items-center">
           <span>A</span><span>L</span><span>L</span><span>I</span><span>A</span><span>N</span><span>C</span><span>E</span>
         </div>
