@@ -79,15 +79,16 @@
         (19 June – 28 Sept 2026) — register there now.
       </p>
       <!-- P1 page — not registered yet -->
-      <p
-        v-else
-        class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 mt-2 leading-relaxed"
-      >
-        <a href="#register" class="font-bold text-trim-teal underline underline-offset-4 decoration-trim-teal/40 hover:decoration-trim-teal transition">Register for Phase 1</a> now — it's free.
-        Note: Registration is also open for
-        <NuxtLink to="/phase-2" class="font-bold text-trim-purple underline underline-offset-4 decoration-trim-purple/40 hover:decoration-trim-purple transition">Phase 2: Liminal Space</NuxtLink>
-        (19 June – 28 Sept 2026).
-      </p>
+      <div v-else class="mt-2">
+        <p class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed">
+          <a href="#register" class="font-bold text-trim-teal underline underline-offset-4 decoration-trim-teal/40 hover:decoration-trim-teal transition">Register for Phase 1</a> now — it's free.
+        </p>
+        <p class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed mt-1">
+          Note: Registration is also open for
+          <NuxtLink to="/phase-2" class="font-bold text-trim-purple underline underline-offset-4 decoration-trim-purple/40 hover:decoration-trim-purple transition">Phase 2: Liminal Space</NuxtLink>
+          (19 June – 28 Sept 2026).
+        </p>
+      </div>
       <button
         v-if="isKnown"
         type="button"
