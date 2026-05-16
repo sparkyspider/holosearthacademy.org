@@ -69,15 +69,16 @@
         <span class="font-bold text-trim-purple">founding member</span> of the Alliance?
       </p>
       <!-- P1 page — registered for P1 only -->
-      <p
-        v-else-if="hasRegisteredP1"
-        class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 mt-2 leading-relaxed"
-      >
-        Great — you're registered for <span class="font-bold text-trim-teal">Phase 1</span>!
-        Registration is also open for
-        <NuxtLink to="/phase-2" class="font-bold text-trim-purple underline underline-offset-4 decoration-trim-purple/40 hover:decoration-trim-purple transition">Phase 2: Liminal Space</NuxtLink>
-        (19 June – 28 Sept 2026) — register there now.
-      </p>
+      <div v-else-if="hasRegisteredP1" class="mt-2">
+        <p class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed">
+          Great — you're registered for <span class="font-bold text-trim-teal">Phase 1</span>!
+        </p>
+        <p class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed mt-1">
+          Registration is also open for
+          <NuxtLink to="/phase-2" class="font-bold text-trim-purple underline underline-offset-4 decoration-trim-purple/40 hover:decoration-trim-purple transition">Phase 2: Liminal Space</NuxtLink>
+          (19 June – 28 Sept 2026) — register there now.
+        </p>
+      </div>
       <!-- P1 page — not registered yet -->
       <div v-else class="mt-2">
         <p class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed">
