@@ -76,8 +76,8 @@ const config = useRuntimeConfig().public
 const siteUrl = config.siteUrl as string
 const pageUrl = `${siteUrl}/phase-2`
 
-const title = 'Centenary Festival of Holism & Evolution | Holos Earth Academy'
-const description = 'A free online global dialogue on the meaning and application of holism. 20–24 May 2026. Seven speakers across five days exploring science, spirituality, ethics and the legacy of Jan Smuts.'
+const title = 'Phase 2: Liminal Space | Centenary Festival of Holism & Evolution | Holos Earth Academy'
+const description = 'Phase 2 of the Centenary Festival of Holism & Evolution. A liminal space — 19 June to 28 September 2026 — for reflection, integration, and deepening the inquiry initiated in May.'
 
 useSeoMeta({
   title,
