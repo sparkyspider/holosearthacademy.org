@@ -27,7 +27,11 @@
     <!-- Page body -->
     <div class="flex">
       <div class="flex-1 py-0 min-[860px]:py-16 px-0 min-[860px]:px-8 flex flex-col items-center gap-0 min-[860px]:gap-10">
-        <WelcomeBackCard />
+        <div class="w-full flex flex-col items-center gap-0">
+          <PageTabs current="Alliance" />
+          <WelcomeBackCard class="min-[860px]:!rounded-t-none" />
+        </div>
+        <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
         <IntroCardAlliance />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
         <AllianceBenefitsCard />

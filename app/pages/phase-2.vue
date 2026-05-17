@@ -32,7 +32,10 @@
       <VerticalColorBar />
       -->
       <div class="flex-1 py-0 min-[860px]:py-16 px-0 min-[860px]:px-8 flex flex-col items-center gap-0 min-[860px]:gap-10">
-        <WelcomeBackCard />
+        <div class="w-full flex flex-col items-center gap-0">
+          <PageTabs current="P2" />
+          <WelcomeBackCard class="min-[860px]:!rounded-t-none" />
+        </div>
         <PreviouslyCard />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
         <IntroCardPhase2 />
@@ -81,7 +84,7 @@ useSeoMeta({
   description,
   ogTitle: title,
   ogDescription: description,
-  ogImage: `${siteUrl}/images/opengraph.png`,
+  ogImage: `${siteUrl}/images/opengraph-phase-2.png`,
   ogImageWidth: 1200,
   ogImageHeight: 630,
   ogType: 'website',
@@ -90,7 +93,7 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
   twitterTitle: title,
   twitterDescription: description,
-  twitterImage: `${siteUrl}/images/opengraph.png`,
+  twitterImage: `${siteUrl}/images/opengraph-phase-2.png`,
 })
 
 useHead({
