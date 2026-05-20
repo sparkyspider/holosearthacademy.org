@@ -94,13 +94,18 @@
 import { computed } from 'vue'
 
 const { openModal, isRegistered: isRegisteredThisSession } = useRegistrationModal()
-const { hasAddedCalendar } = useCalendarProgress()
+const { hasAddedCalendarP1, hasAddedCalendarP2 } = useCalendarProgress()
 const { track } = useAnalytics()
 const { attendee } = useAttendee()
 
 const route = useRoute()
 const currentPhase = computed<'P1' | 'P2'>(() =>
   route.path.startsWith('/phase-2') ? 'P2' : 'P1'
+)
+
+/** Per-phase "have you picked any sessions yet?" — drives the step-2 tick. */
+const hasAddedCalendar = computed(() =>
+  currentPhase.value === 'P2' ? hasAddedCalendarP2.value : hasAddedCalendarP1.value
 )
 
 /**

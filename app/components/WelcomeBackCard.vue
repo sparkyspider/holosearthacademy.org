@@ -19,8 +19,15 @@
           Phase 1: <span class="text-trim-purple">Rediscovering Holism</span>
         </template>
       </h2>
-      <!-- Body text — adapts to which page we're on and whether the visitor
-           is registered for the page's phase. -->
+      <!-- Body text. Alliance page has its own logic; festival pages (P1 & P2)
+           share an identical 3-state flow keyed to the CURRENT phase:
+              1. Not registered for current phase  → please register
+              2. Registered, no sessions yet       → please choose sessions
+              3. Registered + sessions chosen      → consider Alliance founding membership
+           On the P1 page, an additional nudge line about Phase 2 registration
+           is appended whenever the visitor isn't yet registered for P2. -->
+
+      <!-- Alliance page -->
       <p
         v-if="isAlliancePage && attendee?.isAllianceMember"
         class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 mt-2 leading-relaxed"
@@ -35,57 +42,53 @@
         Join the <span class="font-bold text-trim-purple">Holos Earth Alliance</span>
         as a Founding Member and help shape what comes next.
       </p>
-      <p
-        v-else-if="isPhase2Page && hasRegisteredForCurrent && hasAddedCalendar"
-        class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 mt-2 leading-relaxed"
-      >
-        You've selected your <span class="font-bold text-trim-teal">Phase 2</span> sessions.
-        Would you like to consider becoming a
-        <span class="font-bold text-trim-purple">founding member</span> of the Alliance?
-      </p>
-      <p
-        v-else-if="isPhase2Page && hasRegisteredForCurrent"
-        class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 mt-2 leading-relaxed"
-      >
-        You're already registered for
-        <span class="font-bold text-trim-purple">Phase 2</span>.
-        Please <a href="#programme" class="font-bold text-trim-teal underline underline-offset-4 hover:text-trim-teal/70 transition cursor-pointer">select your sessions</a>.
-      </p>
-      <p
-        v-else-if="isPhase2Page"
-        class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 mt-2 leading-relaxed"
-      >
-        Please <a href="#register" class="font-bold text-trim-purple underline underline-offset-4 hover:text-trim-purple/70 transition cursor-pointer">register</a>
-        for <span class="font-bold text-trim-purple">Phase 2</span>,
-        then <a href="#programme" class="font-bold text-trim-teal underline underline-offset-4 hover:text-trim-teal/70 transition cursor-pointer">select your sessions</a>.
-      </p>
-      <!-- P1 page — registered for P2 (implies done with the festival, nudge to Alliance) -->
-      <p
-        v-else-if="hasRegisteredP2"
-        class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 mt-2 leading-relaxed"
-      >
-        You're registered for the <span class="font-bold text-trim-purple">festival</span>.
-        Would you like to consider becoming a
-        <span class="font-bold text-trim-purple">founding member</span> of the Alliance?
-      </p>
-      <!-- P1 page — registered for P1 only -->
-      <div v-else-if="hasRegisteredP1" class="mt-2">
-        <p class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed">
-          Great — you're registered for <span class="font-bold text-trim-teal">Phase 1</span>!
-        </p>
-        <p class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed mt-1">
-          Registration is also open for
-          <NuxtLink to="/phase-2" class="font-bold text-trim-purple underline underline-offset-4 decoration-trim-purple/40 hover:decoration-trim-purple transition">Phase 2: Liminal Space</NuxtLink>
-          (19 June – 28 Sept 2026) — register there now.
-        </p>
-      </div>
-      <!-- P1 page — not registered yet -->
+
+      <!-- Festival pages: 3-state per current phase -->
       <div v-else class="mt-2">
-        <p class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed">
-          <a href="#register" class="font-bold text-trim-teal underline underline-offset-4 decoration-trim-teal/40 hover:decoration-trim-teal transition">Register for Phase 1</a> now — it's free.
+        <!-- State 3 — sessions chosen for the current phase -->
+        <p
+          v-if="hasRegisteredForCurrent && hasAddedCalendarForCurrent && attendee?.isAllianceMember"
+          class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed"
+        >
+          You've selected your
+          <span :class="['font-bold', currentPhase === 'P2' ? 'text-trim-purple' : 'text-trim-teal']">{{ currentPhaseShortLabel }}</span> sessions.
+          We'll see you there.
         </p>
-        <p class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed mt-1">
-          Note: Registration is also open for
+        <p
+          v-else-if="hasRegisteredForCurrent && hasAddedCalendarForCurrent"
+          class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed"
+        >
+          You've selected your
+          <span :class="['font-bold', currentPhase === 'P2' ? 'text-trim-purple' : 'text-trim-teal']">{{ currentPhaseShortLabel }}</span> sessions.
+          Would you like to consider becoming a
+          <span class="font-bold text-trim-purple">founding member</span> of the Alliance?
+        </p>
+        <!-- State 2 — registered for current phase, no sessions yet -->
+        <p
+          v-else-if="hasRegisteredForCurrent"
+          class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed"
+        >
+          You're already registered for
+          <span :class="['font-bold', currentPhase === 'P2' ? 'text-trim-purple' : 'text-trim-teal']">{{ currentPhaseShortLabel }}</span>.
+          Please
+          <a href="#programme" class="font-bold text-trim-teal underline underline-offset-4 hover:text-trim-teal/70 transition cursor-pointer">select your sessions</a>.
+        </p>
+        <!-- State 1 — not registered for current phase -->
+        <p
+          v-else
+          class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed"
+        >
+          Please
+          <a href="#register" class="font-bold text-trim-teal underline underline-offset-4 decoration-trim-teal/40 hover:decoration-trim-teal transition">register for {{ currentPhaseShortLabel }}</a>
+          now — it's free.
+        </p>
+
+        <!-- P1 page only: additional nudge that Phase 2 registration is open -->
+        <p
+          v-if="!isPhase2Page && !hasRegisteredP2"
+          class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed mt-1"
+        >
+          Registration is also open for
           <NuxtLink to="/phase-2" class="font-bold text-trim-purple underline underline-offset-4 decoration-trim-purple/40 hover:decoration-trim-purple transition">Phase 2: Liminal Space</NuxtLink>
           (19 June – 28 Sept 2026).
         </p>
@@ -123,8 +126,11 @@
         </svg>
         Back to the Festival
       </NuxtLink>
+      <!-- Festival pages: CTA mirrors the body's state-3 nudge when the
+           visitor has chosen sessions for THIS phase and isn't yet an
+           Alliance member; otherwise routes them to the other phase. -->
       <NuxtLink
-        v-else-if="hasRegisteredP2"
+        v-else-if="hasRegisteredForCurrent && hasAddedCalendarForCurrent && !attendee?.isAllianceMember"
         to="/alliance"
         class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-trim-purple text-white text-base lg:text-lg font-condensed font-bold uppercase tracking-wider hover:bg-trim-purple/90 transition cursor-pointer"
       >
@@ -140,17 +146,6 @@
         class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-trim-purple text-white text-base lg:text-lg font-condensed font-bold uppercase tracking-wider hover:bg-trim-purple/90 transition cursor-pointer"
       >
         Go to Phase 2
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M22 12 L14 5 L14 9 L2 9 L2 15 L14 15 L14 19 Z" />
-        </svg>
-      </NuxtLink>
-      <NuxtLink
-        v-else-if="isPhase2Page && hasAddedCalendar"
-        to="/alliance"
-        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-trim-purple text-white text-base lg:text-lg font-condensed font-bold uppercase tracking-wider hover:bg-trim-purple/90 transition cursor-pointer"
-      >
-        Learn More About
-        <span class="underline underline-offset-2">The Alliance</span>
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
           <path d="M22 12 L14 5 L14 9 L2 9 L2 15 L14 15 L14 19 Z" />
         </svg>
@@ -177,17 +172,20 @@ import { computed } from 'vue'
 
 const route = useRoute()
 const { attendee, isKnown, clearAttendee } = useAttendee()
-const { hasAddedCalendar } = useCalendarProgress()
+const { hasAddedCalendarP1, hasAddedCalendarP2 } = useCalendarProgress()
 const { openModal } = useAllianceModal()
 
 const isPhase2Page = computed(() => route.path.startsWith('/phase-2'))
 const isAlliancePage = computed(() => route.path.startsWith('/alliance'))
 const currentPhase = computed<'P1' | 'P2'>(() => (isPhase2Page.value ? 'P2' : 'P1'))
+const currentPhaseShortLabel = computed(() => (currentPhase.value === 'P2' ? 'Phase 2' : 'Phase 1'))
 const hasRegisteredForCurrent = computed(() =>
   attendee.value?.phases.includes(currentPhase.value) ?? false
 )
-const hasRegisteredP1 = computed(() => attendee.value?.phases.includes('P1') ?? false)
 const hasRegisteredP2 = computed(() => attendee.value?.phases.includes('P2') ?? false)
+const hasAddedCalendarForCurrent = computed(() =>
+  currentPhase.value === 'P2' ? hasAddedCalendarP2.value : hasAddedCalendarP1.value
+)
 
 const firstName = computed(() => {
   const full = attendee.value?.name?.trim() ?? ''

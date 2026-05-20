@@ -9,6 +9,12 @@ const isRegistered = ref(false)
  */
 const pendingAfterRegister = ref<(() => void) | null>(null)
 
+/** Reset the in-session "just registered" flag. Called from "Not you?". */
+export function resetRegisteredFlag() {
+  isRegistered.value = false
+  pendingAfterRegister.value = null
+}
+
 export function useRegistrationModal() {
   const isOpen = useState('registrationModalOpen', () => false)
   return {

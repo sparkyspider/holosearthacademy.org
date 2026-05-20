@@ -182,7 +182,7 @@ function openRegister() {
  */
 function onPickCalendar(_e: MouseEvent, type: CalType) {
   open.value = false
-  markCalendarAdded()
+  markCalendarAdded(requiredPhase.value)
   track('calendar_option_selected', {
     calendar_type: type,
     event_title: props.title,

@@ -145,7 +145,7 @@ async function onClick() {
         },
       }),
     })
-    markCalendarAdded()
+    markCalendarAdded(requiredPhase.value)
     sent.value = true
     // Reset back to the default button after a moment so users who want to
     // re-send (e.g. they lost the email) aren't blocked. The backend dedups

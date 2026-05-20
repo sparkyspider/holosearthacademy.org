@@ -1,4 +1,6 @@
 import { computed, onMounted, ref } from 'vue'
+import { clearCalendarProgress } from './useCalendarProgress'
+import { resetRegisteredFlag } from './useRegistrationModal'
 
 /**
  * Persistent identity for the current visitor.
@@ -81,6 +83,11 @@ export function useAttendee() {
   function clearAttendee() {
     attendee.value = null
     writeToStorage(null)
+    // Forget everything: identity, per-phase calendar progress, and the
+    // in-session "just registered" flag — so the next visitor sees a clean
+    // slate (no stale checkmarks, no Welcome back greeting).
+    clearCalendarProgress()
+    resetRegisteredFlag()
   }
 
   /**
