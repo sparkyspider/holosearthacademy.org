@@ -74,8 +74,19 @@
                   {{ event.description }}
                 </p>
 
-                <div class="mt-4" @click.stop>
+                <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2" @click.stop>
+                  <span class="text-sm font-condensed font-bold uppercase tracking-wider text-neutral-500">Participate:</span>
                   <AddToCalendar
+                    :title="event.title"
+                    :speaker="event.speaker"
+                    :description="event.description"
+                    :theme="day.theme"
+                    :date="day.date"
+                    :time="event.time"
+                    :duration-minutes="event.durationMinutes"
+                    :button-class="`${day.calendarBtnClass}`"
+                  />
+                  <EmailDetails
                     :title="event.title"
                     :speaker="event.speaker"
                     :description="event.description"
@@ -124,8 +135,19 @@
                   <p>{{ day.dialogueEvent.finalParaPre }}{{ day.dialogueEvent.finalParaHighlight }}</p>
                 </div>
 
-                <div class="mt-4">
+                <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2">
+                  <span class="text-sm font-condensed font-bold uppercase tracking-wider text-neutral-500">Participate:</span>
                   <AddToCalendar
+                    :title="day.dialogueEvent.title"
+                    speaker="All Presenters"
+                    :description="day.dialogueEvent.calendarDescription"
+                    :theme="day.theme"
+                    :date="day.date"
+                    :time="day.dialogueEvent.time"
+                    :duration-minutes="day.dialogueEvent.durationMinutes"
+                    :button-class="`${day.calendarBtnClass}`"
+                  />
+                  <EmailDetails
                     :title="day.dialogueEvent.title"
                     speaker="All Presenters"
                     :description="day.dialogueEvent.calendarDescription"

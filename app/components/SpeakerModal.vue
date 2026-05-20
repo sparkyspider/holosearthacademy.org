@@ -68,15 +68,27 @@
               <p class="text-lg font-condensed font-bold uppercase tracking-wider text-neutral-500">
                 Speaking: <span :class="titleColor">{{ speakingDate }}</span>, <span :class="titleColor">{{ speakingTime }}</span>
               </p>
-              <AddToCalendar
-                :title="talk || ''"
-                :speaker="speaker"
-                :description="bio"
-                :theme="theme"
-                :date="eventDate"
-                :time="speakingTime"
-                :button-class="calendarBtnClass"
-              />
+              <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+                <span class="text-sm font-condensed font-bold uppercase tracking-wider text-neutral-500">Participate:</span>
+                <AddToCalendar
+                  :title="talk || ''"
+                  :speaker="speaker"
+                  :description="bio"
+                  :theme="theme"
+                  :date="eventDate"
+                  :time="speakingTime"
+                  :button-class="calendarBtnClass"
+                />
+                <EmailDetails
+                  :title="talk || ''"
+                  :speaker="speaker"
+                  :description="bio"
+                  :theme="theme"
+                  :date="eventDate"
+                  :time="speakingTime"
+                  :button-class="calendarBtnClass"
+                />
+              </div>
             </div>
           </div>
         </div>
