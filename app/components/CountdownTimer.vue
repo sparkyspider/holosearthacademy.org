@@ -10,8 +10,11 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted } from 'vue'
 
-// 20 May 2026 at 19:00 CET (UTC+1) = 18:00 UTC
-const targetDate = new Date('2026-05-20T18:00:00Z')
+// 20 May 2026 at 19:00 CEST. Europe is on summer time (CEST = UTC+2) from
+// late March to late October, so the wall clock 19:00 in Berlin/Madrid is
+// 17:00 UTC — NOT 18:00 (that would only be true in winter on CET).
+// South African SAST is UTC+2 year-round, so 19:00 CEST = 19:00 SAST.
+const targetDate = new Date('2026-05-20T17:00:00Z')
 
 const now = useState<number>('countdown-now', () => Date.now())
 let timer: ReturnType<typeof setInterval> | undefined
