@@ -81,7 +81,7 @@ interface Props {
   buttonClass?: string
   /**
    * Which festival phase this event belongs to (1 or 2). Optional override —
-   * when omitted, derived from the current route (`/phase-2` → P2, else P1).
+   * when omitted, derived from the current route (`/phase-1` → P1, else P2).
    */
   phase?: 1 | 2
 }
@@ -96,7 +96,7 @@ const route = useRoute()
 const requiredPhase = computed<'P1' | 'P2'>(() => {
   if (props.phase === 2) return 'P2'
   if (props.phase === 1) return 'P1'
-  return route.path.startsWith('/phase-2') ? 'P2' : 'P1'
+  return route.path.startsWith('/phase-1') ? 'P1' : 'P2'
 })
 const isRegisteredForPhase = computed(() =>
   attendee.value?.phases.includes(requiredPhase.value) ?? false

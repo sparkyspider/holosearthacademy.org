@@ -47,9 +47,12 @@ export default defineNuxtConfig({
     prerender: {
       routes: [
         '/register',
+        '/register-2',
+        '/phase-1',
         '/phase-2',
         '/alliance',
         '/join',
+        '/unsubscribe',
         '/speaker/kobus-du-pisani',
         '/speaker/jeff-blumberg',
         '/speaker/marcus-link',

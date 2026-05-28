@@ -174,7 +174,7 @@ function openSpeakerModal(event: SpeakerEvent, day: Day) {
 
 function closeSpeakerModal() {
   modalOpen.value = false
-  window.history.replaceState({}, '', '/phase-2')
+  window.history.replaceState({}, '', '/')
 }
 
 // Deep-link: auto-open modal if URL is /speaker/:slug

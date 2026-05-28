@@ -11,31 +11,58 @@
       </div>
     </div>
 
-    <!-- Page body -->
+    <!-- Page body with vertical colour bar -->
     <div class="flex">
+        <!--
+      <VerticalColorBar />
+      -->
       <div class="flex-1 py-0 min-[860px]:py-16 px-0 min-[860px]:px-8 flex flex-col items-center gap-0 min-[860px]:gap-10">
+        <div class="w-full flex flex-col items-center gap-0">
+          <PageTabs current="P1" />
+          <Phase1ConcludedNotice class="min-[860px]:!rounded-t-none" />
+        </div>
+        <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
         <IntroCard />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
+        <WelcomeBackCard />
         <RegistrationCta />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
         <ProgrammeCard />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
+        <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
+        <AlliancePromoCard />
         <AboutFestivalCard />
+        <ClaudiusCard />
+        <FooterCard />
+        <p class="text-xs font-roboto text-neutral-400 text-center py-4">
+          © {{ new Date().getFullYear() }} Claudius van Wyk. All rights reserved.
+        </p>
       </div>
     </div>
     <RegistrationModal :open="isOpen" @close="closeModal" />
   </div>
 </template>
-
 <script setup lang="ts">
-import { onMounted, watch } from 'vue'
+import { watch } from 'vue'
 
-const { isOpen, openModal, closeModal } = useRegistrationModal()
+const { isOpen, closeModal } = useRegistrationModal()
+
+// Sync URL with modal state — mirrors speaker modal pattern
+watch(isOpen, (val) => {
+  if (typeof window === 'undefined') return
+  if (val) {
+    window.history.replaceState({}, '', '/register')
+  } else if (window.location.pathname === '/register') {
+    window.history.replaceState({}, '', '/phase-1')
+  }
+})
+
 const config = useRuntimeConfig().public
 const siteUrl = config.siteUrl as string
+const pageUrl = `${siteUrl}/phase-1`
 
-const title = 'Register | Centenary Festival of Holism & Evolution | Holos Earth Academy'
-const description = 'Register to join the Centenary Festival of Holism & Evolution — a free online global dialogue on holism. 20–24 May 2026.'
+const title = 'Phase 1: Rediscovering Holism | Centenary Festival of Holism & Evolution | Holos Earth Academy'
+const description = 'Phase 1 of the Centenary Festival of Holism & Evolution. A free online global dialogue on the meaning and application of holism. 20–24 May 2026.'
 
 useSeoMeta({
   title,
@@ -46,7 +73,7 @@ useSeoMeta({
   ogImageWidth: 1200,
   ogImageHeight: 630,
   ogType: 'website',
-  ogUrl: `${siteUrl}/register`,
+  ogUrl: pageUrl,
   ogSiteName: 'Holos Earth Academy',
   twitterCard: 'summary_large_image',
   twitterTitle: title,
@@ -55,16 +82,6 @@ useSeoMeta({
 })
 
 useHead({
-  link: [{ rel: 'canonical', href: `${siteUrl}/register` }],
-})
-
-onMounted(() => {
-  openModal()
-})
-
-// When modal is closed from this route, restore URL to the Phase 1 page
-watch(isOpen, (val) => {
-  if (typeof window === 'undefined') return
-  if (!val) window.history.replaceState({}, '', '/phase-1')
+  link: [{ rel: 'canonical', href: pageUrl }],
 })
 </script>

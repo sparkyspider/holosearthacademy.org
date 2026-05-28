@@ -85,12 +85,22 @@
 
         <!-- P1 page only: additional nudge that Phase 2 registration is open -->
         <p
-          v-if="!isPhase2Page && !hasRegisteredP2"
+          v-if="isPhase1Page && !hasRegisteredP2"
           class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed mt-1"
         >
           Registration is also open for
-          <NuxtLink to="/phase-2" class="font-bold text-trim-purple underline underline-offset-4 decoration-trim-purple/40 hover:decoration-trim-purple transition">Phase 2: Liminal Space</NuxtLink>
+          <NuxtLink to="/" class="font-bold text-trim-purple underline underline-offset-4 decoration-trim-purple/40 hover:decoration-trim-purple transition">Phase 2: Liminal Space</NuxtLink>
           (19 June – 28 Sept 2026).
+        </p>
+
+        <!-- P2 page state-1 addendum: Phase 1 recordings & transcripts -->
+        <p
+          v-if="isPhase2Page && !hasRegisteredForCurrent"
+          class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed mt-1"
+        >
+          <span class="font-bold text-trim-teal">Phase 1 recordings</span> and
+          <span class="font-bold text-trim-purple">downloadable transcripts</span>
+          available {{ availabilityWord }}.
         </p>
       </div>
       <button
@@ -141,8 +151,8 @@
         </svg>
       </NuxtLink>
       <NuxtLink
-        v-else-if="!isPhase2Page"
-        to="/phase-2"
+        v-else-if="isPhase1Page"
+        to="/"
         class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-trim-purple text-white text-base lg:text-lg font-condensed font-bold uppercase tracking-wider hover:bg-trim-purple/90 transition cursor-pointer"
       >
         Go to Phase 2
@@ -152,7 +162,7 @@
       </NuxtLink>
       <NuxtLink
         v-else
-        to="/"
+        to="/phase-1"
         class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-trim-teal text-white text-base lg:text-lg font-condensed font-bold uppercase tracking-wider hover:bg-trim-teal/90 transition cursor-pointer"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -174,10 +184,12 @@ const route = useRoute()
 const { attendee, isKnown, clearAttendee } = useAttendee()
 const { hasAddedCalendarP1, hasAddedCalendarP2 } = useCalendarProgress()
 const { openModal } = useAllianceModal()
+const { availabilityWord } = useRecordingsAvailability()
 
-const isPhase2Page = computed(() => route.path.startsWith('/phase-2'))
+const isPhase1Page = computed(() => route.path.startsWith('/phase-1'))
 const isAlliancePage = computed(() => route.path.startsWith('/alliance'))
-const currentPhase = computed<'P1' | 'P2'>(() => (isPhase2Page.value ? 'P2' : 'P1'))
+const isPhase2Page = computed(() => !isPhase1Page.value && !isAlliancePage.value)
+const currentPhase = computed<'P1' | 'P2'>(() => (isPhase1Page.value ? 'P1' : 'P2'))
 const currentPhaseShortLabel = computed(() => (currentPhase.value === 'P2' ? 'Phase 2' : 'Phase 1'))
 const hasRegisteredForCurrent = computed(() =>
   attendee.value?.phases.includes(currentPhase.value) ?? false

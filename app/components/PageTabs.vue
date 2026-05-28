@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative z-10 hidden min-[860px]:flex items-end gap-1.5 w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl"
+    class="relative z-10 hidden min-[860px]:flex items-end gap-1.5 w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-3"
   >
     <NuxtLink
       v-for="tab in tabs"
@@ -21,8 +21,8 @@
 defineProps<{ current: 'P1' | 'P2' | 'Alliance' }>()
 
 const tabs = [
-  { key: 'P1',       label: 'Phase 1',  path: '/',         activeColor: 'text-trim-teal',   inactiveColor: 'text-trim-teal/60'   },
-  { key: 'P2',       label: 'Phase 2',  path: '/phase-2',  activeColor: 'text-trim-purple', inactiveColor: 'text-trim-purple/60' },
-  { key: 'Alliance', label: 'Alliance', path: '/alliance',  activeColor: 'text-trim-blue',   inactiveColor: 'text-trim-blue/60'   },
+  { key: 'P2',       label: 'Phase 2',  path: '/',         activeColor: 'text-trim-purple', inactiveColor: 'text-trim-purple/60' },
+  { key: 'P1',       label: 'Phase 1',  path: '/phase-1',  activeColor: 'text-trim-teal',   inactiveColor: 'text-trim-teal/60'   },
+  { key: 'Alliance', label: 'Alliance', path: '/alliance', activeColor: 'text-trim-blue',   inactiveColor: 'text-trim-blue/60'   },
 ]
 </script>

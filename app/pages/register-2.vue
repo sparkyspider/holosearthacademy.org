@@ -2,11 +2,26 @@
   <div class="min-h-[100dvh] bg-bg-default max-w-[100vw] overflow-x-hidden">
     <!-- Hero image extends behind both banner and ticker -->
     <div class="relative">
-      <img src="/images/space-option-1.png" alt="" class="absolute inset-0 w-full h-full object-cover object-center" />
+      <picture>
+        <source
+          type="image/webp"
+          srcset="
+            /images/phase-2-hero-1024.webp 1024w,
+            /images/phase-2-hero-1600.webp 1600w,
+            /images/phase-2-hero-2400.webp 2400w
+          "
+          sizes="100vw"
+        />
+        <img
+          src="/images/phase-2-hero.jpg"
+          alt=""
+          class="absolute inset-0 w-full h-full object-cover object-center"
+        />
+      </picture>
       <div class="relative z-10">
-        <HeroBanner />
+        <HeroBannerPhase2 />
         <div class="h-2 w-full bg-white/50"></div>
-        <SpeakerTicker />
+        <SpeakerTickerPhase2 />
           <color-bar/>
       </div>
     </div>
@@ -14,16 +29,16 @@
     <!-- Page body -->
     <div class="flex">
       <div class="flex-1 py-0 min-[860px]:py-16 px-0 min-[860px]:px-8 flex flex-col items-center gap-0 min-[860px]:gap-10">
-        <IntroCard />
+        <IntroCardPhase2 />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
         <RegistrationCta />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
-        <ProgrammeCard />
+        <ProgrammeCardPhase2 />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
         <AboutFestivalCard />
       </div>
     </div>
-    <RegistrationModal :open="isOpen" @close="closeModal" />
+    <RegistrationModal :open="isOpen" :phase="2" @close="closeModal" />
   </div>
 </template>
 
@@ -34,37 +49,36 @@ const { isOpen, openModal, closeModal } = useRegistrationModal()
 const config = useRuntimeConfig().public
 const siteUrl = config.siteUrl as string
 
-const title = 'Register | Centenary Festival of Holism & Evolution | Holos Earth Academy'
-const description = 'Register to join the Centenary Festival of Holism & Evolution — a free online global dialogue on holism. 20–24 May 2026.'
+const title = 'Register for Phase 2 | Centenary Festival of Holism & Evolution | Holos Earth Academy'
+const description = 'Register for Phase 2: Liminal Space — conversations around integration and application. June to September 2026.'
 
 useSeoMeta({
   title,
   description,
   ogTitle: title,
   ogDescription: description,
-  ogImage: `${siteUrl}/images/opengraph.png`,
+  ogImage: `${siteUrl}/images/opengraph-phase-2.png`,
   ogImageWidth: 1200,
   ogImageHeight: 630,
   ogType: 'website',
-  ogUrl: `${siteUrl}/register`,
+  ogUrl: `${siteUrl}/register-2`,
   ogSiteName: 'Holos Earth Academy',
   twitterCard: 'summary_large_image',
   twitterTitle: title,
   twitterDescription: description,
-  twitterImage: `${siteUrl}/images/opengraph.png`,
+  twitterImage: `${siteUrl}/images/opengraph-phase-2.png`,
 })
 
 useHead({
-  link: [{ rel: 'canonical', href: `${siteUrl}/register` }],
+  link: [{ rel: 'canonical', href: `${siteUrl}/register-2` }],
 })
 
 onMounted(() => {
   openModal()
 })
 
-// When modal is closed from this route, restore URL to the Phase 1 page
 watch(isOpen, (val) => {
   if (typeof window === 'undefined') return
-  if (!val) window.history.replaceState({}, '', '/phase-1')
+  if (!val) window.history.replaceState({}, '', '/')
 })
 </script>

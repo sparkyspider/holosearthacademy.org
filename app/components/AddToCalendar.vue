@@ -125,7 +125,7 @@ interface Props {
   buttonClass?: string
   /**
    * Which festival phase this event belongs to (1 or 2). Optional override —
-   * when omitted, derived from the current route (`/phase-2` → P2, else P1).
+   * when omitted, derived from the current route (`/phase-1` → P1, else P2).
    */
   phase?: 1 | 2
 }
@@ -145,15 +145,15 @@ type CalType = 'google' | 'outlook' | 'yahoo' | 'ics'
  * inline "Register first" hint is shown — see the template.
  *
  * The required phase comes from the `phase` prop if set, otherwise derived
- * from the route — `/phase-2` → P2, anything else → P1. This means
- * <AddToCalendar /> on the Phase 2 page correctly gates on P2 registration
- * without every call site needing to thread the phase through.
+ * from the route — `/phase-1` → P1, anything else → P2. This means
+ * <AddToCalendar /> on the (default) Phase 2 page correctly gates on P2
+ * registration without every call site needing to thread the phase through.
  */
 const route = useRoute()
 const requiredPhase = computed<'P1' | 'P2'>(() => {
   if (props.phase === 2) return 'P2'
   if (props.phase === 1) return 'P1'
-  return route.path.startsWith('/phase-2') ? 'P2' : 'P1'
+  return route.path.startsWith('/phase-1') ? 'P1' : 'P2'
 })
 const isRegisteredForPhase = computed(() =>
   attendee.value?.phases.includes(requiredPhase.value) ?? false

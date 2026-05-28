@@ -2,11 +2,26 @@
   <div class="min-h-[100dvh] bg-bg-default max-w-[100vw] overflow-x-hidden">
     <!-- Hero image extends behind both banner and ticker -->
     <div class="relative">
-      <img src="/images/space-option-1.png" alt="" class="absolute inset-0 w-full h-full object-cover object-center" />
+      <picture>
+        <source
+          type="image/webp"
+          srcset="
+            /images/phase-2-hero-1024.webp 1024w,
+            /images/phase-2-hero-1600.webp 1600w,
+            /images/phase-2-hero-2400.webp 2400w
+          "
+          sizes="100vw"
+        />
+        <img
+          src="/images/phase-2-hero.jpg"
+          alt=""
+          class="absolute inset-0 w-full h-full object-cover object-center"
+        />
+      </picture>
       <div class="relative z-10">
-        <HeroBanner />
+        <HeroBannerPhase2 />
         <div class="h-2 w-full bg-white/50"></div>
-        <SpeakerTicker />
+        <SpeakerTickerPhase2 />
           <color-bar/>
       </div>
     </div>
@@ -18,14 +33,16 @@
       -->
       <div class="flex-1 py-0 min-[860px]:py-16 px-0 min-[860px]:px-8 flex flex-col items-center gap-0 min-[860px]:gap-10">
         <div class="w-full flex flex-col items-center gap-0">
-          <PageTabs current="P1" />
-          <IntroCard class="min-[860px]:!rounded-t-none" />
+          <PageTabs current="P2" />
+          <WelcomeBackCard class="min-[860px]:!rounded-t-none" />
         </div>
+        <PreviouslyCard />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
-        <WelcomeBackCard />
+        <IntroCardPhase2 />
+        <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
         <RegistrationCta />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
-        <ProgrammeCard />
+        <ProgrammeCardPhase2 />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
         <AlliancePromoCard />
@@ -37,7 +54,7 @@
         </p>
       </div>
     </div>
-    <RegistrationModal :open="isOpen" @close="closeModal" />
+    <RegistrationModal :open="isOpen" :phase="2" @close="closeModal" />
   </div>
 </template>
 <script setup lang="ts">
@@ -58,15 +75,15 @@ watch(isOpen, (val) => {
 const config = useRuntimeConfig().public
 const siteUrl = config.siteUrl as string
 
-const title = 'Centenary Festival of Holism & Evolution | Holos Earth Academy'
-const description = 'A free online global dialogue on the meaning and application of holism. 20–24 May 2026. Seven speakers across five days exploring science, spirituality, ethics and the legacy of Jan Smuts.'
+const title = 'Phase 2: Liminal Space | Centenary Festival of Holism & Evolution | Holos Earth Academy'
+const description = 'Phase 2 of the Centenary Festival of Holism & Evolution. A liminal space — 19 June to 28 September 2026 — for reflection, integration, and deepening the inquiry initiated in May.'
 
 useSeoMeta({
   title,
   description,
   ogTitle: title,
   ogDescription: description,
-  ogImage: `${siteUrl}/images/opengraph.png`,
+  ogImage: `${siteUrl}/images/opengraph-phase-2.png`,
   ogImageWidth: 1200,
   ogImageHeight: 630,
   ogType: 'website',
@@ -75,7 +92,7 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
   twitterTitle: title,
   twitterDescription: description,
-  twitterImage: `${siteUrl}/images/opengraph.png`,
+  twitterImage: `${siteUrl}/images/opengraph-phase-2.png`,
 })
 
 useHead({
