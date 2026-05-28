@@ -17,7 +17,7 @@
             to="/"
             class="font-bold text-trim-purple underline underline-offset-4 decoration-trim-purple/40 hover:decoration-trim-purple transition"
           >Phase 2: Liminal Space</NuxtLink>
-          &mdash; 19 June to 28 September 2026.
+          &mdash; 10 June to 28 September 2026.
         </p>
       </div>
 

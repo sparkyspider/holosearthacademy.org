@@ -79,7 +79,7 @@
           </span>
           <p class="text-base font-condensed font-normal uppercase tracking-[0.3em] text-neutral-600 mb-2 text-center">from</p>
           <div class="flex flex-col items-center gap-3 text-center mt-2">
-            <span class="text-2xl lg:text-3xl font-condensed font-bold text-trim-blue tracking-wide leading-none">19 June 2026</span>
+            <span class="text-2xl lg:text-3xl font-condensed font-bold text-trim-blue tracking-wide leading-none">10 June 2026</span>
             <span class="text-base font-condensed font-normal uppercase tracking-[0.3em] text-neutral-500 leading-none">to</span>
             <span class="text-2xl lg:text-3xl font-condensed font-bold text-trim-teal tracking-wide leading-none">28 September 2026</span>
           </div>

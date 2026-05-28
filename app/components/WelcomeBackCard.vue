@@ -90,7 +90,7 @@
         >
           Registration is also open for
           <NuxtLink to="/" class="font-bold text-trim-purple underline underline-offset-4 decoration-trim-purple/40 hover:decoration-trim-purple transition">Phase 2: Liminal Space</NuxtLink>
-          (19 June – 28 Sept 2026).
+          (10 June – 28 Sept 2026).
         </p>
 
         <!-- P2 page state-1 addendum: Phase 1 recordings & transcripts -->
