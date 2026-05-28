@@ -53,7 +53,6 @@
           <span class="font-bold text-trim-green">recordings</span>, and
           <span class="font-bold text-trim-blue">working groups</span> come online.
         </p>
-        <div class="mt-6 w-1.5 h-16 rounded-full bg-[linear-gradient(to_bottom,#DDC66E,#6EB189,#62BDB1,#7CA5DD,#A27CB8)]"></div>
       </div>
     </div>
   </div>
