@@ -15,7 +15,7 @@
 
         <!-- Left: Date (range across two months — 4 stacked rows, centered) -->
         <div class="font-condensed font-light text-white leading-none shrink-0 text-center mt-3">
-          <div class="text-[3.1rem]">19 JUN</div>
+          <div class="text-[3.1rem]">10 JUN</div>
           <div class="my-2 flex items-center justify-center gap-3">
             <div class="h-px flex-1 bg-white"></div>
             <span class="text-[1.1rem] tracking-[0.25em] leading-none -mr-[0.25em]">TO</span>
@@ -54,7 +54,7 @@
 
         <!-- Date (single row, justified to fill the title block's width) -->
         <div class="font-condensed font-light text-white leading-tight mb-3 text-[1.35rem] uppercase w-full flex justify-between items-baseline">
-          <span>19 JUN</span>
+          <span>10 JUN</span>
           <span class="tracking-[0.1em]">TO</span>
           <span>28 SEP</span>
           <span>2026</span>
