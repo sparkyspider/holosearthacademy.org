@@ -47,6 +47,8 @@
 
                 <form @submit.prevent="handleSubmit" novalidate>
 
+                  <HoneypotInput v-model="honeypot" />
+
                   <!-- Name -->
                   <div class="mb-4">
                     <label class="block text-sm font-condensed font-bold uppercase tracking-wider text-neutral-600 mb-1.5">
@@ -276,6 +278,7 @@ const touched = reactive({
 const isSubmitting = ref(false)
 const isSubmitted = ref(false)
 const errorState = ref(false)
+const honeypot = ref('')
 
 function touchField(field: 'name' | 'email') {
   touched[field] = true
@@ -320,6 +323,7 @@ async function handleSubmit() {
         source: 'holosearthacademy.org',
         attendee_id: attendee.value?.id,
         happiness: generateHappiness(),
+        country: honeypot.value,
       }),
     })
 

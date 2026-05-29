@@ -8,6 +8,7 @@
     </p>
 
     <form @submit.prevent="handleSubmit" novalidate>
+      <HoneypotInput v-model="honeypot" />
       <div class="flex flex-col min-[860px]:flex-row min-[860px]:items-end gap-4">
         <!-- Name -->
         <div class="flex-1">
@@ -81,6 +82,7 @@ const submitted = ref(false)
 const isSubmitting = ref(false)
 const isSubmitted = ref(false)
 const errorState = ref(false)
+const honeypot = ref('')
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -112,6 +114,7 @@ async function handleSubmit() {
         book_release: form.bookRelease,
         source: 'holosearthacademy.org-newsletter',
         happiness: generateHappiness(),
+        country: honeypot.value,
       }),
     })
 
