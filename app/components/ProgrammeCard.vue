@@ -1,16 +1,29 @@
 <template>
   <div id="programme" class="min-[860px]:bg-white min-[860px]:rounded-xl min-[860px]:shadow-[0_8px_40px_rgba(0,0,0,0.08)] w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-4 min-[860px]:px-8 md:px-12 py-8 min-[860px]:py-14">
     <!-- Header -->
-    <h2 class="text-4xl lg:text-5xl font-condensed font-bold uppercase tracking-wide text-trim-purple text-left mb-4">
-      The Programme
+    <span class="block text-xs font-condensed font-normal uppercase tracking-[0.35em] text-neutral-400">Phase One · Complete</span>
+    <h2 class="text-4xl lg:text-5xl font-condensed font-bold uppercase tracking-wide text-trim-purple text-left mt-2 mb-4">
+      Phase One Recordings
     </h2>
-    <a href="#about-festival" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-condensed font-bold uppercase tracking-wider bg-trim-teal/10 text-trim-teal transition hover:opacity-80 cursor-pointer mb-4">
-      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4M12 8h.01" /></svg>
-      Jump to: More about the Festival
-    </a>
-    <p class="text-xl font-roboto font-normal text-neutral-600 leading-relaxed mb-4">
-      Please make sure you have <button type="button" @click="handleRegisterClick()" class="font-bold text-trim-teal underline hover:text-trim-teal-dark transition cursor-pointer">registered</button> before adding sessions to your calendar. The Zoom link will be included in the calendar.
+    <p class="text-lg lg:text-xl font-roboto font-normal text-neutral-600 leading-relaxed mb-3">
+      Choose a Phase One session below to watch the recording.
     </p>
+
+    <!-- Phase Two call-to-action — nested card -->
+    <div class="rounded-xl bg-trim-purple/5 ring-1 ring-trim-purple/15 px-5 min-[860px]:px-8 py-5 min-[860px]:py-6 mb-10 flex flex-col min-[860px]:flex-row min-[860px]:items-center gap-4 min-[860px]:gap-6 text-center min-[860px]:text-left">
+      <p class="flex-1 text-lg lg:text-xl font-roboto font-normal text-neutral-600 leading-relaxed">
+        The festival continues with
+        <NuxtLink to="/" class="font-bold text-trim-purple underline underline-offset-4 decoration-trim-purple/40 hover:decoration-trim-purple transition">Phase Two: Liminal Space</NuxtLink>
+        &mdash; six dialogues, 10 Jun&ndash;28 Sep 2026.
+      </p>
+      <NuxtLink
+        to="/"
+        class="shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-trim-purple text-white text-base font-condensed font-bold uppercase tracking-wider hover:bg-trim-purple/90 transition cursor-pointer"
+      >
+        Register for Phase Two
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12 L14 5 L14 9 L2 9 L2 15 L14 15 L14 19 Z" /></svg>
+      </NuxtLink>
+    </div>
 
     <!-- Days -->
     <div class="flex flex-col gap-12">
@@ -33,8 +46,8 @@
           <div
             v-for="event in day.events"
             :key="event.speaker"
-            :class="['group relative rounded-xl p-5 min-[860px]:p-8 transition-all duration-300 hover:shadow-lg cursor-pointer max-[859px]:mt-20 bg-white max-[859px]:shadow-[0_4px_20px_rgba(0,0,0,0.06)] min-[860px]:bg-bg-default min-[860px]:shadow-none']"
-            @click="openSpeakerModal(event, day)"
+            :class="['group relative rounded-xl p-5 min-[860px]:p-8 transition-all duration-300 max-[859px]:mt-20 bg-white max-[859px]:shadow-[0_4px_20px_rgba(0,0,0,0.06)] min-[860px]:bg-bg-default min-[860px]:shadow-none', event.recording ? 'hover:shadow-lg cursor-pointer' : '']"
+            @click="event.recording ? goToSpeaker(event) : undefined"
           >
             <div class="flex flex-col min-[860px]:flex-row gap-0 min-[860px]:gap-8">
               <!-- Avatar -->
@@ -75,27 +88,27 @@
                 </p>
 
                 <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2" @click.stop>
-                  <span class="text-sm font-condensed font-bold uppercase tracking-wider text-neutral-500">Participate:</span>
-                  <AddToCalendar
-                    :title="event.title"
-                    :speaker="event.speaker"
-                    :description="event.description"
-                    :theme="day.theme"
-                    :date="day.date"
-                    :time="event.time"
-                    :duration-minutes="event.durationMinutes"
-                    :button-class="`${day.calendarBtnClass}`"
-                  />
-                  <EmailDetails
-                    :title="event.title"
-                    :speaker="event.speaker"
-                    :description="event.description"
-                    :theme="day.theme"
-                    :date="day.date"
-                    :time="event.time"
-                    :duration-minutes="event.durationMinutes"
-                    :button-class="`${day.calendarBtnClass}`"
-                  />
+                  <!-- Concluded talk with a recording: link to the speaker page -->
+                  <NuxtLink
+                    v-if="event.recording"
+                    :to="`/speaker/${event.slug}`"
+                    :class="['group/cta inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-condensed font-bold uppercase tracking-wider text-white hover:opacity-90 transition cursor-pointer', day.badgeColor]"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M8 5v14l11-7z" /></svg>
+                    Watch Now
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 group-hover/cta:animate-nudge-right"><path d="M22 12 L14 5 L14 9 L2 9 L2 15 L14 15 L14 19 Z" /></svg>
+                  </NuxtLink>
+                  <!-- Recording not yet published -->
+                  <button
+                    v-else
+                    type="button"
+                    disabled
+                    aria-label="Recording uploading"
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-condensed font-bold uppercase tracking-wider bg-white ring-1 ring-neutral-200 shadow-sm text-neutral-400 cursor-not-allowed"
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16V4m0 0L8 8m4-4l4 4M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2" /></svg>
+                    Uploading&hellip;
+                  </button>
                 </div>
               </div>
             </div>
@@ -103,7 +116,7 @@
           <!-- Dialogue card -->
           <div
             v-if="day.dialogueEvent"
-            class="group relative rounded-xl p-5 min-[860px]:p-8 transition-all duration-300 hover:shadow-lg max-[859px]:mt-20 bg-white max-[859px]:shadow-[0_4px_20px_rgba(0,0,0,0.06)] min-[860px]:bg-bg-default min-[860px]:shadow-none"
+            class="group relative rounded-xl p-5 min-[860px]:p-8 transition-all duration-300 max-[859px]:mt-20 bg-white max-[859px]:shadow-[0_4px_20px_rgba(0,0,0,0.06)] min-[860px]:bg-bg-default min-[860px]:shadow-none"
           >
             <div class="flex flex-col min-[860px]:flex-row gap-0 min-[860px]:gap-8">
               <!-- Icon circle -->
@@ -136,27 +149,16 @@
                 </div>
 
                 <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2">
-                  <span class="text-sm font-condensed font-bold uppercase tracking-wider text-neutral-500">Participate:</span>
-                  <AddToCalendar
-                    :title="day.dialogueEvent.title"
-                    speaker="All Presenters"
-                    :description="day.dialogueEvent.calendarDescription"
-                    :theme="day.theme"
-                    :date="day.date"
-                    :time="day.dialogueEvent.time"
-                    :duration-minutes="day.dialogueEvent.durationMinutes"
-                    :button-class="`${day.calendarBtnClass}`"
-                  />
-                  <EmailDetails
-                    :title="day.dialogueEvent.title"
-                    speaker="All Presenters"
-                    :description="day.dialogueEvent.calendarDescription"
-                    :theme="day.theme"
-                    :date="day.date"
-                    :time="day.dialogueEvent.time"
-                    :duration-minutes="day.dialogueEvent.durationMinutes"
-                    :button-class="`${day.calendarBtnClass}`"
-                  />
+                  <!-- Recording not yet published -->
+                  <button
+                    type="button"
+                    disabled
+                    aria-label="Recording uploading"
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-condensed font-bold uppercase tracking-wider bg-white ring-1 ring-neutral-200 shadow-sm text-neutral-400 cursor-not-allowed"
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16V4m0 0L8 8m4-4l4 4M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2" /></svg>
+                    Uploading&hellip;
+                  </button>
                 </div>
               </div>
             </div>
@@ -190,14 +192,6 @@ import { ref, onMounted } from 'vue'
 import { days, findSpeakerBySlug } from '~/data/speakers'
 import type { SpeakerEvent, Day, DialogueEvent } from '~/data/speakers'
 
-const { openModal } = useRegistrationModal()
-const { track } = useAnalytics()
-
-function handleRegisterClick() {
-  track('registration_modal_open', { source: 'programme' })
-  openModal()
-}
-
 const modalOpen = ref(false)
 const modalSpeaker = ref({
   name: '',
@@ -214,6 +208,10 @@ const modalSpeaker = ref({
   theme: '',
 })
 
+
+function goToSpeaker(event: SpeakerEvent) {
+  navigateTo(`/speaker/${event.slug}`)
+}
 
 function openSpeakerModal(event: SpeakerEvent, day: Day) {
   modalSpeaker.value = {

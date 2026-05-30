@@ -19,16 +19,8 @@
       <div class="flex-1 py-0 min-[860px]:py-16 px-0 min-[860px]:px-8 flex flex-col items-center gap-0 min-[860px]:gap-10">
         <div class="w-full flex flex-col items-center gap-0">
           <PageTabs current="P1" />
-          <Phase1ConcludedNotice class="min-[860px]:!rounded-t-none" />
+          <ProgrammeCard />
         </div>
-        <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
-        <IntroCard />
-        <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
-        <WelcomeBackCard />
-        <RegistrationCta />
-        <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
-        <ProgrammeCard />
-        <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
         <AlliancePromoCard />
         <AboutFestivalCard />
@@ -61,8 +53,8 @@ const config = useRuntimeConfig().public
 const siteUrl = config.siteUrl as string
 const pageUrl = `${siteUrl}/phase-1`
 
-const title = 'Phase 1: Rediscovering Holism | Centenary Festival of Holism & Evolution | Holos Earth Academy'
-const description = 'Phase 1 of the Centenary Festival of Holism & Evolution. A free online global dialogue on the meaning and application of holism. 20–24 May 2026.'
+const title = 'Phase One: Rediscovering Holism — Watch the Talks | Centenary Festival of Holism & Evolution | Holos Earth Academy'
+const description = 'Phase One of the Centenary Festival of Holism & Evolution has concluded. Watch all eight sessions on the origins and meaning of holism on demand, each with a downloadable transcript — and register for Phase Two: Liminal Space, 10 June to 28 September 2026.'
 
 useSeoMeta({
   title,

@@ -21,8 +21,8 @@
 defineProps<{ current: 'P1' | 'P2' | 'Alliance' }>()
 
 const tabs = [
-  { key: 'P2',       label: 'Phase 2',  path: '/',         activeColor: 'text-trim-purple', inactiveColor: 'text-trim-purple/60' },
-  { key: 'P1',       label: 'Phase 1',  path: '/phase-1',  activeColor: 'text-trim-teal',   inactiveColor: 'text-trim-teal/60'   },
+  { key: 'P2',       label: 'Phase Two',  path: '/',         activeColor: 'text-trim-purple', inactiveColor: 'text-trim-purple/60' },
+  { key: 'P1',       label: 'Phase One',  path: '/phase-1',  activeColor: 'text-trim-teal',   inactiveColor: 'text-trim-teal/60'   },
   { key: 'Alliance', label: 'Alliance', path: '/alliance', activeColor: 'text-trim-blue',   inactiveColor: 'text-trim-blue/60'   },
 ]
 </script>

@@ -36,9 +36,9 @@
           <PageTabs current="P2" />
           <WelcomeBackCard class="min-[860px]:!rounded-t-none" />
         </div>
-        <PreviouslyCard />
-        <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
         <IntroCardPhase2 />
+        <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
+        <PreviouslyCard />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
         <RegistrationCta />
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
@@ -75,8 +75,8 @@ watch(isOpen, (val) => {
 const config = useRuntimeConfig().public
 const siteUrl = config.siteUrl as string
 
-const title = 'Phase 2: Liminal Space | Centenary Festival of Holism & Evolution | Holos Earth Academy'
-const description = 'Phase 2 of the Centenary Festival of Holism & Evolution. A liminal space — 10 June to 28 September 2026 — for reflection, integration, and deepening the inquiry initiated in May.'
+const title = 'Phase Two: Liminal Space | Centenary Festival of Holism & Evolution | Holos Earth Academy'
+const description = 'Phase Two of the Centenary Festival of Holism & Evolution. A liminal space — 10 June to 28 September 2026 — for reflection, integration, and deepening the inquiry initiated in May.'
 
 useSeoMeta({
   title,

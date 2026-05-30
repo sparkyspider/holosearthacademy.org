@@ -1,3 +1,20 @@
+/**
+ * A published recording for a concluded talk. When present on a Phase 1 event,
+ * the programme card links through to the speaker page (/speaker/:slug) instead
+ * of offering "Add to Calendar" / "Email me the details".
+ */
+export interface SpeakerRecording {
+  /** YouTube video ID for the talk recording (the bit after `watch?v=`) */
+  youtubeId: string
+  /** Public path to the downloadable transcript PDF, under /public */
+  pdfUrl: string
+  /**
+   * Whether a readable transcript markdown file exists at
+   * app/data/transcripts/<slug>.md. The speaker page renders it inline.
+   */
+  hasTranscript?: boolean
+}
+
 export interface SpeakerEvent {
   speaker: string
   slug: string
@@ -9,6 +26,8 @@ export interface SpeakerEvent {
   bio: string
   /** Override the default 90-minute duration for this event */
   durationMinutes?: number
+  /** Set once the talk has been recorded and published */
+  recording?: SpeakerRecording
 }
 
 export interface DialogueEvent {
@@ -62,6 +81,11 @@ export const days: Day[] = [
         time: '19h00 CEST',
         image: '/images/speakers/kobus-du-pisani.png',
         bio: 'Professor Kobus du Pisani, one of the foremost scholars on Smuts, will anchor the opening program by setting Smuts\' life and work in historical context. Prof du Pisani is editor of "Jan Smuts, Son Of The Veld, Pilgrim Of The World".',
+        recording: {
+          youtubeId: 'qgAHRoMqaI8',
+          pdfUrl: '/downloads/kobus-du-pisani-the-upward-path-of-the-universe.pdf',
+          hasTranscript: true,
+        },
       },
     ],
   },

@@ -13,10 +13,10 @@
           <span class="text-trim-purple">Holos Earth Alliance</span>
         </template>
         <template v-else-if="isPhase2Page">
-          Phase 2: <span class="text-trim-purple">Liminal Space</span>
+          Phase Two: <span class="text-trim-purple">Liminal Space</span>
         </template>
         <template v-else>
-          Phase 1: <span class="text-trim-purple">Rediscovering Holism</span>
+          Phase One: <span class="text-trim-purple">Rediscovering Holism</span>
         </template>
       </h2>
       <!-- Body text. Alliance page has its own logic; festival pages (P1 & P2)
@@ -89,18 +89,8 @@
           class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed mt-1"
         >
           Registration is also open for
-          <NuxtLink to="/" class="font-bold text-trim-purple underline underline-offset-4 decoration-trim-purple/40 hover:decoration-trim-purple transition">Phase 2: Liminal Space</NuxtLink>
+          <NuxtLink to="/" class="font-bold text-trim-purple underline underline-offset-4 decoration-trim-purple/40 hover:decoration-trim-purple transition">Phase Two: Liminal Space</NuxtLink>
           (10 June – 28 Sept 2026).
-        </p>
-
-        <!-- P2 page state-1 addendum: Phase 1 recordings & transcripts -->
-        <p
-          v-if="isPhase2Page && !hasRegisteredForCurrent"
-          class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 leading-relaxed mt-1"
-        >
-          <span class="font-bold text-trim-teal">Phase 1 recordings</span> and
-          <span class="font-bold text-trim-purple">downloadable transcripts</span>
-          available {{ availabilityWord }}.
         </p>
       </div>
       <button
@@ -155,20 +145,10 @@
         to="/"
         class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-trim-purple text-white text-base lg:text-lg font-condensed font-bold uppercase tracking-wider hover:bg-trim-purple/90 transition cursor-pointer"
       >
-        Go to Phase 2
+        Go to Phase Two
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
           <path d="M22 12 L14 5 L14 9 L2 9 L2 15 L14 15 L14 19 Z" />
         </svg>
-      </NuxtLink>
-      <NuxtLink
-        v-else
-        to="/phase-1"
-        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-trim-teal text-white text-base lg:text-lg font-condensed font-bold uppercase tracking-wider hover:bg-trim-teal/90 transition cursor-pointer"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M2 12 L10 5 L10 9 L22 9 L22 15 L10 15 L10 19 Z" />
-        </svg>
-        Back to Phase 1
       </NuxtLink>
     </div>
   </div>
@@ -184,13 +164,12 @@ const route = useRoute()
 const { attendee, isKnown, clearAttendee } = useAttendee()
 const { hasAddedCalendarP1, hasAddedCalendarP2 } = useCalendarProgress()
 const { openModal } = useAllianceModal()
-const { availabilityWord } = useRecordingsAvailability()
 
 const isPhase1Page = computed(() => route.path.startsWith('/phase-1'))
 const isAlliancePage = computed(() => route.path.startsWith('/alliance'))
 const isPhase2Page = computed(() => !isPhase1Page.value && !isAlliancePage.value)
 const currentPhase = computed<'P1' | 'P2'>(() => (isPhase1Page.value ? 'P1' : 'P2'))
-const currentPhaseShortLabel = computed(() => (currentPhase.value === 'P2' ? 'Phase 2' : 'Phase 1'))
+const currentPhaseShortLabel = computed(() => (currentPhase.value === 'P2' ? 'Phase Two' : 'Phase One'))
 const hasRegisteredForCurrent = computed(() =>
   attendee.value?.phases.includes(currentPhase.value) ?? false
 )
