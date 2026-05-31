@@ -112,6 +112,11 @@ export const days: Day[] = [
         time: '19h00 CEST',
         image: '/images/speakers/jeff-blumberg.png',
         bio: 'Jeff Blumberg discovered Jan Smuts\'s idea of Holism and Evolution years ago while researching holistic management and realized the philosophy was much deeper than its popular meaning. After a long corporate and consulting career, he returned to study Smuts\'s work in depth and is now writing a book—based on unpublished archives—about Smuts\'s planned sequel. His presentation is drawn from that upcoming book.',
+        recording: {
+          youtubeId: 'peXmHMLD8gQ',
+          pdfUrl: '/downloads/jeff-blumberg-towards-a-spiritual-worldview.pdf',
+          hasTranscript: true,
+        },
       },
     ],
   },
