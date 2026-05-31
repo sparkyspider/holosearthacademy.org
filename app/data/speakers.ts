@@ -174,6 +174,11 @@ export const days: Day[] = [
         time: '10h00 CEST',
         image: '/images/speakers/jude-currivan.png',
         bio: 'Dr Jude Currivan is a cosmologist, planetary healer, futurist, award-winning author and filmmaker, and co-founder of WholeWorld-View. An Evolutionary Leaders Circle council member and Associate Member of the Club of Rome, she combines a background in international business with lifelong research into the unitive nature of reality, aiming to promote collective and planetary healing, conscious evolution, and transformational change.',
+        recording: {
+          youtubeId: '8sPPvYX5hHQ',
+          pdfUrl: '/downloads/jude-currivan-a-unitive-vision-for-humanity.pdf',
+          hasTranscript: true,
+        },
       },
       {
         speaker: 'David Lorimer',
