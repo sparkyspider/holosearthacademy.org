@@ -190,6 +190,11 @@ export const days: Day[] = [
         time: '11h30 CEST',
         image: '/images/speakers/david-lorimer.png',
         bio: 'David Lorimer is a writer, lecturer, and editor known for his work in philosophy and education. He is the Programme Director of the Scientific and Medical Network and has authored several books on topics related to science and spirituality.',
+        recording: {
+          youtubeId: 'oAlx2l6GHi0',
+          pdfUrl: '/downloads/david-lorimer-inwardness-agency-and-freedom-in-the-evolution-of-consciousness.pdf',
+          hasTranscript: true,
+        },
         durationMinutes: 75,
       },
     ],
