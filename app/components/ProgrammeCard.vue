@@ -149,8 +149,19 @@
                 </div>
 
                 <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2">
+                  <!-- Concluded dialogue with a recording: link to the speaker-style page -->
+                  <NuxtLink
+                    v-if="day.dialogueEvent.recording && day.dialogueEvent.slug"
+                    :to="`/speaker/${day.dialogueEvent.slug}`"
+                    :class="['group/cta inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-condensed font-bold uppercase tracking-wider text-white hover:opacity-90 transition cursor-pointer', day.badgeColor]"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M8 5v14l11-7z" /></svg>
+                    Watch Now
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 group-hover/cta:animate-nudge-right"><path d="M22 12 L14 5 L14 9 L2 9 L2 15 L14 15 L14 19 Z" /></svg>
+                  </NuxtLink>
                   <!-- Recording not yet published -->
                   <button
+                    v-else
                     type="button"
                     disabled
                     aria-label="Recording uploading"

@@ -60,6 +60,7 @@ export default defineNuxtConfig({
         '/speaker/david-lorimer',
         '/speaker/rhett-gayle',
         '/speaker/claudius-van-wyk',
+        '/speaker/a-dialogue-with-all-presenters',
       ],
     },
   },

@@ -39,6 +39,11 @@ export interface DialogueEvent {
   finalParaPre: string
   finalParaHighlight: string
   calendarDescription: string
+  /** Slug for the per-dialogue page (/speaker/<slug>). Required when a
+   *  recording is published — drives Watch Now linking. */
+  slug?: string
+  /** Set once the dialogue has been recorded and published. */
+  recording?: SpeakerRecording
 }
 
 export interface Day {
@@ -210,6 +215,12 @@ export const days: Day[] = [
       finalParaPre: 'This is an opportunity not only to listen, but to ',
       finalParaHighlight: 'engage, reflect, and connect the insights to your own perspective and experience.',
       calendarDescription: "Join us for a summatory dialogue where the speakers come together to reflect on the deeper themes of the festival.\n\nTogether we will explore how 'Holism and Evolution' continues to unfold through ideas such as the participatory universe, humanity as a keystone species, and the role of individual agency in shaping a more regenerative relationship with life.\n\nThis is an opportunity not only to listen, but to engage, reflect, and connect the insights to your own perspective and experience.",
+      slug: 'a-dialogue-with-all-presenters',
+      recording: {
+        youtubeId: '9qQj8QSxEsQ',
+        pdfUrl: '/downloads/a-dialogue-with-all-presenters.pdf',
+        hasTranscript: true,
+      },
     },
   },
   {
@@ -426,11 +437,33 @@ export function toBST(time: string): string {
   return `${h}h${match[2]}`
 }
 
-/** Find a speaker event + its day by slug — searches Phase 1 then Phase 2 */
+/** Find a speaker event + its day by slug — searches Phase 1 then Phase 2.
+ *  Also resolves panel dialogues: when a Day's `dialogueEvent` carries a slug
+ *  and recording, it's projected into a SpeakerEvent-shaped object so the
+ *  /speaker/<slug> page can render it with no extra branching. */
 export function findSpeakerBySlug(slug: string) {
   for (const day of [...days, ...daysP2]) {
     const event = day.events.find(e => e.slug === slug)
     if (event) return { event, day }
+  }
+  for (const day of [...days, ...daysP2]) {
+    const d = day.dialogueEvent
+    if (d?.slug === slug) {
+      const bio = [...d.paragraphs, `${d.finalParaPre}${d.finalParaHighlight}`].join('\n\n')
+      const event: SpeakerEvent = {
+        speaker: 'The Phase One Presenters',
+        slug: d.slug,
+        title: d.title,
+        subtitle: d.subtitle,
+        description: bio,
+        time: d.time,
+        image: '/images/speakers/interconnectedness.avif',
+        bio,
+        durationMinutes: d.durationMinutes,
+        recording: d.recording,
+      }
+      return { event, day }
+    }
   }
   return null
 }
