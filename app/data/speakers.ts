@@ -143,6 +143,11 @@ export const days: Day[] = [
         time: '19h00 CEST',
         image: '/images/speakers/markus-link.jpeg',
         bio: 'Marcus Link is a pattern seeker, systems thinker, and writer exploring the intersection of ecology, data, and meaning. As founder of Ecological Intelligence, he develops satellite-based software to assess ecosystem health. A philosopher, cultural critic, storyteller, essayist, and poet, he aims to publish Keystones in the Patterns of Place by the time of this talk.',
+        recording: {
+          youtubeId: '99gR0YnFqxE',
+          pdfUrl: '/downloads/marcus-link-keystones-in-the-patterns-of-place.pdf',
+          hasTranscript: true,
+        },
       },
     ],
   },
