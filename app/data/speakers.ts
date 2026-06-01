@@ -247,6 +247,11 @@ export const days: Day[] = [
         image: '/images/speakers/rhett-gayle.png',
         bio: 'Dr Rhett Gayle is a researcher, educator and philosopher who has taught at the University of Colorado and is author of several academic papers on topics ranging from Befriending Wisdom to Self-transformation.',
         durationMinutes: 60,
+        recording: {
+          youtubeId: 'cILaTDCOaPI',
+          pdfUrl: '/downloads/rhett-gayle-pre-imperial-christian-mysticism.pdf',
+          hasTranscript: true,
+        },
       },
       {
         speaker: 'Dr Claudius van Wyk',
@@ -258,6 +263,11 @@ export const days: Day[] = [
         time: '11h30 CEST',
         image: '/images/speakers/claudius-van-wyk.png',
         bio: 'As a life-long scholar of holism, Claudius has enjoyed a career in executive coaching and organisational consultation offering strategic transformation facilitation for over 25 years. He applies complexity-theory insights to strategic management and leadership focused on wellness and sustainability. His expertise is applying Holistic Systems Practice to promote engagement and resilience in the dynamic world.',
+        recording: {
+          youtubeId: 'Mf70_xh4Gf8',
+          pdfUrl: '/downloads/claudius-van-wyk-holism-and-ethics.pdf',
+          hasTranscript: true,
+        },
       },
     ],
   },
