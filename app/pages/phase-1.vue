@@ -54,7 +54,7 @@ const siteUrl = config.siteUrl as string
 const pageUrl = `${siteUrl}/phase-1`
 
 const title = 'Phase One: Rediscovering Holism — Watch the Talks | Centenary Festival of Holism & Evolution | Holos Earth Academy'
-const description = 'Phase One of the Centenary Festival of Holism & Evolution has concluded. Watch all eight sessions on the origins and meaning of holism on demand, each with a downloadable transcript — and register for Phase Two: Liminal Space, 10 June to 28 September 2026.'
+const description = 'Phase One of the Centenary Festival of Holism & Evolution has concluded. Watch all eight sessions on the origins and meaning of holism on demand, each with a downloadable transcript — and register for Phase Two: Liminal Space, 10 June to 14 October 2026.'
 
 useSeoMeta({
   title,

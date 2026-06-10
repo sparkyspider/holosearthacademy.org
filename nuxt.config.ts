@@ -61,6 +61,7 @@ export default defineNuxtConfig({
         '/speaker/rhett-gayle',
         '/speaker/claudius-van-wyk',
         '/speaker/a-dialogue-with-all-presenters',
+        '/speaker/jeremy-lent',
       ],
     },
   },

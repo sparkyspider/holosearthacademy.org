@@ -59,9 +59,10 @@
 
             <!-- Bio -->
             <p class="text-sm font-condensed font-normal uppercase tracking-widest text-neutral-400 text-center mb-1">About the speaker</p>
-            <p class="text-lg font-roboto font-light text-neutral-600 leading-relaxed text-center">
-              {{ bio }}
-            </p>
+            <p
+              class="text-lg font-roboto font-light text-neutral-600 leading-relaxed text-center"
+              v-html="bio"
+            ></p>
 
             <!-- Speaking footer -->
             <div v-if="speakingDate" class="mt-8 pt-6 border-t border-neutral-200 flex flex-col items-center gap-4">

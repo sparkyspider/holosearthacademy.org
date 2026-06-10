@@ -8,11 +8,11 @@
       <!-- Back link -->
       <div class="w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-4 min-[860px]:px-0 pt-6 min-[860px]:pt-0">
         <NuxtLink
-          to="/phase-1#programme"
+          :to="backHref"
           class="inline-flex items-center gap-1.5 text-sm font-condensed font-bold uppercase tracking-wider text-trim-teal hover:opacity-80 transition cursor-pointer"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M2 12 L10 5 L10 9 L22 9 L22 15 L10 15 L10 19 Z" /></svg>
-          Back to the Phase One programme
+          {{ backLabel }}
         </NuxtLink>
       </div>
 
@@ -30,7 +30,7 @@
           <!-- Copy -->
           <div class="flex-1 min-w-0 text-center lg:text-left">
             <p class="text-xs font-condensed font-normal uppercase tracking-[0.35em] text-neutral-400">
-              Centenary Festival&nbsp;·&nbsp;Phase One&nbsp;·&nbsp;{{ day?.label }}
+              Centenary Festival&nbsp;·&nbsp;{{ phaseLabel }}&nbsp;·&nbsp;{{ day?.label }}
             </p>
             <h1 class="text-3xl min-[860px]:text-4xl lg:text-5xl font-condensed font-bold uppercase tracking-wide text-trim-purple leading-[1.05] mt-2">
               {{ speaker.title }}
@@ -45,22 +45,24 @@
             <!-- gradient quote bar + bio -->
             <div class="flex mt-6 text-left">
               <div class="w-1.5 shrink-0 rounded-full bg-[linear-gradient(to_bottom,#DDC66E,#6EB189,#62BDB1,#7CA5DD,#A27CB8)]"></div>
-              <p class="pl-6 min-[860px]:pl-8 text-lg lg:text-xl font-roboto font-normal leading-relaxed text-neutral-600">
-                {{ speaker.bio }}
-              </p>
+              <p
+                class="pl-6 min-[860px]:pl-8 text-lg lg:text-xl font-roboto font-normal leading-relaxed text-neutral-600"
+                v-html="speaker.bio"
+              ></p>
             </div>
           </div>
         </div>
 
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
 
-        <!-- Watch card -->
+        <!-- Watch card — hidden for upcoming Phase 2 talks (no committed date yet) -->
         <div
+          v-if="speaker.recording || !isPhase2"
           id="watch"
           class="min-[860px]:bg-white min-[860px]:rounded-xl min-[860px]:shadow-[0_8px_40px_rgba(0,0,0,0.08)] w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-4 min-[860px]:px-8 md:px-12 py-8 min-[860px]:py-14"
         >
           <h2 class="text-4xl lg:text-5xl font-condensed font-bold uppercase tracking-wide text-trim-purple mb-6">
-            Watch the recording
+            {{ watchHeading }}
           </h2>
 
           <template v-if="speaker.recording">
@@ -100,7 +102,20 @@
             </div>
           </template>
 
-          <!-- No recording yet -->
+          <!-- Upcoming Phase 2 talk: broadcast info -->
+          <div v-else-if="isPhase2" class="flex">
+            <div class="w-1.5 shrink-0 rounded-full bg-[linear-gradient(to_bottom,#DDC66E,#6EB189,#62BDB1,#7CA5DD,#A27CB8)]"></div>
+            <p class="pl-6 min-[860px]:pl-8 text-lg lg:text-xl font-roboto font-normal leading-relaxed text-neutral-600">
+              This session will be broadcast live on
+              <span :class="['font-bold', day?.titleColor]">{{ day?.label }}</span> at
+              <span :class="['font-bold', day?.titleColor]">{{ speaker.time }}</span>.
+              The recording and transcript will be published here afterwards &mdash;
+              <NuxtLink to="/#register" class="font-bold text-trim-purple underline underline-offset-4 decoration-trim-purple/40 hover:decoration-trim-purple transition">register for Phase Two</NuxtLink>
+              to receive the joining link.
+            </p>
+          </div>
+
+          <!-- Phase 1 fallback (recording still being prepared) -->
           <div v-else class="flex">
             <div class="w-1.5 shrink-0 rounded-full bg-[linear-gradient(to_bottom,#DDC66E,#6EB189,#62BDB1,#7CA5DD,#A27CB8)]"></div>
             <p class="pl-6 min-[860px]:pl-8 text-lg lg:text-xl font-roboto font-normal leading-relaxed text-neutral-600">
@@ -129,11 +144,11 @@
         <!-- Footer back-link -->
         <div class="w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-4 min-[860px]:px-0 py-8 flex flex-col min-[860px]:flex-row items-center justify-between gap-4">
           <NuxtLink
-            to="/phase-1#programme"
+            :to="backHref"
             class="inline-flex items-center gap-1.5 text-sm font-condensed font-bold uppercase tracking-wider text-trim-teal hover:opacity-80 transition cursor-pointer"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M2 12 L10 5 L10 9 L22 9 L22 15 L10 15 L10 19 Z" /></svg>
-            Back to the Phase One programme
+            {{ backLabel }}
           </NuxtLink>
           <p class="text-xs font-roboto text-neutral-400 text-center">
             © {{ new Date().getFullYear() }} Claudius van Wyk. All rights reserved.
@@ -162,7 +177,7 @@
 
 <script setup lang="ts">
 import { marked } from 'marked'
-import { findSpeakerBySlug } from '~/data/speakers'
+import { findSpeakerBySlug, daysP2 } from '~/data/speakers'
 import { useRecordingsAvailability } from '~/composables/useRecordingsAvailability'
 
 // Raw transcript markdown files, keyed by path — bundled at build time.
@@ -180,6 +195,12 @@ const slug = route.params.slug as string
 const result = findSpeakerBySlug(slug)
 const speaker = result?.event
 const day = result?.day
+
+const isPhase2 = day ? daysP2.includes(day) : false
+const phaseLabel = isPhase2 ? 'Phase Two' : 'Phase One'
+const backHref = isPhase2 ? '/#programme' : '/phase-1#programme'
+const backLabel = isPhase2 ? 'Back to the Phase Two programme' : 'Back to the Phase One programme'
+const watchHeading = speaker?.recording ? 'Watch the recording' : 'Coming up'
 
 const { availabilityWord } = useRecordingsAvailability()
 

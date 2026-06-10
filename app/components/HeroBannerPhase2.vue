@@ -21,7 +21,7 @@
             <span class="text-[1.1rem] tracking-[0.25em] leading-none -mr-[0.25em]">TO</span>
             <div class="h-px flex-1 bg-white"></div>
           </div>
-          <div class="text-[3.1rem]">28 SEP</div>
+          <div class="text-[3.1rem]">14 OCT</div>
           <div class="text-[4.6rem] mt-2">2026</div>
         </div>
 
@@ -56,7 +56,7 @@
         <div class="font-condensed font-light text-white leading-tight mb-3 text-[1.35rem] uppercase w-full flex justify-between items-baseline">
           <span>10 JUN</span>
           <span class="tracking-[0.1em]">TO</span>
-          <span>28 SEP</span>
+          <span>14 OCT</span>
           <span>2026</span>
         </div>
 
