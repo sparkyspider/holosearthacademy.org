@@ -15,13 +15,13 @@
 
         <!-- Left: Date (range across two months — 4 stacked rows, centered) -->
         <div class="font-condensed font-light text-white leading-none shrink-0 text-center mt-3">
-          <div class="text-[3.1rem]">10 JUN</div>
+          <div class="text-[3.194rem]">10 JUN</div>
           <div class="my-2 flex items-center justify-center gap-3">
             <div class="h-px flex-1 bg-white"></div>
             <span class="text-[1.1rem] tracking-[0.25em] leading-none -mr-[0.25em]">TO</span>
             <div class="h-px flex-1 bg-white"></div>
           </div>
-          <div class="text-[3.1rem]">2 DEC</div>
+          <div class="text-[3.755rem]">2 DEC</div>
           <div class="text-[4.6rem] mt-2">2026</div>
         </div>
 
