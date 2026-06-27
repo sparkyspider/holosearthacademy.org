@@ -115,6 +115,7 @@
                         </div>
                         <span class="text-base font-roboto font-normal text-neutral-600 group-hover:text-trim-green transition leading-snug">
                           Festival Phase III – South African Pilgrimage
+                          <span class="ml-1 inline-block align-middle text-[0.65rem] font-condensed font-bold uppercase tracking-wider text-neutral-500 bg-neutral-100 ring-1 ring-neutral-200 px-2 py-0.5 rounded-full">Postponed</span>
                         </span>
                       </label>
 
@@ -203,9 +204,10 @@
                   <div class="flex items-center gap-2 mb-0.5">
                     <div class="w-2.5 h-2.5 rounded-full bg-trim-green shrink-0"></div>
                     <span class="text-sm font-condensed font-bold uppercase tracking-wider text-trim-green">Festival Phase III</span>
+                    <span class="text-[0.65rem] font-condensed font-bold uppercase tracking-wider text-neutral-500 bg-neutral-100 ring-1 ring-neutral-200 px-2 py-0.5 rounded-full">Postponed</span>
                   </div>
                   <p class="text-base font-roboto font-light text-neutral-600 leading-relaxed pl-[18px] border-l-2 border-trim-green/30">
-                    October 2026 in-person gathering in <span class="italic">Cape Town</span>. A pilgrimage following in Smuts' footsteps.
+                    An in-person gathering in <span class="italic">Cape Town</span> — a pilgrimage following in Smuts' footsteps. New dates to be announced via our newsletter.
                   </p>
                 </div>
 

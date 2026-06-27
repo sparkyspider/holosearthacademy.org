@@ -94,6 +94,8 @@ const tickerSpeakers = [
   { name: 'Richard Cox', image: '/images/speakers/richard-cox.jpg', line1: 'The Future is Calling Us', line2: '2 September 2026', slug: 'richard-cox' },
   { name: 'Llewellyn van Wyk', image: '/images/speakers/llewellyn-van-wyk.jpg', line1: 'Buildings, Cities, and Infrastructure', line2: '23 September 2026', slug: 'llewellyn-van-wyk' },
   { name: 'Jeremy Lent', image: '/images/speakers/jeremy-lent.png', line1: 'Ecocivilization and Holism', line2: '14 October 2026', slug: 'jeremy-lent' },
+  { name: 'Rev. Berry Behr', image: '/images/speakers/berry-behr.jpg', line1: 'Retrieving Indigenous Wisdom', line2: '4 November 2026', slug: 'berry-behr' },
+  { name: 'Christopher Cooke', image: '/images/speakers/christopher-cooke.jpg', line1: 'Humanity\'s Potential Becoming', line2: '2 December 2026', slug: 'christopher-cooke' },
 ]
 
 const currentIndex = ref(1)

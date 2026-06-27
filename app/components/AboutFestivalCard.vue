@@ -37,7 +37,7 @@
           We celebrate the visionary legacy of <span class="font-bold text-trim-purple">Jan Christian Smuts</span>, whose 1926 book <span class="italic font-bold text-trim-teal">Holism &amp; Evolution</span> laid the foundational groundwork for holistic thought and human understanding. His life and work continue to inspire holistic practice as a vital guide toward a new era of coherence during times of unprecedented transformation.
         </p>
         <p class="text-xl font-roboto font-normal text-neutral-600 leading-relaxed">
-          This first phase of the festival is followed by phase two, a series of informative, interactive, specialist presentations. It culminates in October 2026 with phase three, an <span class="font-bold text-trim-yellow">in-person gathering in South Africa</span>. Gathering in Cape Town we will follow in the footsteps of Smuts' rich and diverse life, that lead to him writing <span class="italic font-bold text-trim-teal">Holism and Evolution</span>.
+          This first phase of the festival is followed by phase two, a series of informative, interactive, specialist presentations. Phase three — an <span class="font-bold text-trim-yellow">in-person gathering in Cape Town</span>, following in the footsteps of Smuts' rich and diverse life that lead to him writing <span class="italic font-bold text-trim-teal">Holism and Evolution</span> — has been <span class="font-bold text-neutral-700">postponed</span>. New dates will be shared via our newsletter.
         </p>
         <div class="h-1.5 w-full rounded-full bg-neutral-200 my-4"></div>
         <NewsletterCard />

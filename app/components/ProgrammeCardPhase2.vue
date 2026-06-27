@@ -75,27 +75,60 @@
                 </p>
 
                 <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2" @click.stop>
-                  <span class="text-sm font-condensed font-bold uppercase tracking-wider text-neutral-500">Participate:</span>
-                  <AddToCalendar
-                    :title="event.title"
-                    :speaker="event.speaker"
-                    :description="event.description"
-                    :theme="day.theme"
-                    :date="day.date"
-                    :time="event.time"
-                    :duration-minutes="event.durationMinutes"
-                    :button-class="`${day.calendarBtnClass}`"
-                  />
-                  <EmailDetails
-                    :title="event.title"
-                    :speaker="event.speaker"
-                    :description="event.description"
-                    :theme="day.theme"
-                    :date="day.date"
-                    :time="event.time"
-                    :duration-minutes="event.durationMinutes"
-                    :button-class="`${day.calendarBtnClass}`"
-                  />
+                  <!-- Concluded session -->
+                  <template v-if="isPast(day.date)">
+                    <span class="inline-flex items-center gap-1.5 text-xs font-condensed font-bold uppercase tracking-[0.25em] text-neutral-400">
+                      <span class="w-1.5 h-1.5 rounded-full bg-neutral-400"></span>
+                      Session concluded
+                    </span>
+                    <!-- With slide narrative: explore the slides -->
+                    <NuxtLink
+                      v-if="event.slideNarrative"
+                      :to="`/speaker/${event.slug}`"
+                      :class="['group/cta inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-condensed font-bold uppercase tracking-wider text-white hover:opacity-90 transition cursor-pointer', day.badgeColor]"
+                    >
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4">
+                        <rect x="3" y="4" width="18" height="12" rx="2" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 20h8M12 16v4" />
+                      </svg>
+                      Explore the slides
+                      <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 group-hover/cta:animate-nudge-right"><path d="M22 12 L14 5 L14 9 L2 9 L2 15 L14 15 L14 19 Z" /></svg>
+                    </NuxtLink>
+                    <!-- With recording: watch now -->
+                    <NuxtLink
+                      v-else-if="event.recording"
+                      :to="`/speaker/${event.slug}`"
+                      :class="['group/cta inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-condensed font-bold uppercase tracking-wider text-white hover:opacity-90 transition cursor-pointer', day.badgeColor]"
+                    >
+                      <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M8 5v14l11-7z" /></svg>
+                      Watch now
+                      <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 group-hover/cta:animate-nudge-right"><path d="M22 12 L14 5 L14 9 L2 9 L2 15 L14 15 L14 19 Z" /></svg>
+                    </NuxtLink>
+                  </template>
+                  <!-- Upcoming session: add to calendar / email details -->
+                  <template v-else>
+                    <span class="text-sm font-condensed font-bold uppercase tracking-wider text-neutral-500">Participate:</span>
+                    <AddToCalendar
+                      :title="event.title"
+                      :speaker="event.speaker"
+                      :description="event.description"
+                      :theme="day.theme"
+                      :date="day.date"
+                      :time="event.time"
+                      :duration-minutes="event.durationMinutes"
+                      :button-class="`${day.calendarBtnClass}`"
+                    />
+                    <EmailDetails
+                      :title="event.title"
+                      :speaker="event.speaker"
+                      :description="event.description"
+                      :theme="day.theme"
+                      :date="day.date"
+                      :time="event.time"
+                      :duration-minutes="event.durationMinutes"
+                      :button-class="`${day.calendarBtnClass}`"
+                    />
+                  </template>
                 </div>
               </div>
             </div>
@@ -131,6 +164,10 @@ import type { SpeakerEvent, Day } from '~/data/speakers'
 
 const { openModal } = useRegistrationModal()
 const { track } = useAnalytics()
+
+// "Today" in Europe/Berlin (festival time zone) — matches useRecordingsAvailability.
+const todayISO = new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Berlin' })
+function isPast(date: string) { return date < todayISO }
 
 function handleRegisterClick() {
   track('registration_modal_open', { source: 'programme' })

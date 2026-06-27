@@ -55,9 +55,131 @@
 
         <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
 
+        <!-- Slide-narrative path: video unavailable, but slide-by-slide annotated retelling -->
+        <template v-if="speaker.slideNarrative">
+          <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
+
+          <!-- "Video not available" notice (small + polite) + abstract -->
+          <div
+            id="abstract"
+            class="min-[860px]:bg-white min-[860px]:rounded-xl min-[860px]:shadow-[0_8px_40px_rgba(0,0,0,0.08)] w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-4 min-[860px]:px-8 md:px-12 py-8 min-[860px]:py-14"
+          >
+            <p class="text-xs font-condensed font-normal uppercase tracking-[0.35em] text-neutral-400">Video not available</p>
+            <h2 class="text-4xl lg:text-5xl font-condensed font-bold uppercase tracking-wide text-trim-purple mt-1 mb-6">
+              The talk, in slides
+            </h2>
+            <p class="text-base font-roboto font-light text-neutral-500 leading-relaxed mb-8">
+              The original session was not captured cleanly enough to publish.
+              Below is the talk as the speaker delivered it &mdash; slide by slide, with
+              a short narrative for each. Click any slide for a larger view.
+            </p>
+
+            <!-- Gradient quote bar + abstract -->
+            <div class="flex">
+              <div class="w-1.5 shrink-0 rounded-full bg-[linear-gradient(to_bottom,#DDC66E,#6EB189,#62BDB1,#7CA5DD,#A27CB8)]"></div>
+              <p
+                class="pl-6 min-[860px]:pl-8 text-lg lg:text-xl font-roboto font-normal leading-relaxed text-neutral-600"
+                v-html="speaker.slideNarrative.abstract"
+              ></p>
+            </div>
+          </div>
+
+          <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
+
+          <!-- Slide flow -->
+          <div
+            id="slides"
+            class="min-[860px]:bg-white min-[860px]:rounded-xl min-[860px]:shadow-[0_8px_40px_rgba(0,0,0,0.08)] w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-4 min-[860px]:px-8 md:px-12 py-8 min-[860px]:py-14"
+          >
+            <div class="flex flex-col gap-10 min-[860px]:gap-14">
+              <div
+                v-for="(slide, idx) in speaker.slideNarrative.slides"
+                :key="slide.image"
+                class="flex flex-col min-[860px]:flex-row gap-5 min-[860px]:gap-8 items-start"
+              >
+                <!-- Slide image (click to zoom) -->
+                <button
+                  type="button"
+                  @click="openSlide(idx)"
+                  class="group relative w-full min-[860px]:w-[45%] shrink-0 rounded-xl overflow-hidden ring-1 ring-neutral-200 shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.12)] transition cursor-zoom-in bg-white"
+                  :aria-label="`Open larger view of slide ${idx + 1}: ${slide.title}`"
+                >
+                  <img
+                    :src="slide.image"
+                    :alt="slide.title"
+                    loading="lazy"
+                    class="block w-full h-auto group-hover:scale-[1.02] transition-transform"
+                  />
+                  <span class="absolute top-2 right-2 inline-flex items-center gap-1 px-2 py-1 rounded-full bg-white/90 ring-1 ring-neutral-200 text-[0.7rem] font-condensed font-bold uppercase tracking-wider text-neutral-500 opacity-0 group-hover:opacity-100 transition">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m-3-3h6" /></svg>
+                    Zoom
+                  </span>
+                  <span class="absolute bottom-2 left-2 inline-flex items-center px-2 py-0.5 rounded-full bg-trim-purple/90 text-white text-[0.7rem] font-condensed font-bold tracking-wider">
+                    {{ String(idx + 1).padStart(2, '0') }} / {{ String(speaker.slideNarrative.slides.length).padStart(2, '0') }}
+                  </span>
+                </button>
+
+                <!-- Narrative -->
+                <div class="flex-1 min-w-0">
+                  <h3 :class="['text-2xl lg:text-3xl font-condensed font-bold uppercase tracking-wide leading-tight mb-3', day?.titleColor]" v-html="slide.title"></h3>
+                  <p
+                    class="text-base lg:text-lg font-roboto font-normal text-neutral-600 leading-relaxed"
+                    v-html="slide.narrative"
+                  ></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fullscreen slide modal -->
+          <div
+            v-if="activeSlide !== null"
+            class="fixed inset-0 z-50 bg-black/85 flex items-center justify-center p-4 min-[860px]:p-10"
+            @click.self="closeSlide"
+            @keydown.esc="closeSlide"
+          >
+            <button
+              type="button"
+              @click="closeSlide"
+              class="absolute top-4 right-4 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white transition cursor-pointer"
+              aria-label="Close slide"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M6 18L18 6" /></svg>
+            </button>
+            <button
+              v-if="activeSlide > 0"
+              type="button"
+              @click="prevSlide"
+              class="absolute left-4 top-1/2 -translate-y-1/2 inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition cursor-pointer"
+              aria-label="Previous slide"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+            </button>
+            <button
+              v-if="activeSlide < speaker.slideNarrative.slides.length - 1"
+              type="button"
+              @click="nextSlide"
+              class="absolute right-4 top-1/2 -translate-y-1/2 inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition cursor-pointer"
+              aria-label="Next slide"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </button>
+            <div class="max-w-[95vw] max-h-[90vh] flex flex-col items-center gap-3">
+              <img
+                :src="speaker.slideNarrative.slides[activeSlide].image"
+                :alt="speaker.slideNarrative.slides[activeSlide].title"
+                class="max-w-full max-h-[80vh] w-auto h-auto rounded-lg shadow-[0_20px_80px_rgba(0,0,0,0.5)]"
+              />
+              <p class="text-white/80 text-sm font-condensed font-normal uppercase tracking-[0.2em] text-center">
+                {{ String(activeSlide + 1).padStart(2, '0') }} &middot; <span v-html="speaker.slideNarrative.slides[activeSlide].title"></span>
+              </p>
+            </div>
+          </div>
+        </template>
+
         <!-- Watch card — hidden for upcoming Phase 2 talks (no committed date yet) -->
         <div
-          v-if="speaker.recording || !isPhase2"
+          v-else-if="speaker.recording || !isPhase2"
           id="watch"
           class="min-[860px]:bg-white min-[860px]:rounded-xl min-[860px]:shadow-[0_8px_40px_rgba(0,0,0,0.08)] w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-4 min-[860px]:px-8 md:px-12 py-8 min-[860px]:py-14"
         >
@@ -125,8 +247,8 @@
           </div>
         </div>
 
-        <!-- Transcript card -->
-        <template v-if="transcriptHtml">
+        <!-- Transcript card (suppressed when slide narrative is in use) -->
+        <template v-if="transcriptHtml && !speaker.slideNarrative">
           <div class="w-full h-4 bg-neutral-200/60 min-[860px]:hidden"></div>
           <div
             id="transcript"
@@ -176,6 +298,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { marked } from 'marked'
 import { findSpeakerBySlug, daysP2 } from '~/data/speakers'
 import { useRecordingsAvailability } from '~/composables/useRecordingsAvailability'
@@ -203,6 +326,23 @@ const backLabel = isPhase2 ? 'Back to the Phase Two programme' : 'Back to the Ph
 const watchHeading = speaker?.recording ? 'Watch the recording' : 'Coming up'
 
 const { availabilityWord } = useRecordingsAvailability()
+
+// Slide-narrative modal state
+const activeSlide = ref<number | null>(null)
+const slideCount = speaker?.slideNarrative?.slides.length ?? 0
+function openSlide(idx: number) { activeSlide.value = idx }
+function closeSlide() { activeSlide.value = null }
+function nextSlide() { if (activeSlide.value !== null && activeSlide.value < slideCount - 1) activeSlide.value++ }
+function prevSlide() { if (activeSlide.value !== null && activeSlide.value > 0) activeSlide.value-- }
+
+function onKey(e: KeyboardEvent) {
+  if (activeSlide.value === null) return
+  if (e.key === 'Escape') closeSlide()
+  else if (e.key === 'ArrowRight') nextSlide()
+  else if (e.key === 'ArrowLeft') prevSlide()
+}
+onMounted(() => { window.addEventListener('keydown', onKey) })
+onBeforeUnmount(() => { window.removeEventListener('keydown', onKey) })
 
 // Render the transcript markdown (if this speaker has one) to HTML.
 const transcriptHtml = (() => {

@@ -81,7 +81,7 @@
           <div class="flex flex-col items-center gap-3 text-center mt-2">
             <span class="text-2xl lg:text-3xl font-condensed font-bold text-trim-blue tracking-wide leading-none">10 June 2026</span>
             <span class="text-base font-condensed font-normal uppercase tracking-[0.3em] text-neutral-500 leading-none">to</span>
-            <span class="text-2xl lg:text-3xl font-condensed font-bold text-trim-teal tracking-wide leading-none">14 October 2026</span>
+            <span class="text-2xl lg:text-3xl font-condensed font-bold text-trim-teal tracking-wide leading-none">2 December 2026</span>
           </div>
         </template>
 

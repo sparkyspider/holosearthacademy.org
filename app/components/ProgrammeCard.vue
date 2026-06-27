@@ -14,7 +14,7 @@
       <p class="flex-1 text-lg lg:text-xl font-roboto font-normal text-neutral-600 leading-relaxed">
         The festival continues with
         <NuxtLink to="/" class="font-bold text-trim-purple underline underline-offset-4 decoration-trim-purple/40 hover:decoration-trim-purple transition">Phase Two: Liminal Space</NuxtLink>
-        &mdash; seven dialogues, 10 Jun&ndash;14 Oct 2026.
+        &mdash; nine dialogues, 10 Jun&ndash;2 Dec 2026.
       </p>
       <NuxtLink
         to="/"
