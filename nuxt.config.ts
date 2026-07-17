@@ -1,5 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from '@tailwindcss/vite'
+import { days, daysP2 } from './app/data/speakers'
+
+// Generate a /speaker/<slug> prerender route for every talk AND every panel
+// dialogue, straight from the festival data. Driving this off the data (rather
+// than a hand-maintained list) guarantees no speaker page is ever missed and
+// left to 404 on the static host when a new speaker is added.
+const speakerRoutes: string[] = [...new Set(
+  [...days, ...daysP2].flatMap(d => [
+    ...d.events.map(e => `/speaker/${e.slug}`),
+    ...(d.dialogueEvent?.slug ? [`/speaker/${d.dialogueEvent.slug}`] : []),
+  ]),
+)]
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -53,17 +65,7 @@ export default defineNuxtConfig({
         '/alliance',
         '/join',
         '/unsubscribe',
-        '/speaker/kobus-du-pisani',
-        '/speaker/jeff-blumberg',
-        '/speaker/marcus-link',
-        '/speaker/jude-currivan',
-        '/speaker/david-lorimer',
-        '/speaker/rhett-gayle',
-        '/speaker/claudius-van-wyk',
-        '/speaker/a-dialogue-with-all-presenters',
-        '/speaker/jeremy-lent',
-        '/speaker/berry-behr',
-        '/speaker/christopher-cooke',
+        ...speakerRoutes,
       ],
     },
   },
