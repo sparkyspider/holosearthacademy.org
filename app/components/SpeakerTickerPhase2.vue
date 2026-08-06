@@ -89,7 +89,7 @@ import { findSpeakerBySlug } from '~/data/speakers'
 const tickerSpeakers = [
   { name: 'Dr Glen Martin', image: '/images/speakers/glen-martin.jpg', line1: 'Emergent Holistic Governance', line2: '10 June 2026', slug: 'glen-martin' },
   { name: 'Dr Anthony Turton', image: '/images/speakers/anthony-turton.jpg', line1: 'Lessons From Aquatic Sciences', line2: '1 July 2026', slug: 'anthony-turton' },
-  { name: 'Klaus Mager', image: '/images/speakers/Klaus-mager.jpg', line1: 'Global Food Systems', line2: '22 July 2026', slug: 'Klaus-mager' },
+  { name: 'Klaus Mager', image: '/images/speakers/klaus-mager.jpg', line1: 'Global Food Systems', line2: '22 July 2026', slug: 'klaus-mager' },
   { name: 'Prof. George Rzevski', image: '/images/speakers/george-rzevski.jpg', line1: 'Technology and Meaning', line2: '12 August 2026', slug: 'george-rzevski' },
   { name: 'Richard Cox', image: '/images/speakers/richard-cox.jpg', line1: 'The Future is Calling Us', line2: '2 September 2026', slug: 'richard-cox' },
   { name: 'Llewellyn van Wyk', image: '/images/speakers/llewellyn-van-wyk.jpg', line1: 'Buildings, Cities, and Infrastructure', line2: '23 September 2026', slug: 'llewellyn-van-wyk' },

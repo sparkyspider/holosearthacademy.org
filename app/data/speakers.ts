@@ -540,6 +540,11 @@ export const daysP2: Day[] = [
         time: '19h00 CEST',
         image: '/images/speakers/anthony-turton.jpg',
         bio: 'Dr Anthony Turton is former Unit Fellow at the South African Council for Scientific and Industrial Research and official spokesperson for the CSIR on water. He serves as a research associate Centre for Environmental Management, University of Free State and is Deputy Governor of the World Water Council where he is also editor for Africa of the Water Policy, official.',
+        recording: {
+          youtubeId: 'iC6ILha9vGk',
+          pdfUrl: '/downloads/anthony-turton-the-unintended-consequences-of-newtons-reductionism.pdf',
+          hasTranscript: true,
+        },
       },
     ],
   },
@@ -558,14 +563,19 @@ export const daysP2: Day[] = [
     events: [
       {
         speaker: 'Klaus Mager',
-        slug: 'Klaus-mager',
+        slug: 'klaus-mager',
         title: 'Extraction to Regeneration',
         subtitle: 'Rethinking the Future of Food Systems as Living Networks',
         description:
           'Today\'s global food system delivers abundance, but at significant ecological and social cost -- from degraded soils and biodiversity loss to fragile supply chains and weakened connections between people and food. Regenerative approaches treat food as part of living systems, reconnecting agriculture with ecology, community, and innovation to support a more resilient future.',
         time: '19h00 CEST',
-        image: '/images/speakers/Klaus-mager.jpg',
+        image: '/images/speakers/klaus-mager.jpg',
         bio: 'Klaus Mager is an international food-systems leader spanning global food service, hospitality, wholesale, and supply-chain innovation. With practical understanding of food systems operating from farm to fork, he founded Food with Thought AI. He helps farmers, supply-chain partners, and food-system leaders co-design regenerative transitions to improve soil health, restore water cycles, support carbon outcomes, and strengthen livelihoods. For Klaus food and agriculture sit at the heart of climate resilience, public health, supply-chain security, and rural prosperity.',
+        recording: {
+          youtubeId: 'HYKdfcKGKWk',
+          pdfUrl: '/downloads/klaus-mager-extraction-to-regeneration.pdf',
+          hasTranscript: true,
+        },
       },
     ],
   },
