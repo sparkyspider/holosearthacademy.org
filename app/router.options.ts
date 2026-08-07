@@ -29,6 +29,11 @@ export default <RouterConfig>{
       }
     }
 
-    return { left: 0, top: 0 }
+    // Going to a different page: start at the top, and get there WITHOUT
+    // animating. `scroll-smooth` on <html> would otherwise glide the old page
+    // all the way up before the new one paints, so following "Watch now" from
+    // a card far down the programme looks like the page scrolling itself to
+    // the top rather than like opening a new page.
+    return { left: 0, top: 0, behavior: 'instant' }
   },
 }
