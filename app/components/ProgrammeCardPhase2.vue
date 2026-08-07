@@ -33,7 +33,8 @@
           <div
             v-for="event in day.events"
             :key="event.speaker"
-            :class="['group relative rounded-xl p-5 min-[860px]:p-8 transition-all duration-300 hover:shadow-lg cursor-pointer max-[859px]:mt-20 bg-white max-[859px]:shadow-[0_4px_20px_rgba(0,0,0,0.06)] min-[860px]:bg-bg-default min-[860px]:shadow-none']"
+            :id="`event-${event.slug}`"
+            :class="['group relative rounded-xl p-5 min-[860px]:p-8 transition-all duration-300 hover:shadow-lg cursor-pointer max-[859px]:mt-20 bg-white max-[859px]:shadow-[0_4px_20px_rgba(0,0,0,0.06)] min-[860px]:bg-bg-default min-[860px]:shadow-none scroll-mt-24 max-[859px]:scroll-mt-28']"
             @click="openSpeakerModal(event, day)"
           >
             <div class="flex flex-col min-[860px]:flex-row gap-0 min-[860px]:gap-8">

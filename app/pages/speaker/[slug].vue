@@ -321,7 +321,9 @@ const day = result?.day
 
 const isPhase2 = day ? daysP2.includes(day) : false
 const phaseLabel = isPhase2 ? 'Phase Two' : 'Phase One'
-const backHref = isPhase2 ? '/#programme' : '/phase-1#programme'
+// Return the visitor to the card they came from, not the top of the programme
+// (which would dump them on whichever speaker happens to be listed first).
+const backHref = isPhase2 ? `/#event-${slug}` : `/phase-1#event-${slug}`
 const backLabel = isPhase2 ? 'Back to the Phase Two programme' : 'Back to the Phase One programme'
 const watchHeading = speaker?.recording ? 'Watch the recording' : 'Coming up'
 
