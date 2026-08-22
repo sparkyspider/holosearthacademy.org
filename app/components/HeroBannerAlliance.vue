@@ -31,9 +31,11 @@
           <div class="h-[9px] my-4 w-full bg-white/50 rounded-full"></div>
 
           <div class="font-condensed font-normal text-white text-2xl uppercase w-full flex justify-between items-center">
-            <span>F</span><span>O</span><span>U</span><span>N</span><span>D</span><span>I</span><span>N</span><span>G</span>
+            <span>B</span><span>E</span><span>C</span><span>O</span><span>M</span><span>E</span>
             <span class="w-3"></span>
-            <span>M</span><span>E</span><span>M</span><span>B</span><span>E</span><span>R</span><span>S</span>
+            <span>A</span>
+            <span class="w-3"></span>
+            <span>M</span><span>E</span><span>M</span><span>B</span><span>E</span><span>R</span>
           </div>
         </div>
 
@@ -60,9 +62,11 @@
         <div class="h-[6px] my-3 w-full bg-white/50 rounded-full"></div>
 
         <div class="font-condensed font-normal text-white text-[0.857rem] uppercase w-full flex justify-between items-center">
-          <span>F</span><span>O</span><span>U</span><span>N</span><span>D</span><span>I</span><span>N</span><span>G</span>
+          <span>B</span><span>E</span><span>C</span><span>O</span><span>M</span><span>E</span>
           <span class="w-2"></span>
-          <span>M</span><span>E</span><span>M</span><span>B</span><span>E</span><span>R</span><span>S</span>
+          <span>A</span>
+          <span class="w-2"></span>
+          <span>M</span><span>E</span><span>M</span><span>B</span><span>E</span><span>R</span>
         </div>
 
       </div>
