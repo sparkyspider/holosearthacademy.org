@@ -14,7 +14,7 @@
         <div>
           <div class="flex items-center gap-4">
             <span class="text-2xl font-condensed font-bold text-neutral-600 group-hover:text-trim-purple transition uppercase tracking-wide">
-              Become a Founding Member
+              Become a Member
             </span>
             <Transition
               mode="out-in"
@@ -34,7 +34,7 @@
             </Transition>
           </div>
           <p class="text-lg font-roboto font-normal text-neutral-500 mt-1">
-            <span class="text-trim-purple underline font-bold">Click here</span> to continue this journey as a Founding Member
+            <span class="text-trim-purple underline font-bold">Click here</span> to continue this journey as a Member
           </p>
         </div>
       </button>
@@ -48,7 +48,7 @@
           Join the Alliance
         </span>
         <p class="text-lg font-roboto font-light text-neutral-500 leading-relaxed mt-4">
-          Founding members shape the early life of the Alliance. We will be in touch as the first
+          Members shape the early life of the Alliance. We will be in touch as the first
           <span class="font-bold text-trim-teal">dialogues</span>,
           <span class="font-bold text-trim-green">recordings</span>, and
           <span class="font-bold text-trim-blue">working groups</span> come online.

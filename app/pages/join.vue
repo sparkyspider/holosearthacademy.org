@@ -46,7 +46,7 @@ const config = useRuntimeConfig().public
 const siteUrl = config.siteUrl as string
 
 const title = 'Join the Holos Earth Alliance | Holos Earth Academy'
-const description = 'Become a founding member of the Holos Earth Alliance — a living continuation of the inquiry initiated by Jan Smuts.'
+const description = 'Become a member of the Holos Earth Alliance — a living continuation of the inquiry initiated by Jan Smuts.'
 
 useSeoMeta({
   title,

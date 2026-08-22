@@ -38,7 +38,7 @@
               <div class="flex-1 flex flex-col">
                 <div class="px-6 md:px-10 pt-10 pb-8">
                   <h2 class="text-3xl font-condensed font-bold uppercase tracking-wide text-trim-purple mb-1">
-                    Become a Founding Member
+                    Become a Member
                   </h2>
                   <p class="text-base font-roboto font-light text-neutral-500 mb-7 leading-relaxed">
                     Join the <span class="font-bold text-trim-purple">Holos Earth Alliance</span> and help shape its early life.
@@ -136,7 +136,7 @@
                                        'bg-trim-purple text-white hover:bg-trim-purple-dark',
                       ]"
                     >
-                      {{ isSubmitted ? 'Welcome to the Alliance ✓' : errorState ? 'Something went wrong' : isSubmitting ? 'Joining…' : 'Become a Founding Member' }}
+                      {{ isSubmitted ? 'Welcome to the Alliance ✓' : errorState ? 'Something went wrong' : isSubmitting ? 'Joining…' : 'Become a Member' }}
                     </button>
 
                   </form>
@@ -164,7 +164,7 @@
                 </div>
 
                 <p class="text-base font-roboto font-light text-neutral-600 leading-relaxed">
-                  As a Founding Member you join a <span class="font-bold text-trim-teal">growing field</span> of people
+                  As a Member you join a <span class="font-bold text-trim-teal">growing field</span> of people
                   exploring what holism means in this moment &mdash; for our planet, our institutions, and ourselves.
                 </p>
 

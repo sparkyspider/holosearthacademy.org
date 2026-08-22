@@ -11,7 +11,7 @@
         A <span class="font-bold text-trim-green">living continuation</span> of the inquiry &mdash;
         an evolving network of people exploring the future of
         <span class="font-bold text-trim-teal">holistic thought and practice</span>.
-        Become a <span class="font-bold text-trim-purple">founding member</span>.
+        Become a <span class="font-bold text-trim-purple">member</span>.
       </p>
     </div>
 

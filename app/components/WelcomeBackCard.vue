@@ -23,7 +23,7 @@
            share an identical 3-state flow keyed to the CURRENT phase:
               1. Not registered for current phase  → please register
               2. Registered, no sessions yet       → please choose sessions
-              3. Registered + sessions chosen      → consider Alliance founding membership
+              3. Registered + sessions chosen      → consider Alliance membership
            On the P1 page, an additional nudge line about Phase 2 registration
            is appended whenever the visitor isn't yet registered for P2. -->
 
@@ -32,7 +32,7 @@
         v-if="isAlliancePage && attendee?.isAllianceMember"
         class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 mt-2 leading-relaxed"
       >
-        You're a <span class="font-bold text-trim-purple">Founding Member</span> of the Alliance.
+        You're a <span class="font-bold text-trim-purple">Member</span> of the Alliance.
         We'll be in touch as the first dialogues and working groups come online.
       </p>
       <p
@@ -40,7 +40,7 @@
         class="text-lg lg:text-xl font-roboto font-normal text-neutral-500 mt-2 leading-relaxed"
       >
         Join the <span class="font-bold text-trim-purple">Holos Earth Alliance</span>
-        as a Founding Member and help shape what comes next.
+        as a Member and help shape what comes next.
       </p>
 
       <!-- Festival pages: 3-state per current phase -->
@@ -61,7 +61,7 @@
           You've selected your
           <span :class="['font-bold', currentPhase === 'P2' ? 'text-trim-purple' : 'text-trim-teal']">{{ currentPhaseShortLabel }}</span> sessions.
           Would you like to consider becoming a
-          <span class="font-bold text-trim-purple">founding member</span> of the Alliance?
+          <span class="font-bold text-trim-purple">member</span> of the Alliance?
         </p>
         <!-- State 2 — registered for current phase, no sessions yet -->
         <p
@@ -111,7 +111,7 @@
         @click="openModal()"
         class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-trim-purple text-white text-base lg:text-lg font-condensed font-bold uppercase tracking-wider hover:bg-trim-purple/90 transition cursor-pointer"
       >
-        Become a Founding Member
+        Become a Member
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
           <path d="M22 12 L14 5 L14 9 L2 9 L2 15 L14 15 L14 19 Z" />
         </svg>

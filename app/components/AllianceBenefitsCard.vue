@@ -2,11 +2,11 @@
   <div class="min-[860px]:bg-white min-[860px]:rounded-xl min-[860px]:shadow-[0_8px_40px_rgba(0,0,0,0.08)] w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-4 min-[860px]:px-8 md:px-12 py-8 min-[860px]:py-14">
 
     <h2 class="text-4xl lg:text-5xl font-condensed font-bold uppercase tracking-wide text-trim-purple text-left mb-4">
-      As a Founding Member&hellip;
+      As a Member&hellip;
     </h2>
 
     <p class="text-xl font-roboto font-normal text-neutral-600 leading-relaxed mb-10">
-      Your gift as a festival participant is an invitation to become a founding member of the Holos Earth Alliance.
+      Your gift as a festival participant is an invitation to become a member of the Holos Earth Alliance.
       As the Alliance grows, members will have access to:
     </p>
 
