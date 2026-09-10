@@ -74,6 +74,7 @@
                 <AddToCalendar
                   :title="talk || ''"
                   :speaker="speaker"
+                  :slug="slug"
                   :description="bio"
                   :theme="theme"
                   :date="eventDate"
@@ -116,6 +117,8 @@ const props = defineProps<{
   calendarBtnClass?: string
   speaker?: string
   theme?: string
+  /** Speaker page slug — the stable calendar identity for this talk. */
+  slug?: string
 }>()
 
 defineEmits<{

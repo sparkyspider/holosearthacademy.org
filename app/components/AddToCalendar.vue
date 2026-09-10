@@ -118,6 +118,13 @@ interface Props {
   date: string
   /** Time string like '19h00 CEST' or '10h00 CEST' */
   time: string
+  /**
+   * Speaker page slug (e.g. 'llewellyn-van-wyk'). This is the talk's stable
+   * identity: the .ics UID is derived from it, never from the date/time, so a
+   * rescheduled talk updates the existing calendar entry in place instead of
+   * creating a second one. Falls back to a slugified speaker name if omitted.
+   */
+  slug?: string
   location?: string
   /** Duration in minutes (default 90) */
   durationMinutes?: number
@@ -358,9 +365,27 @@ const yahooUrl = computed(() => {
   return `https://calendar.yahoo.com/?${params}`
 })
 
+/** Lowercase, non-alphanumerics collapsed to single hyphens, trimmed. */
+function slugify(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+}
+
+/**
+ * One stable identity per talk, based on the speaker and never on the
+ * date/time. Rescheduling a talk keeps the same UID, so calendar clients
+ * update the existing entry rather than adding a duplicate. The reminder
+ * emails send the identical string.
+ */
+const eventUid = computed(
+  () => `holos-${props.slug || slugify(props.speaker)}@holosearthacademy.org`
+)
+
 function generateIcs(): string {
   const { startH, startM, endH, endM } = parseLocalTime()
-  const uid = `${props.date}-${props.time.replace(/\s/g, '')}-holosearthacademy`
+  const uid = eventUid.value
   return [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
@@ -384,6 +409,7 @@ function generateIcs(): string {
     'END:VTIMEZONE',
     'BEGIN:VEVENT',
     `UID:${uid}`,
+    'SEQUENCE:0',
     `DTSTART;TZID=${TIMEZONE}:${formatLocal(props.date, startH, startM)}`,
     `DTEND;TZID=${TIMEZONE}:${formatLocal(props.date, endH, endM)}`,
     `SUMMARY:${calendarTitle.value}`,

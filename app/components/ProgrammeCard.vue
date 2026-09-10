@@ -195,6 +195,7 @@
       :calendar-btn-class="modalSpeaker.calendarBtnClass"
       :speaker="modalSpeaker.name"
       :theme="modalSpeaker.theme"
+      :slug="modalSpeaker.slug"
       @close="closeSpeakerModal"
     />
   </div>
@@ -219,6 +220,7 @@ const modalSpeaker = ref({
   eventDate: '',
   calendarBtnClass: '',
   theme: '',
+  slug: '',
 })
 
 
@@ -240,6 +242,7 @@ function openSpeakerModal(event: SpeakerEvent, day: Day) {
     eventDate: day.date,
     calendarBtnClass: day.calendarBtnClass,
     theme: day.theme,
+    slug: event.slug,
   }
   modalOpen.value = true
   window.history.replaceState({}, '', `/speaker/${event.slug}`)

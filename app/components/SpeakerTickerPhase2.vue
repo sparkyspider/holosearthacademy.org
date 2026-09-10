@@ -78,6 +78,7 @@
     :calendar-btn-class="modalSpeaker.calendarBtnClass"
     :speaker="modalSpeaker.name"
     :theme="modalSpeaker.theme"
+    :slug="modalSpeaker.slug"
     @close="closeSpeakerModal"
   />
 </template>
@@ -284,6 +285,7 @@ const modalSpeaker = ref({
   eventDate: '',
   calendarBtnClass: '',
   theme: '',
+  slug: '',
 })
 
 function onSpeakerTap(slug: string) {
@@ -303,6 +305,7 @@ function onSpeakerTap(slug: string) {
     eventDate: day.date,
     calendarBtnClass: day.calendarBtnClass,
     theme: day.theme,
+    slug: event.slug,
   }
   modalOpen.value = true
   pauseTimer()
