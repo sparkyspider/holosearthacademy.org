@@ -651,15 +651,15 @@ export const daysP2: Day[] = [
         subtitle: 'Moving from Isolation/Parts to Entanglement/Systems',
         description:
           'The built environment is under pressure from climate change, resource limits, social fragmentation, and rapid technological change, exposing the limits of fragmented approaches to design and urban development. It reframes buildings, cities, and infrastructure as living systems within ecological, cultural, and social contexts, enriching sustainability, circularity, and adaptive reuse.',
-        time: '19h00 CEST',
+        time: '20h00 CEST',
         image: '/images/speakers/llewellyn-van-wyk.jpg',
         bio: 'Llewellyn van Wyk works in architecture and related design/built environment fields, and engages deeply with architectural theory, urban systems, and design practice across multiple reflections. He is also engaged in a sustained exploration of holism as a scientific and philosophical tradition -- anchored by the centenary of Smuts\'s Holism and Evolution -- tracing the lineage through systems theory, cybernetics, complexity science, quantum non-separability, the noosphere, urban scaling laws, and architectural implications.',
       },
     ],
   },
   {
-    date: '2026-10-14',
-    label: 'Wednesday 14 October',
+    date: '2026-10-16',
+    label: 'Friday 16 October',
     theme: 'Ecocivilization',
     dotColor: 'bg-trim-green',
     ringColor: 'ring-trim-green',
@@ -677,7 +677,7 @@ export const daysP2: Day[] = [
         subtitle: 'Envisioning an Ecocivilization for a Regenerated Earth',
         description:
           'Authoritarianism is on the rise, inequality is pulling societies apart, and the natural systems we depend on are breaking down -- the results of a civilization based on exploitation, extraction, and separation. What would it take to transform our society into one that is truly holistic, setting the conditions for all beings to thrive on a regenerated Earth? Jeremy will explore the concept of an ecocivilization: why we need it, its underlying principles, and a glimpse of what it might look like in practice -- a coherent system-wide framework grounded in the fundamental principles of life, ecosystems, and human well-being.',
-        time: '20h00 CEST',
+        time: '18h00 CEST',
         image: '/images/speakers/jeremy-lent.png',
         bio: '<a href="https://www.jeremylent.com/" target="_blank" rel="noopener" class="font-bold text-trim-green underline underline-offset-4 decoration-trim-green/40 hover:decoration-trim-green transition">Jeremy Lent</a> is an author and speaker whose work investigates the underlying causes of our civilization\'s existential crisis, and explores pathways toward a life-affirming future. His new book, <a href="https://book.ecocivilization.net/" target="_blank" rel="noopener" class="font-bold text-trim-green underline underline-offset-4 decoration-trim-green/40 hover:decoration-trim-green transition">Ecocivilization: Making a World that Works for All</a> (May 2026, Melville House), lays out the potential for a fundamentally different world system -- an ecocivilization based on life-affirming principles rather than principles of extraction and exploitation. He is co-founder of the <a href="http://www.ecociv.org/" target="_blank" rel="noopener" class="font-bold text-trim-green underline underline-offset-4 decoration-trim-green/40 hover:decoration-trim-green transition">Ecocivilization Coalition</a> and founder of the <a href="https://deeptransformation.network/feed" target="_blank" rel="noopener" class="font-bold text-trim-green underline underline-offset-4 decoration-trim-green/40 hover:decoration-trim-green transition">Deep Transformation Network</a>. His previous two books were <a href="https://www.jeremylent.com/the-web-of-meaning.html" target="_blank" rel="noopener" class="font-bold text-trim-green underline underline-offset-4 decoration-trim-green/40 hover:decoration-trim-green transition">The Web of Meaning</a> and <a href="https://www.jeremylent.com/the-patterning-instinct.html" target="_blank" rel="noopener" class="font-bold text-trim-green underline underline-offset-4 decoration-trim-green/40 hover:decoration-trim-green transition">The Patterning Instinct</a>.',
       },
