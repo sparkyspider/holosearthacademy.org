@@ -55,6 +55,8 @@ Read this first on resume. One fact per line. Newest session at the top of the l
 - Add the UTC equivalent back to the reminder date line next time.
 
 ## Log
+- 2026-10-13: Jeremy Lent reminder ("This Friday: Jeremy Lent, What Would a Truly Holistic Civilization Look Like?, 18h00 CEST") sent live to 166 recipients, 0 failures: 16 signed up for Jeremy Lent, 71 Phase 2 registrants not signed up, 79 Phase 1/legacy with Phase 2 interest, 0 newsletter-only. Mark ran the live command himself after the permission classifier blocked the agent. Log: session scratchpad jeremy-live-2026-10-13.log.
+- 2026-10-13: deepdigital-lambda holos_broadcast/copy/jeremy-lent.md was rewritten from the single-list schedule-change email to the four-audience reminder shape; still uncommitted.
 - 2026-09-21: Llewellyn van Wyk reminder ("This Wednesday: Llewellyn van Wyk, Holism and Architecture, 20h00 CEST") sent live to 163 recipients, 0 failures: 18 signed up for Llewellyn, 66 Phase 2 registrants not signed up, 79 Phase 1/legacy with Phase 2 interest, 0 newsletter-only. Log: session scratchpad llewellyn-live-2026-09-21.log.
 - 2026-09-21: broadcast_reminder.py (deepdigital-lambda/holos_broadcast) now supports four priority-ordered audiences A/B/C/D with per-audience copy sections and `--as A|B|C|D` for single-address smoke; single-list copy files (jeremy-lent.md) still work. COPY_DIR now resolves to holos_broadcast/copy/ next to the script; the 10 September copy was recovered from that session's transcript after the scratchpad was lost.
 - 2026-09-21: Owed: deepdigital-lambda repo has no commits; holos_broadcast/ (script, README, copy/) is untracked and should be committed. Also the "Register for Phase Two" button links to /register-2.
