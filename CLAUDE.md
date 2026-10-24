@@ -10,6 +10,7 @@ This is the Nuxt 4 frontend for **holosearthacademy.org**, deployed via AWS Ampl
 | Anything touching the registration form, Lambda, RDS schema, or v1/v2 contract | `holos-earth-academy-backend` |
 | Any broadcast email — urgent "starting now" OR calmer "next week's session" reminders with calendar invite | `holos-broadcast-lambda` |
 | AWS CLI (Route 53, SES, Lambda, S3) | `deepdigital-aws-access` |
+| Completing a talk page (transcript, PDF, video) | `holos-talk-page` |
 
 ## Email infrastructure (current state — 2026-05-22)
 
