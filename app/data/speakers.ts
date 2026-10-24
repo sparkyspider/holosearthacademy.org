@@ -602,6 +602,11 @@ export const daysP2: Day[] = [
         time: '19h00 CEST',
         image: '/images/speakers/george-rzevski.jpg',
         bio: 'Professor Emeritus George Rzevski of Open University leads advanced research in Complexity Science and Artificial Intelligence. His specialties include managing complexity, including design of complex adaptive organisations and systems. It encompasses knowledge discovery, ontology, AI agents; Digital twins; Semantic Search; Real-Time Adaptive Scheduling.',
+        recording: {
+          youtubeId: 'kp4TMzQ7R0E',
+          pdfUrl: '/downloads/george-rzevski-holism-complexity-science-and-ai.pdf',
+          hasTranscript: true,
+        },
       },
     ],
   },
