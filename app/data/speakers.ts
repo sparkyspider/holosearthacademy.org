@@ -633,6 +633,11 @@ export const daysP2: Day[] = [
         time: '19h00 CEST',
         image: '/images/speakers/richard-cox.jpg',
         bio: 'As a teacher and author, in our age of scientific materialism, Richard Cox finds Smuts\' vision and insights indicate a clear direction to lead us back to spiritual dimensions with complete rational clarity. Richard\'s recent book \'Of Signs and Signatures: Reading Nature\'s Script with Goethe and Smuts\' is principally an overview of the various holistic insights that we find in mathematics, optics, botany and zoology.',
+        recording: {
+          youtubeId: 'NGf5zmmnxCk',
+          pdfUrl: '/downloads/richard-cox-the-beckoning-future-and-the-holistic-power-of-polarities.pdf',
+          hasTranscript: true,
+        },
       },
     ],
   },
