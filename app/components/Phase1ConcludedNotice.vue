@@ -55,7 +55,7 @@
             to="/"
             class="font-bold text-trim-purple underline underline-offset-4 decoration-trim-purple/40 hover:decoration-trim-purple transition"
           >Phase Two: Liminal Space</NuxtLink>
-          &mdash; nine new dialogues, 10 June to 2 December 2026. Registration is open now.
+          &mdash; ten new dialogues, 10 June to 23 December 2026. Registration is open now.
         </p>
       </div>
     </div>

@@ -745,6 +745,32 @@ export const daysP2: Day[] = [
       },
     ],
   },
+  {
+    date: '2026-12-23',
+    label: 'Wednesday 23 December',
+    theme: 'A Biography of Matter',
+    dotColor: 'bg-trim-teal',
+    ringColor: 'ring-trim-teal',
+    badgeColor: 'bg-trim-teal',
+    titleColor: 'text-trim-teal',
+    themeColor: 'text-trim-teal',
+    calendarBtnClass: 'bg-trim-teal/10 text-trim-teal',
+    borderColor: 'border-trim-teal',
+    subtitleColor: 'text-trim-teal-dark',
+    events: [
+      {
+        speaker: 'Dr Philip Mirkin',
+        slug: 'philip-mirkin',
+        title: 'Holism and its Expression in the Arts',
+        subtitle: 'Creative Expression as the Sensory Translator of Evolutionary Wholeness',
+        description:
+          'Dr Philip Joshua Mirkin of the University of Pretoria delivers the closing address of this historic milestone, bridging physical science, deep philosophy and artistic beauty. Coinciding with the completion of Advent, he grounds Jan Smuts\' pioneering theory of "Holism evolution" in a visual, poetic and musical narrative. How do cold chemical formulas and atomic weights speak to the human soul? Dr Mirkin shows the Periodic Table of Elements as a biography of matter itself: the heavier the atom becomes, the more it radiates outward. He traces this law from raw physics through biological evolution into human consciousness, showing how poetry and music serve as sensory translators of universal wholeness, and concluding the centennial celebrations with Beauty, Truth and Goodness.',
+        time: '19h00 CET',
+        image: '/images/speakers/philip-mirkin.jpg',
+        bio: 'Dr Philip Mirkin is a lecturer in the Department of Science, Mathematics and Technology Education at the University of Pretoria, where he earned a B.Sc., an M.Ed. and a PhD in Curriculum Design. He has spent over 30 years in education as a science and mathematics teacher, Head of Department and school principal, including at The Waldorf School and Raphael House Rudolf Steiner School. His focus is curriculum design, chemistry education and alternative approaches to teaching, such as holism-infused poetry.',
+      },
+    ],
+  },
 ]
 
 /** Flat list of all speaker slugs — used for pre-rendering routes */
