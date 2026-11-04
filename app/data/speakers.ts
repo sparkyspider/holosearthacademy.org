@@ -664,6 +664,11 @@ export const daysP2: Day[] = [
         time: '20h00 CEST',
         image: '/images/speakers/llewellyn-van-wyk.jpg',
         bio: 'Llewellyn van Wyk works in architecture and related design/built environment fields, and engages deeply with architectural theory, urban systems, and design practice across multiple reflections. He is also engaged in a sustained exploration of holism as a scientific and philosophical tradition -- anchored by the centenary of Smuts\'s Holism and Evolution -- tracing the lineage through systems theory, cybernetics, complexity science, quantum non-separability, the noosphere, urban scaling laws, and architectural implications.',
+        recording: {
+          youtubeId: 'eBrq6lLwfAY',
+          pdfUrl: '/downloads/llewellyn-van-wyk-holism-and-architecture.pdf',
+          hasTranscript: true,
+        },
       },
     ],
   },
