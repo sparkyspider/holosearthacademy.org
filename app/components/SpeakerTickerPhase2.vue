@@ -5,7 +5,7 @@
       <div v-for="(_, setIndex) in 2" :key="setIndex" class="flex shrink-0">
         <div
           v-for="speaker in tickerSpeakers"
-          :key="`${setIndex}-${speaker.name}`"
+          :key="`${setIndex}-${speaker.slug}`"
           class="flex items-center gap-4 px-8 py-5 w-[23rem] shrink-0 cursor-pointer"
           @click="onSpeakerTap(speaker.slug)"
         >
@@ -96,6 +96,7 @@ const tickerSpeakers = [
   { name: 'Llewellyn van Wyk', image: '/images/speakers/llewellyn-van-wyk.jpg', line1: 'Buildings, Cities, and Infrastructure', line2: '23 September 2026', slug: 'llewellyn-van-wyk' },
   { name: 'Jeremy Lent', image: '/images/speakers/jeremy-lent.png', line1: 'Ecocivilization and Holism', line2: '16 October 2026', slug: 'jeremy-lent' },
   { name: 'Rev. Berry Behr', image: '/images/speakers/berry-behr.jpg', line1: 'Retrieving Indigenous Wisdom', line2: '4 November 2026', slug: 'berry-behr' },
+  { name: 'Rev. Berry Behr', image: '/images/speakers/berry-behr.jpg', line1: 'Retrieving Indigenous Wisdom', line2: '11 November 2026', slug: 'berry-behr-11-november' },
   { name: 'Christopher Cooke', image: '/images/speakers/christopher-cooke.jpg', line1: 'Humanity\'s Potential Becoming', line2: '2 December 2026', slug: 'christopher-cooke' },
   { name: 'Dr Philip Mirkin', image: '/images/speakers/philip-mirkin.jpg', line1: 'A Biography of Matter', line2: '23 December 2026', slug: 'philip-mirkin' },
 ]

@@ -71,7 +71,7 @@
                   {{ event.subtitle }}
                 </p>
 
-                <p class="text-lg font-roboto font-light text-neutral-500 leading-relaxed">
+                <p class="text-lg font-roboto font-light text-neutral-500 leading-relaxed whitespace-pre-line">
                   {{ event.description }}
                 </p>
 
