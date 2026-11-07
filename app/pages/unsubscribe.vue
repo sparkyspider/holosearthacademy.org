@@ -79,6 +79,6 @@ useSeoMeta({
 })
 
 useHead({
-  link: [{ rel: 'canonical', href: `${siteUrl}/unsubscribe` }],
+  link: [{ rel: 'canonical', href: `${siteUrl}/unsubscribe/` }],
 })
 </script>

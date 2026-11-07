@@ -57,7 +57,7 @@ useSeoMeta({
   ogImageWidth: 1200,
   ogImageHeight: 630,
   ogType: 'website',
-  ogUrl: `${siteUrl}/join`,
+  ogUrl: `${siteUrl}/join/`,
   ogSiteName: 'Holos Earth Academy',
   twitterCard: 'summary_large_image',
   twitterTitle: title,
@@ -66,7 +66,7 @@ useSeoMeta({
 })
 
 useHead({
-  link: [{ rel: 'canonical', href: `${siteUrl}/join` }],
+  link: [{ rel: 'canonical', href: `${siteUrl}/join/` }],
 })
 
 onMounted(() => {

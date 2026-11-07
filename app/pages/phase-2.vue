@@ -12,7 +12,7 @@ const siteUrl = config.siteUrl as string
 
 useHead({
   meta: [{ 'http-equiv': 'refresh', content: '0; url=/' }],
-  link: [{ rel: 'canonical', href: siteUrl }],
+  link: [{ rel: 'canonical', href: `${siteUrl}/` }],
 })
 
 useSeoMeta({
