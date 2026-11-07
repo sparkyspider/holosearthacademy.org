@@ -69,7 +69,13 @@
               <p class="text-lg font-condensed font-bold uppercase tracking-wider text-neutral-500">
                 Speaking: <span :class="titleColor">{{ speakingDate }}</span>, <span :class="titleColor">{{ speakingTime }}</span>
               </p>
-              <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+              <div v-if="isPast(eventDate)" class="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+                <span class="inline-flex items-center gap-1.5 text-xs font-condensed font-bold uppercase tracking-[0.25em] text-neutral-400">
+                  <span class="w-1.5 h-1.5 rounded-full bg-neutral-400"></span>
+                  Session concluded<template v-if="rerunDate">&nbsp;&middot;&nbsp;Re-run {{ formatDayMonth(rerunDate) }}</template>
+                </span>
+              </div>
+              <div v-else-if="ready" class="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
                 <span class="text-sm font-condensed font-bold uppercase tracking-wider text-neutral-500">Participate:</span>
                 <AddToCalendar
                   :title="talk || ''"
@@ -100,7 +106,8 @@
 </template>
 
 <script setup lang="ts">
-import { watch } from 'vue'
+import { watch, computed } from 'vue'
+import { findSpeakerBySlug } from '~/data/speakers'
 
 const props = defineProps<{
   open: boolean
@@ -120,6 +127,9 @@ const props = defineProps<{
   /** Speaker page slug — the stable calendar identity for this talk. */
   slug?: string
 }>()
+
+const { ready, isPast, formatDayMonth } = useFestivalToday()
+const rerunDate = computed(() => (props.slug ? findSpeakerBySlug(props.slug)?.event.rerunDate : undefined))
 
 defineEmits<{
   close: []

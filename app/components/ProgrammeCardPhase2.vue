@@ -64,7 +64,7 @@
                   </span>
                   <span
                     v-if="event.rerun"
-                    :class="['inline-flex self-start min-[860px]:self-center items-center px-3 py-1 rounded-full text-base font-condensed font-bold uppercase tracking-wider text-white whitespace-nowrap', day.badgeColor]"
+                    class="inline-flex self-start min-[860px]:self-center items-center px-3 py-1 rounded-full text-base font-condensed font-bold uppercase tracking-wider text-white whitespace-nowrap bg-trim-maroon"
                   >
                     Re-run
                   </span>
@@ -112,8 +112,8 @@
                       <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 group-hover/cta:animate-nudge-right"><path d="M22 12 L14 5 L14 9 L2 9 L2 15 L14 15 L14 19 Z" /></svg>
                     </NuxtLink>
                   </template>
-                  <!-- Upcoming session: add to calendar / email details -->
-                  <template v-else>
+                  <!-- Upcoming session: add to calendar / email details (neutral until the browser knows today) -->
+                  <template v-else-if="ready">
                     <span class="text-sm font-condensed font-bold uppercase tracking-wider text-neutral-500">Participate:</span>
                     <AddToCalendar
                       :title="event.title"
@@ -174,12 +174,7 @@ import type { SpeakerEvent, Day } from '~/data/speakers'
 const { openModal } = useRegistrationModal()
 const { track } = useAnalytics()
 
-// "Today" in Europe/Berlin (festival time zone) — matches useRecordingsAvailability.
-const todayISO = new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Berlin' })
-function isPast(date: string) { return date < todayISO }
-function formatDayMonth(iso: string) {
-  return new Date(iso + 'T12:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', timeZone: 'UTC' })
-}
+const { ready, isPast, formatDayMonth } = useFestivalToday()
 // The repeat event is the one on rerunDate that has the same speaker.
 function rerunSlug(event: SpeakerEvent) {
   const d = daysP2.find(x => x.date === event.rerunDate)
