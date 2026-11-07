@@ -5,7 +5,7 @@
  */
 export interface SpeakerRecording {
   /** YouTube video ID for the talk recording (the bit after `watch?v=`) */
-  youtubeId: string
+  youtubeId?: string
   /** Public path to the downloadable transcript PDF, under /public */
   pdfUrl: string
   /**
@@ -699,6 +699,11 @@ export const daysP2: Day[] = [
         time: '18h00 CEST',
         image: '/images/speakers/jeremy-lent.png',
         bio: '<a href="https://www.jeremylent.com/" target="_blank" rel="noopener" class="font-bold text-trim-green underline underline-offset-4 decoration-trim-green/40 hover:decoration-trim-green transition">Jeremy Lent</a> is an author and speaker whose work investigates the underlying causes of our civilization\'s existential crisis, and explores pathways toward a life-affirming future. His new book, <a href="https://book.ecocivilization.net/" target="_blank" rel="noopener" class="font-bold text-trim-green underline underline-offset-4 decoration-trim-green/40 hover:decoration-trim-green transition">Ecocivilization: Making a World that Works for All</a> (May 2026, Melville House), lays out the potential for a fundamentally different world system -- an ecocivilization based on life-affirming principles rather than principles of extraction and exploitation. He is co-founder of the <a href="http://www.ecociv.org/" target="_blank" rel="noopener" class="font-bold text-trim-green underline underline-offset-4 decoration-trim-green/40 hover:decoration-trim-green transition">Ecocivilization Coalition</a> and founder of the <a href="https://deeptransformation.network/feed" target="_blank" rel="noopener" class="font-bold text-trim-green underline underline-offset-4 decoration-trim-green/40 hover:decoration-trim-green transition">Deep Transformation Network</a>. His previous two books were <a href="https://www.jeremylent.com/the-web-of-meaning.html" target="_blank" rel="noopener" class="font-bold text-trim-green underline underline-offset-4 decoration-trim-green/40 hover:decoration-trim-green transition">The Web of Meaning</a> and <a href="https://www.jeremylent.com/the-patterning-instinct.html" target="_blank" rel="noopener" class="font-bold text-trim-green underline underline-offset-4 decoration-trim-green/40 hover:decoration-trim-green transition">The Patterning Instinct</a>.',
+        // TODO: add youtubeId once the recording is on the Holos YouTube channel (not found 2026-11-07).
+        recording: {
+          pdfUrl: '/downloads/jeremy-lent-what-would-a-truly-holistic-civilization-look-like.pdf',
+          hasTranscript: true,
+        },
       },
     ],
   },

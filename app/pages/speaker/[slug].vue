@@ -189,7 +189,7 @@
 
           <template v-if="speaker.recording">
             <!-- Responsive 16:9 YouTube embed -->
-            <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-black shadow-[0_8px_40px_rgba(0,0,0,0.15)]">
+            <div v-if="speaker.recording.youtubeId" class="relative w-full aspect-video rounded-xl overflow-hidden bg-black shadow-[0_8px_40px_rgba(0,0,0,0.15)]">
               <iframe
                 class="absolute inset-0 w-full h-full"
                 :src="`https://www.youtube-nocookie.com/embed/${speaker.recording.youtubeId}?rel=0`"
@@ -398,7 +398,7 @@ if (speaker && day) {
     image: ogImage,
     url: pageUrl,
   })
-  if (speaker.recording) {
+  if (speaker.recording?.youtubeId) {
     jsonLd.push({
       '@context': 'https://schema.org',
       '@type': 'VideoObject',
