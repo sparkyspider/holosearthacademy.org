@@ -1,17 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from '@tailwindcss/vite'
-import { days, daysP2 } from './app/data/speakers'
+import { speakerRoutes } from './app/data/seo'
 
-// Generate a /speaker/<slug> prerender route for every talk AND every panel
-// dialogue, straight from the festival data. Driving this off the data (rather
-// than a hand-maintained list) guarantees no speaker page is ever missed and
-// left to 404 on the static host when a new speaker is added.
-const speakerRoutes: string[] = [...new Set(
-  [...days, ...daysP2].flatMap(d => [
-    ...d.events.map(e => `/speaker/${e.slug}`),
-    ...(d.dialogueEvent?.slug ? [`/speaker/${d.dialogueEvent.slug}`] : []),
-  ]),
-)]
+// Speaker prerender routes come from the festival data (app/data/seo.ts), so no
+// talk page is ever missed and left to 404 on the static host.
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -65,6 +57,8 @@ export default defineNuxtConfig({
         '/alliance',
         '/join',
         '/unsubscribe',
+        '/sitemap.xml',
+        '/llms.txt',
         ...speakerRoutes,
       ],
     },
