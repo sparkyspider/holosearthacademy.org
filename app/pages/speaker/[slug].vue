@@ -301,6 +301,7 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { marked } from 'marked'
 import { findSpeakerBySlug, daysP2 } from '~/data/speakers'
+import { speakerDescription, eventStartIso, eventEndIso } from '~/data/seo'
 import { useRecordingsAvailability } from '~/composables/useRecordingsAvailability'
 
 // Raw transcript markdown files, keyed by path — bundled at build time.
@@ -358,9 +359,7 @@ const pageTitle = speaker
   ? `${speaker.speaker} — ${speaker.title} | Holos Earth Academy`
   : 'Speaker | Holos Earth Academy'
 
-const pageDescription = speaker
-  ? `Watch ${speaker.speaker}'s talk "${speaker.title}" and read the full transcript. Recorded ${day?.label} at the Centenary Festival of Holism & Evolution.`
-  : 'Speaker at the Centenary Festival of Holism & Evolution, 20–24 May 2026.'
+const pageDescription = speakerDescription(speaker, day?.label)
 
 const ogImage = speaker
   ? `${siteUrl}${speaker.image}`
@@ -373,7 +372,7 @@ useSeoMeta({
   ogDescription: pageDescription,
   ogImage,
   ogType: 'profile',
-  ogUrl: `${siteUrl}/speaker/${slug}`,
+  ogUrl: `${siteUrl}/speaker/${slug}/`,
   ogSiteName: 'Holos Earth Academy',
   twitterCard: 'summary_large_image',
   twitterTitle: pageTitle,
@@ -381,8 +380,41 @@ useSeoMeta({
   twitterImage: ogImage,
 })
 
+const pageUrl = `${siteUrl}/speaker/${slug}/`
+const jsonLd: Record<string, unknown>[] = []
+if (speaker && day) {
+  jsonLd.push({
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: speaker.title,
+    description: speaker.description.replace(/\s+/g, ' ').trim(),
+    startDate: eventStartIso(day.date, speaker.time) ?? day.date,
+    endDate: eventEndIso(day.date, speaker.time, speaker.durationMinutes ?? 90) ?? undefined,
+    eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
+    eventStatus: 'https://schema.org/EventScheduled',
+    location: { '@type': 'VirtualLocation', url: siteUrl },
+    organizer: { '@type': 'Organization', name: 'Holos Earth Academy', url: `${siteUrl}/` },
+    performer: { '@type': 'Person', name: speaker.speaker },
+    image: ogImage,
+    url: pageUrl,
+  })
+  if (speaker.recording) {
+    jsonLd.push({
+      '@context': 'https://schema.org',
+      '@type': 'VideoObject',
+      name: `${speaker.speaker}: ${speaker.title}`,
+      description: speaker.description.replace(/\s+/g, ' ').trim(),
+      thumbnailUrl: [`https://img.youtube.com/vi/${speaker.recording.youtubeId}/hqdefault.jpg`],
+      uploadDate: day.date,
+      contentUrl: `https://www.youtube.com/watch?v=${speaker.recording.youtubeId}`,
+      embedUrl: `https://www.youtube-nocookie.com/embed/${speaker.recording.youtubeId}`,
+    })
+  }
+}
+
 useHead({
-  link: [{ rel: 'canonical', href: `${siteUrl}/speaker/${slug}` }],
+  link: [{ rel: 'canonical', href: pageUrl }],
+  script: jsonLd.map(o => ({ type: 'application/ld+json', innerHTML: JSON.stringify(o) })),
 })
 </script>
 

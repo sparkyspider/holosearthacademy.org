@@ -87,7 +87,7 @@ useSeoMeta({
   ogImageWidth: 1200,
   ogImageHeight: 630,
   ogType: 'website',
-  ogUrl: siteUrl,
+  ogUrl: `${siteUrl}/`,
   ogSiteName: 'Holos Earth Academy',
   twitterCard: 'summary_large_image',
   twitterTitle: title,
@@ -96,6 +96,28 @@ useSeoMeta({
 })
 
 useHead({
-  link: [{ rel: 'canonical', href: siteUrl }],
+  link: [{ rel: 'canonical', href: `${siteUrl}/` }],
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': `${siteUrl}/#organization`,
+          name: 'Holos Earth Academy',
+          url: `${siteUrl}/`,
+          logo: `${siteUrl}/images/holos-logo.png`,
+        },
+        {
+          '@type': 'WebSite',
+          '@id': `${siteUrl}/#website`,
+          name: 'Holos Earth Academy',
+          url: `${siteUrl}/`,
+          publisher: { '@id': `${siteUrl}/#organization` },
+        },
+      ],
+    }),
+  }],
 })
 </script>
