@@ -58,6 +58,10 @@ export interface SpeakerEvent {
   videoUnavailable?: boolean
   /** Slide-by-slide narrative — renders instead of recording + transcript */
   slideNarrative?: SlideNarrative
+  /** ISO date of a repeat of this talk; set on the ORIGINAL event */
+  rerunDate?: string
+  /** True on the REPEAT event, which shows a RE-RUN pill */
+  rerun?: boolean
 }
 
 export interface DialogueEvent {
@@ -714,6 +718,7 @@ export const daysP2: Day[] = [
       {
         speaker: 'Rev. Berry Behr',
         slug: 'berry-behr',
+        rerunDate: '2026-11-11',
         title: 'Signposts to Holism in African Traditional Practice',
         subtitle: 'Insights into co-creating an interrelated future',
         description:
@@ -740,6 +745,7 @@ export const daysP2: Day[] = [
       {
         speaker: 'Rev. Berry Behr',
         slug: 'berry-behr-11-november',
+        rerun: true,
         title: 'Signposts to Holism in African Traditional Practice',
         subtitle: 'Insights into co-creating an interrelated future',
         description:

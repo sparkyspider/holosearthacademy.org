@@ -62,6 +62,12 @@
                   <span :class="['inline-flex self-start min-[860px]:self-center items-center px-3 py-1 rounded-full text-base font-condensed font-bold uppercase tracking-wider text-white whitespace-nowrap', day.badgeColor]">
                     {{ event.time }}
                   </span>
+                  <span
+                    v-if="event.rerun"
+                    :class="['inline-flex self-start min-[860px]:self-center items-center px-3 py-1 rounded-full text-base font-condensed font-bold uppercase tracking-wider text-white whitespace-nowrap', day.badgeColor]"
+                  >
+                    Re-run
+                  </span>
                 </div>
 
                 <h4 :class="['text-xl lg:text-2xl font-roboto font-bold mb-2', day.titleColor]">
@@ -80,7 +86,7 @@
                   <template v-if="isPast(day.date)">
                     <span class="inline-flex items-center gap-1.5 text-xs font-condensed font-bold uppercase tracking-[0.25em] text-neutral-400">
                       <span class="w-1.5 h-1.5 rounded-full bg-neutral-400"></span>
-                      Session concluded
+                      Session concluded<template v-if="event.rerunDate">&nbsp;&middot;&nbsp;<a :href="`#event-${rerunSlug(event)}`" class="underline underline-offset-4 hover:text-neutral-600 transition">Re-run {{ formatDayMonth(event.rerunDate) }}</a></template>
                     </span>
                     <!-- With slide narrative: explore the slides -->
                     <NuxtLink
@@ -171,6 +177,14 @@ const { track } = useAnalytics()
 // "Today" in Europe/Berlin (festival time zone) — matches useRecordingsAvailability.
 const todayISO = new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Berlin' })
 function isPast(date: string) { return date < todayISO }
+function formatDayMonth(iso: string) {
+  return new Date(iso + 'T12:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', timeZone: 'UTC' })
+}
+// The repeat event is the one on rerunDate that has the same speaker.
+function rerunSlug(event: SpeakerEvent) {
+  const d = daysP2.find(x => x.date === event.rerunDate)
+  return d?.events.find(e => e.speaker === event.speaker)?.slug ?? event.slug
+}
 
 function handleRegisterClick() {
   track('registration_modal_open', { source: 'programme' })
