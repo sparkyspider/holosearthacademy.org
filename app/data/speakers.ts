@@ -46,6 +46,8 @@ export interface SpeakerEvent {
   slug: string
   title: string
   subtitle?: string
+  /** Optional plain-words headline shown ahead of the official title */
+  hook?: string
   description: string
   time: string
   image: string
@@ -779,8 +781,9 @@ export const daysP2: Day[] = [
         slug: 'christopher-cooke',
         title: 'The Holistic Personological Pathway of Humankind in Cosmos – an Omnological Inquiry',
         subtitle: 'Exploring Smuts\' "great saving unities"',
+        hook: 'Where does humanity go from here?',
         description:
-          '"Omnology" endeavours to integrate all scientific and artistic disciplines to find universal patterns across all human knowledge. Christopher Cooke postulates that over the next 150 years humanity is entering a phase of "rolling back the dome to witness a new sky". Drawing upon a lifetime of inquiry into human nature, he will explore the metaphors, meaning structures, developmental pathways, patterns and codes that shape the cognition and awareness of each human being. This enquiry will investigate humanity\'s transition beyond conventional and post-conventional existence through an inexorable context and meaning reframing -- the evolution and emergence of what some describe as the Genuine Human.',
+          'Is humanity heading for a bleak future? Or can we still grow into something better? Christopher Cooke asks whether there is another choice. He has spent a lifetime studying human nature. He believes the next 150 years could change how we see ourselves, like rolling back a dome to see a new sky. He looks for the patterns that connect science, art and everyday life. Then he asks what they say about who we may become. Some call that next step the Genuine Human.\n\nThe talk is built on the thinking of Jan Smuts. Smuts believed the study of the human personality, which he called Personology, should become a core focus of future science. Christopher explores how we might move beyond conventional ways of living and thinking, towards a fuller sense of what it means to be human. It is a hopeful, searching inquiry.',
         time: '19h00 CET',
         image: '/images/speakers/christopher-cooke.jpg',
         bio: 'Christopher Cooke works with individuals and systems at moments of transition, focused on helping people re-orient to deeper patterns of coherence, allowing meaningful change to emerge without force, performance, or premature solutions. Drawing on long experience across inner development, land-based systems, and organisational life, his work is grounded in respect for life as a living, unfolding whole -- working in service of a viable planet and a viable species where humanity fully and consciously engages with the deeper purpose of life on Earth.',

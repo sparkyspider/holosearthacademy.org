@@ -70,6 +70,9 @@
                   </span>
                 </div>
 
+                <p v-if="event.hook" class="text-2xl lg:text-3xl font-condensed font-bold uppercase tracking-wide leading-snug text-neutral-700 mb-2">
+                  {{ event.hook }}
+                </p>
                 <h4 :class="['text-xl lg:text-2xl font-roboto font-bold mb-2', day.titleColor]">
                   {{ event.title }}
                 </h4>
