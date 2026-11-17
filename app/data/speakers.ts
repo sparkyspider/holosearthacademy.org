@@ -781,7 +781,7 @@ export const daysP2: Day[] = [
         subtitle: 'Exploring Smuts\' "great saving unities"',
         description:
           '"Omnology" endeavours to integrate all scientific and artistic disciplines to find universal patterns across all human knowledge. Christopher Cooke postulates that over the next 150 years humanity is entering a phase of "rolling back the dome to witness a new sky". Drawing upon a lifetime of inquiry into human nature, he will explore the metaphors, meaning structures, developmental pathways, patterns and codes that shape the cognition and awareness of each human being. This enquiry will investigate humanity\'s transition beyond conventional and post-conventional existence through an inexorable context and meaning reframing -- the evolution and emergence of what some describe as the Genuine Human.',
-        time: '19h00 CEST',
+        time: '19h00 CET',
         image: '/images/speakers/christopher-cooke.jpg',
         bio: 'Christopher Cooke works with individuals and systems at moments of transition, focused on helping people re-orient to deeper patterns of coherence, allowing meaningful change to emerge without force, performance, or premature solutions. Drawing on long experience across inner development, land-based systems, and organisational life, his work is grounded in respect for life as a living, unfolding whole -- working in service of a viable planet and a viable species where humanity fully and consciously engages with the deeper purpose of life on Earth.',
       },
