@@ -32,13 +32,13 @@
             <p class="text-xs font-condensed font-normal uppercase tracking-[0.35em] text-neutral-400">
               Centenary Festival&nbsp;·&nbsp;{{ phaseLabel }}&nbsp;·&nbsp;{{ day?.label }}
             </p>
-            <p v-if="speaker.hook" class="text-2xl lg:text-3xl font-condensed font-bold uppercase tracking-wide leading-snug text-neutral-700 mt-2">
-              {{ speaker.hook }}
-            </p>
             <h1 class="text-3xl min-[860px]:text-4xl lg:text-5xl font-condensed font-bold uppercase tracking-wide text-trim-purple leading-[1.05] mt-2">
-              {{ speaker.title }}
+              {{ speaker.hook || speaker.title }}
             </h1>
-            <p v-if="speaker.subtitle" class="text-lg lg:text-xl font-condensed font-normal italic tracking-wide text-neutral-500 mt-2">
+            <p v-if="speaker.hook" class="text-lg lg:text-xl font-condensed font-normal italic tracking-wide text-neutral-500 mt-2">
+              {{ speaker.title }}<template v-if="speaker.subtitle"><br />{{ speaker.subtitle }}</template>
+            </p>
+            <p v-else-if="speaker.subtitle" class="text-lg lg:text-xl font-condensed font-normal italic tracking-wide text-neutral-500 mt-2">
               {{ speaker.subtitle }}
             </p>
             <p class="text-xl font-condensed font-bold uppercase tracking-wide text-neutral-700 mt-4">

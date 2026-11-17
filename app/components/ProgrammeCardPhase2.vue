@@ -70,13 +70,13 @@
                   </span>
                 </div>
 
-                <p v-if="event.hook" class="text-2xl lg:text-3xl font-condensed font-bold uppercase tracking-wide leading-snug text-neutral-700 mb-2">
-                  {{ event.hook }}
-                </p>
                 <h4 :class="['text-xl lg:text-2xl font-roboto font-bold mb-2', day.titleColor]">
-                  {{ event.title }}
+                  {{ event.hook || event.title }}
                 </h4>
-                <p v-if="event.subtitle" :class="['text-lg font-condensed font-normal italic tracking-wide pl-3 border-l-3 mb-3', day.subtitleColor, day.borderColor]">
+                <p v-if="event.hook" :class="['text-lg font-condensed font-normal italic tracking-wide pl-3 border-l-3 mb-3', day.subtitleColor, day.borderColor]">
+                  {{ event.title }}<template v-if="event.subtitle"><br />{{ event.subtitle }}</template>
+                </p>
+                <p v-else-if="event.subtitle" :class="['text-lg font-condensed font-normal italic tracking-wide pl-3 border-l-3 mb-3', day.subtitleColor, day.borderColor]">
                   {{ event.subtitle }}
                 </p>
 
