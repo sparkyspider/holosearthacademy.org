@@ -251,6 +251,10 @@ The `source` field is `holosearthacademy.org` for modal registrations and `holos
 | `book_release` | `BOOLEAN` | Claudius' Book Release. Default `false` |
 | `source` | `TEXT` | `holosearthacademy.org` or `holosearthacademy.org-newsletter` |
 | `created_at` | `TIMESTAMP` | Default `CURRENT_TIMESTAMP` |
+| `campaign` | `TEXT` | Nullable. Added 2026-11-19. Set only on contacts imported or labelled for a campaign. Values so far: `contacts-warm-conversation` (two-way exchange with Claudius), `contacts-wrote-to-claudius-unanswered` (they wrote, he never wrote to them), `contacts-claudius-wrote-no-reply` (he wrote personally, no reply) |
+| `campaign_group` | `TEXT` | Nullable. Added 2026-11-19. Strength of the contact within a campaign: `real-correspondence` or `thin-or-calendar-only` |
+
+Rows inserted by the 2026-11-19 contact import (people who never used a form) carry their `campaign` value in `source` and `phase` as well. A `phase` other than `P1`, `P2` or `NULL` keeps them out of the talk-reminder and urgent-broadcast audiences. They never ticked `book_release`, so it stays `false` for them.
 
 ---
 
