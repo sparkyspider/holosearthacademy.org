@@ -9,7 +9,7 @@
         <p class="text-base font-roboto font-light text-neutral-600 mb-6 leading-relaxed">
           Unsubscribe <span class="font-bold text-neutral-800">{{ email }}</span> from Holos Earth Academy emails?
         </p>
-        <p v-if="!email" class="text-sm text-red-600 mb-6">
+        <p v-if="ready && !email" class="text-sm text-red-600 mb-6">
           No email address provided. Please use the unsubscribe link from your email.
         </p>
         <button
@@ -43,10 +43,30 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
+// The page is pre-rendered without a query string, and the router briefly
+// resets the URL to the bare path while hydrating. So the address is read
+// reactively from the route (which restores the query) and, as a fallback,
+// from the URL as it was when the page first loaded in the browser.
 const route = useRoute()
-const email = (route.query.email as string || '').trim()
+const initialSearch = import.meta.client ? window.location.search : ''
+
+function cleanEmail(raw: string) {
+  // A literal "+" in an unencoded link decodes to a space; emails hold no spaces.
+  return raw.replace(/ /g, '+').trim()
+}
+
+const email = computed(() => {
+  const q = route.query.email
+  const fromRoute = cleanEmail((Array.isArray(q) ? q[0] : q) || '')
+  if (fromRoute) return fromRoute
+  return cleanEmail(new URLSearchParams(initialSearch).get('email') || '')
+})
+
+// Only judge "no email" once the client has taken over the prerendered page.
+const ready = ref(false)
+onMounted(() => { ready.value = true })
 
 const submitting = ref(false)
 const done = ref(false)
@@ -60,7 +80,7 @@ async function handleUnsubscribe() {
     const res = await fetch(LAMBDA_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'unsubscribe', email }),
+      body: JSON.stringify({ action: 'unsubscribe', email: email.value }),
     })
     success.value = res.ok
   } catch {
