@@ -12,7 +12,7 @@
     >
       <NuxtLink
         to="/book"
-        class="group flex items-center justify-start sm:justify-center gap-2 sm:gap-3.5 pl-2.5 pr-9 sm:px-14 py-2 min-h-[52px] sm:min-h-[46px] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-book-gold"
+        class="group flex items-center justify-start sm:justify-center gap-2 sm:gap-3.5 pl-2.5 pr-12 sm:px-14 py-2 min-h-[52px] sm:min-h-[46px] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-book-gold"
         @click="onBannerClick"
       >
         <img
@@ -24,7 +24,8 @@
         />
         <span class="flex flex-col sm:flex-row items-start sm:items-baseline gap-x-3 gap-y-0.5 min-w-0">
           <!-- Title and subtitle -->
-          <span class="flex items-baseline gap-x-2.5 whitespace-nowrap">
+          <span class="flex flex-wrap sm:flex-nowrap items-baseline gap-x-2.5 min-w-0 whitespace-nowrap">
+            <span class="font-baskerville italic text-[clamp(10px,2.75vw,11.5px)] sm:text-[13px] text-book-amber">Book Release:</span>
             <span
               v-if="parts[0]"
               class="font-cinzel font-semibold uppercase text-[clamp(11px,3.1vw,12.5px)] sm:text-[13px] tracking-[0.2em] text-book-navy"

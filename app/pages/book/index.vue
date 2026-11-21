@@ -77,8 +77,8 @@
             class="min-[860px]:bg-white min-[860px]:rounded-xl min-[860px]:!rounded-t-none min-[860px]:shadow-[0_8px_40px_rgba(0,0,0,0.08)] w-full max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl px-4 min-[860px]:px-8 md:px-12 py-10 min-[860px]:py-14 flex flex-col lg:flex-row items-center gap-8 lg:gap-14"
           >
             <h2 class="flex-1 min-w-0 text-center lg:text-left font-playfair font-bold text-book-navy text-[1.75rem] sm:text-[2.1rem] lg:text-[2.15rem] xl:text-[2.5rem] leading-[1.3]">
-              <span class="lg:block">What if reading a book could</span>
-              <span class="lg:block italic text-book-amber">change the way you see the world,</span>
+              <span class="lg:block">What if reading a book could</span>{{ ' ' }}
+              <span class="lg:block italic text-book-amber">change the way you see the world,</span>{{ ' ' }}
               <span class="lg:block">and your place in it?</span>
             </h2>
             <div class="flex lg:w-[440px] shrink-0">
