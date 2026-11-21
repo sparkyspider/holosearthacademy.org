@@ -18,11 +18,12 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{ current: 'P1' | 'P2' | 'Alliance' }>()
+defineProps<{ current: 'P1' | 'P2' | 'Alliance' | 'Book' }>()
 
 const tabs = [
   { key: 'P2',       label: 'Phase Two',  path: '/',         activeColor: 'text-trim-purple', inactiveColor: 'text-trim-purple/60' },
   { key: 'P1',       label: 'Phase One',  path: '/phase-1',  activeColor: 'text-trim-teal',   inactiveColor: 'text-trim-teal/60'   },
   { key: 'Alliance', label: 'Alliance', path: '/alliance', activeColor: 'text-trim-blue',   inactiveColor: 'text-trim-blue/60'   },
+  { key: 'Book',     label: "Claudius' Book", path: '/book', activeColor: 'text-book-blue',   inactiveColor: 'text-book-blue/60'   },
 ]
 </script>

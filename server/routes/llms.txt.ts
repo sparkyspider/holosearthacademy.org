@@ -20,6 +20,7 @@ export default defineEventHandler((event) => {
     `- [Phase One: watch the talks](${SITE_URL}/phase-1/)`,
     `- [Phase Two: register](${SITE_URL}/register-2/)`,
     `- [Holos Earth Alliance: become a member](${SITE_URL}/alliance/)`,
+    `- [What Is Looking: Remembrance, by Claudius van Wyk](${SITE_URL}/book/)`,
     '',
     '## Phase One talks',
     '',
