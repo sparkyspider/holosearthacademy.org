@@ -4,6 +4,11 @@
   --font-condensed: 'Roboto Condensed', sans-serif;
   --font-roboto: 'Roboto', sans-serif;
 
+  /* Book accent fonts (What Is Looking): used on /book and in the book banner only */
+  --font-cinzel: 'Cinzel', serif;
+  --font-playfair: 'Playfair Display', serif;
+  --font-baskerville: 'Libre Baskerville', serif;
+
   --color-bg-default: #F1F0F0;
 --color-ticker-bg: #6E6C6A;
 
@@ -20,6 +25,14 @@
   --color-trim-blue-dark: #4E7AB0;
   --color-trim-yellow-dark: #A89444;
   --color-trim-maroon-dark: #6E2F3F;
+
+  /* Book palette (designer's colour document for What Is Looking) */
+  --color-book-ivory: #FEF7E4;
+  --color-book-parchment: #FCEFCB;
+  --color-book-navy: #071A32;
+  --color-book-gold: #FCAA06;
+  --color-book-amber: #FBA203;
+  --color-book-blue: #08437B;
 
   --animate-ticker: ticker 90s linear infinite;
   --animate-nudge-right: nudge-right 1s ease-in-out infinite;
