@@ -1,0 +1,25 @@
+{
+  "_about": "Copied from claudius-book/build/book-page/marketplaces.json (21 Nov 2026): the book block and the stores in their decided order (South Africa, United Kingdom, the rest alphabetically, Anywhere else last). Internal notes and tracking decisions stay in the source file. The chooser renders this list as-is; app/data/book-stores.ts picks each store's link.",
+  "book": {"title": "What Is Looking", "subtitle": "Remembrance", "author": "Claudius van Wyk", "kindle_asin": "B0HS6PTWR4", "paperback_asin": "B0HPGZCV5P", "paperback_isbn13": "9798161021156"},
+  "stores": [
+    {"key": "za", "country": "South Africa", "kindle": "https://www.amazon.com/dp/B0HS6PTWR4", "paperback": "https://www.amazon.com/dp/B0HPGZCV5P", "checked": true},
+    {"key": "uk", "country": "United Kingdom", "kindle": "https://www.amazon.co.uk/dp/B0HS6PTWR4", "paperback": "https://www.amazon.co.uk/dp/B0HPGZCV5P", "checked": true},
+    {"key": "au", "country": "Australia and New Zealand", "kindle": "https://www.amazon.com.au/dp/B0HS6PTWR4", "paperback": "https://www.amazon.com.au/dp/B0HPGZCV5P", "checked": true},
+    {"key": "be", "country": "Belgium", "kindle": "https://www.amazon.fr/dp/B0HS6PTWR4", "paperback": "https://www.amazon.com.be/dp/B0HPGZCV5P", "checked": true},
+    {"key": "br", "country": "Brazil", "kindle": "https://www.amazon.com.br/dp/B0HS6PTWR4", "paperback": null, "checked": true},
+    {"key": "ca", "country": "Canada", "kindle": "https://www.amazon.ca/dp/B0HS6PTWR4", "paperback": "https://www.amazon.ca/dp/B0HPGZCV5P", "checked": true},
+    {"key": "fr", "country": "France", "kindle": "https://www.amazon.fr/dp/B0HS6PTWR4", "paperback": "https://www.amazon.fr/dp/B0HPGZCV5P", "checked": true},
+    {"key": "de", "country": "Germany", "kindle": "https://www.amazon.de/dp/B0HS6PTWR4", "paperback": "https://www.amazon.de/dp/B0HPGZCV5P", "checked": true},
+    {"key": "in", "country": "India", "kindle": "https://www.amazon.in/dp/B0HS6PTWR4", "paperback": null, "checked": true},
+    {"key": "ie", "country": "Ireland", "kindle": "https://www.amazon.co.uk/dp/B0HS6PTWR4", "paperback": "https://www.amazon.ie/dp/B0HPGZCV5P", "checked": true},
+    {"key": "it", "country": "Italy", "kindle": "https://www.amazon.it/dp/B0HS6PTWR4", "paperback": "https://www.amazon.it/dp/B0HPGZCV5P", "checked": true},
+    {"key": "jp", "country": "Japan", "kindle": "https://www.amazon.co.jp/dp/B0HS6PTWR4", "paperback": "https://www.amazon.co.jp/dp/B0HPGZCV5P", "checked": true},
+    {"key": "mx", "country": "Mexico", "kindle": "https://www.amazon.com.mx/dp/B0HS6PTWR4", "paperback": null, "checked": true},
+    {"key": "nl", "country": "Netherlands", "kindle": "https://www.amazon.nl/dp/B0HS6PTWR4", "paperback": "https://www.amazon.nl/dp/B0HPGZCV5P", "checked": true},
+    {"key": "pl", "country": "Poland", "kindle": "https://www.amazon.com/dp/B0HS6PTWR4", "paperback": "https://www.amazon.pl/dp/B0HPGZCV5P", "checked": true},
+    {"key": "es", "country": "Spain", "kindle": "https://www.amazon.es/dp/B0HS6PTWR4", "paperback": "https://www.amazon.es/dp/B0HPGZCV5P", "checked": true},
+    {"key": "se", "country": "Sweden", "kindle": "https://www.amazon.com/dp/B0HS6PTWR4", "paperback": "https://www.amazon.se/dp/B0HPGZCV5P", "checked": false},
+    {"key": "us", "country": "United States", "kindle": "https://www.amazon.com/dp/B0HS6PTWR4", "paperback": "https://www.amazon.com/dp/B0HPGZCV5P", "checked": true},
+    {"key": "other", "country": "Anywhere else", "kindle": "https://www.amazon.com/dp/B0HS6PTWR4", "paperback": "https://www.amazon.com/dp/B0HPGZCV5P", "checked": true}
+  ]
+}
