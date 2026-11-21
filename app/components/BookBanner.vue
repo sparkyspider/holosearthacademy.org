@@ -25,6 +25,7 @@
         <span class="flex flex-col sm:flex-row items-start sm:items-baseline gap-x-3 gap-y-0.5 min-w-0">
           <!-- Title and subtitle -->
           <span class="flex items-baseline gap-x-2.5 whitespace-nowrap">
+            <span class="font-baskerville italic text-[clamp(10px,2.75vw,11.5px)] sm:text-[13px] text-book-amber">Book Release:</span>
             <span
               v-if="parts[0]"
               class="font-cinzel font-semibold uppercase text-[clamp(11px,3.1vw,12.5px)] sm:text-[13px] tracking-[0.2em] text-book-navy"
