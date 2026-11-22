@@ -174,7 +174,7 @@ definePageMeta({
 // Reader quotes, word for word from the launch email (cohort A).
 const quotes = [
   {
-    text: 'My wholehearted thanks for sharing your exquisite book – it feels as if it has read me in a wonderful and profound way.',
+    text: 'My wholehearted thanks for sharing your exquisite book – it feels as if it has read me in a wonder-full and profound way.',
     name: 'Dr Jude Currivan',
   },
   {
