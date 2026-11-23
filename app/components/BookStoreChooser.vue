@@ -115,6 +115,7 @@ const stores = bookStores
 const headingId = 'book-chooser-heading'
 const panel = ref<HTMLElement | null>(null)
 const { track } = useBookAnalytics()
+const { logStoreClick } = useBookClickLog()
 
 let returnFocusTo: HTMLElement | null = null
 
@@ -129,6 +130,8 @@ function onStoreClick(store: BookStoreLink) {
     format: store.format,
     store_domain: store.domain,
   })
+  // Our own click log: sends only when the visitor came from an email link with a token.
+  logStoreClick(store)
 }
 
 function focusables(): HTMLElement[] {

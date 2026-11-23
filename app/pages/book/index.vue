@@ -192,6 +192,7 @@ const router = useRouter()
 const isRegion = computed(() => route.path.replace(/\/+$/, '') === '/book/region')
 
 const { track } = useBookAnalytics()
+const { logLanding } = useBookClickLog()
 const chooserOpen = ref(false)
 
 function openChooser(trigger: 'landing' | 'hero_button' | 'order_button', _e?: Event) {
@@ -210,6 +211,8 @@ function closeChooser(method: 'button' | 'escape' | 'backdrop') {
 
 onMounted(() => {
   track('book_page_view', { book_page: isRegion.value ? 'book_region' : 'book' })
+  // Our own click log: sends only when the visitor came from an email link with a token.
+  logLanding()
   if (isRegion.value) openChooser('landing')
 })
 
