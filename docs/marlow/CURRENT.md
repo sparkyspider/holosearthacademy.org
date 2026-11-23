@@ -55,6 +55,7 @@ Read this first on resume. One fact per line. Newest session at the top of the l
 - Add the UTC equivalent back to the reminder date line next time.
 
 ## Log
+- 2026-11-23: Book announcement, Cohort B ("Could reading a book change the way you see the world?") SENT LIVE on Mark's word ("Send to 123 users now."): 123 sent, 0 failed. Audience: book box ticked in the registration form (phase NULL/P1/P2, not unsubscribed/suppressed); left out the 9 newsletter-only people and the 7 whose only tick was the newsletter card default. Links carry campaign tags only (utm_content=cohort-b), no per-person token. Sender deepdigital-lambda holos_broadcast/broadcast_book.py (1cdcdb8) with --registration-tick-only; template claudius-book/build/email-cohort-b/cohort-b-hosted.html (git-ignored); log holos_broadcast/sendlog/book-cohort-b.jsonl. Five smokes to Mark first; one each to Claudius, Michelle, Tarryn (early layout). Parked: per-person click tracking (Nuxt main 97c0f93, lambda branch book-click-tracking), privacy draft (branch privacy-notice 6df10a2, controller entity unnamed). Cohort A build has the same Gmail layout faults (left-hugging card and dividers, swallow negative margin): belongs to the CLAUDIUS BOOK window.
 - 2026-11-07: Berry Behr repeat mailer ("If you missed Rev. Berry Behr's talk, good news: she is giving it again live on Wednesday 11 November") was SENT TWICE BY MISTAKE, a few minutes apart: first by Wren, then by Mark. Each run printed "Sent 182, failed 1", so 182 people got the email twice. Each run had 183 recipients: 19 signed up for Rev. Berry Behr, 82 Phase 2 registrants not signed up, 82 Phase 1/legacy with Phase 2 interest, 0 newsletter-only. Failed address both times, confirmed: claudiusvanwyk@gmail.org/ (SES InvalidParameterValue "Domain contains illegal character"). Also: ffairy11@gmail.comf (audience A) was accepted by SES but is a visibly malformed address. Sender: deepdigital-lambda commit add839e (message amended to record the double send).
 - 2026-11-03: Dr Philip Mirkin announcement sent live to 208 recipients, 0 failures: 95 signed up for Dr Philip Mirkin, 113 Phase 2 registrants not signed up, 0 Phase 1/legacy with Phase 2 interest, 0 newsletter-only. Log: session scratchpad send-logs/philip-mirkin-live.log.
 - 2026-11-03: Berry Behr reminder sent live to 177 recipients, 176 sent, 1 failed: 15 signed up for Rev. Berry Behr, 81 Phase 2 registrants not signed up, 81 Phase 1/legacy with Phase 2 interest, 0 newsletter-only. The failure was claudiusvanwyk@gmail.org/ (audience A), SES InvalidParameterValue "Domain contains illegal character": a mistyped address, not retried. Log: session scratchpad send-logs/berry-behr-live.log.
@@ -69,3 +70,37 @@ Read this first on resume. One fact per line. Newest session at the top of the l
   both talks, 0 failures. Sender rebuilt into deepdigital-lambda/holos_broadcast. Password
   literal caught and removed before commit. Internet outage ~20 min mid-session; all external
   results re-verified afterwards.
+
+## BOOK MAILER window: questions to Mark (counter `bookmailer-Q<n>`, never reused)
+
+| Id | Asked | Question | Default | Mark's ruling (verbatim) |
+|---|---|---|---|---|
+| bookmailer-Q1 | 2026-11-23 | Record (claudius-book STATUS.md, 21 Nov): "Leave Tarryn out of this"; book-window Q51 on sending her the smoke test is still open. Today Mark listed Tarryn for the Cohort B smoke test. Send her the smoke test? | Hold Tarryn; smoke goes to Mark, Claudius, Michelle | |
+| bookmailer-Q2 | 2026-11-23 | No subject line is on record for the Cohort B book email (only smoke-test labels). What is the subject? | Michelle's headline: "What if reading a book could change the way you see the world?" | |
+| bookmailer-Q3 | 2026-11-23 | 9 of the 139 came only through the newsletter card, which ticks the book box by default; they never registered, and B opens "When you registered to participate". Include them? | Leave the 9 out; send to the 130 who ticked in the registration form | |
+| bookmailer-Q4 | 2026-11-23 | Record (claudius-book Q46, 21 Nov): "per person would be great" for click tracking. No per-person token exists on the site. Send B with campaign tags only, or hold until the token is built? | Send with campaign tags only | |
+| bookmailer-Q5 | 2026-11-23 | "Available in Paperback or Kindle" under the button comes from the Cohort A build; Michelle's B mock-up has no such line. Keep it? | Keep | |
+
+Mark's rulings, 2026-11-23 (verbatim):
+- bookmailer-Q1: "Q1 no send it to her". Read as: send Tarryn the smoke test. Supersedes, for this smoke test only, the 21 Nov "Leave Tarryn out of this" (restated by Mark after hearing the record). Sent 2026-11-23.
+- bookmailer-Q2: "Q2 Could reading a book change the way you see the world?" (the subject line)
+- bookmailer-Q3: "Q3 No" (the 9 newsletter-only people are left out; audience is the 130 who ticked in the registration form)
+- bookmailer-Q4: "Q4 Build it first. It's suppossed to be built." (per-person click token is built before the full send)
+- bookmailer-Q5: "Q5 Yes" (keep "Available in Paperback or Kindle")
+
+| Id | Asked | Question | Default | Mark's ruling (verbatim) |
+|---|---|---|---|---|
+| bookmailer-Q6 | 2026-11-23 | Record names a first-party `/go/<store>/<format>` redirect for store clicks. The site is static, so the build logs clicks by a background message to the Lambda and opens Amazon directly. Accept? | Accept | |
+| bookmailer-Q7 | 2026-11-23 | 7 people registered but their only book tick came from the newsletter card (ticked by default). Include them in Cohort B? | Leave out; send to 123 | |
+| bookmailer-Q8 | 2026-11-23 | Correction: book-window Q46 "per person would be great" was about OPENS, not clicks. Per-person opens are not built and were flagged as needing consent in UK/EU. Hold the send for them? | Send without per-person opens | |
+| bookmailer-Q9 | 2026-11-23 | Book-window Q45 approved click tracking "with a plain line in the privacy notice". /privacy is 404. Hold the Cohort B send until the privacy page is live? | Hold; page drafted now for Mark's approval and shipped with the site deploy | |
+| bookmailer-Q10 | 2026-11-23 | Approve production steps in order: (a) RDS migration adding two click-tracking tables, (b) formToDb Lambda deploy from branch book-click-tracking, (c) push main to deploy. | None: each needs Mark's word | |
+
+Mark, 2026-11-23, on bookmailer-Q6 (verbatim): "Q6 So it seems like the question if we should build the task seemed like it could be a yes but because we have a static F/E and we need to ask consent in the UK, we shouldn't build it." Read as a proposal to drop per-person click tracking; not yet a ruling. Record quoted back and bookmailer-Q11 asked.
+
+| Id | Asked | Question | Default | Mark's ruling (verbatim) |
+|---|---|---|---|---|
+| bookmailer-Q11 | 2026-11-23 | Drop per-person click tracking for the Cohort B send and send with campaign tags only (totals, no names)? Would supersede book-window Q45 "yes" (21 Nov) and bookmailer-Q4 "Build it first" (23 Nov) for this send. | Plan stands: tracking ships first | |
+
+Mark's ruling, 2026-11-23 (verbatim): bookmailer-Q11: "Q11 yes, once I've looked at the smoke." So: per-person click tracking is dropped for the Cohort B send (dated supersession of book-window Q45 "yes" of 21 Nov and bookmailer-Q4 "Build it first" of 23 Nov, for this send only); campaign tags only. Full send waits for Mark to look at the smoke and say okay to send. bookmailer-Q6, Q8, Q9, Q10 closed for this send by Q11. bookmailer-Q7 still open. Built tracking stays parked (Nuxt main 97c0f93, lambda branch book-click-tracking, sender e925916); privacy draft parked on branch privacy-notice 6df10a2.
+Mark's ruling, 2026-11-23 (verbatim): bookmailer-Q7: "Q7 no". The 7 whose only book tick came from the newsletter card are left out; Cohort B audience is 123.
