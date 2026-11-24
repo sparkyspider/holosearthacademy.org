@@ -238,3 +238,33 @@ Contacts send, 2026-11-24.
 - Still unreached, 51 addresses: 41 in no audience, 8 unsubscribed or suppressed, 1 do-not-contact, 1 team test address.
 - The 41 are the "thin-or-calendar-only" contacts tier and second addresses of people already covered.
 - The "thin-or-calendar-only" tier stays held. The opening says they and Claudius "have been in touch during the past year". That may be untrue for them. Mark has been told.
+
+Maybes send, 2026-11-24.
+
+Mark, 2026-11-24 (verbatim): "Send the maybe's." This lifts the hold on the "thin-or-calendar-only" contacts tier.
+
+Plan row, before sending:
+- In the tier: 51.
+- Already sent: 28.
+- Claimed by a higher audience: 1.
+- Held as second addresses: 6.
+- Final: 16.
+
+Sent live: 16 people, 0 failed. Tag `cohort-d`. Sender segment key `maybe`, template `contacts-maybe`.
+- deepdigital-lambda commit 333c959, not pushed.
+
+The opening was changed so it is true for thin contact:
+
+"You are receiving this because you and Claudius van Wyk have been in contact during the past year, and we would like you to hear about his book publication."
+
+The rest matches the contacts email.
+
+Book send logs now hold 271 addresses: 123 on 23 Nov, then 77, 55 and 16 on 24 Nov. The plan shows 0 left to send.
+
+Unreached, 35 addresses:
+- 25 second addresses of people already emailed.
+- 8 unsubscribed or suppressed.
+- 1 do-not-contact.
+- 1 team test address.
+
+Side effect: a later plan run emptied the five earlier recipient list files. The send logs are intact and are the record.
