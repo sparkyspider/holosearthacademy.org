@@ -13,7 +13,6 @@
           v-for="(line, i) in s.lines"
           :key="i"
           class="text-base font-roboto font-light text-neutral-600 leading-relaxed mb-2"
-          :class="line.startsWith('[TO CONFIRM') ? 'bg-amber-100 text-neutral-800 px-2 py-1 rounded' : ''"
         >
           {{ line }}
         </p>
@@ -29,8 +28,6 @@
 <script setup lang="ts">
 useHead({ title: 'Privacy | Holos Earth Academy' })
 
-// DRAFT for Mark's approval. Lines starting "[TO CONFIRM" are open questions
-// and must be resolved or removed before this page goes live.
 const sections = [
   {
     title: 'What you give us',
@@ -48,7 +45,7 @@ const sections = [
     lines: [
       'With each form we store the date, which form you used, your IP address and your browser details.',
       'We use these to block spam.',
-      'Your name, email and ID are kept in your browser\'s local storage, so the forms fill in next time.',
+      'Your name, email and ID are kept in your browser\'s local storage, so the forms fill in next time. It also remembers which events you registered for and added to your calendar.',
       'Our own code sets no cookies.',
     ],
   },
@@ -69,24 +66,11 @@ const sections = [
     ],
   },
   {
-    title: 'The book email',
-    lines: [
-      'The button in the book email carries a personal code that stands for you.',
-      'When you arrive on the book page and choose an Amazon store, we record it against your email address.',
-      'We record the code, the store, Kindle or paperback, and the campaign tags in the link.',
-      'We record the time, your browser language and time zone, and your browser details.',
-      'We store no IP address in this record.',
-      'We do this to see which of our readers found the book.',
-      'The code stays in your browser\'s memory only. It is never sent to Google Analytics.',
-    ],
-  },
-  {
     title: 'Google Analytics',
     lines: [
       'This site uses Google Analytics to count visits and clicks.',
       'It loads on every page and may set its own cookies.',
       'To opt out, use a tracking blocker in your browser or Google\'s opt-out add-on.',
-      '[TO CONFIRM: there is no consent banner today. Does Mark want one for UK and EU visitors?]',
     ],
   },
   {
@@ -94,24 +78,20 @@ const sections = [
     lines: [
       'Your details sit in a database on Amazon Web Services in Ireland.',
       'Each new registration is emailed to Mark, Claudius and Michelle.',
-      'They also see the book email record.',
       'Replies to info@holosearthacademy.org are forwarded by ImprovMX to Claudius\'s Gmail inbox.',
-      '[TO CONFIRM: who else can open the database, and how long we keep the data.]',
     ],
   },
   {
     title: 'Opting out',
     lines: [
-      'Every email has an unsubscribe link. It leads to holosearthacademy.org/unsubscribe.',
-      'After you unsubscribe, we stop emailing you. We keep your address, marked as unsubscribed.',
+      'Our newsletters and reminders have an unsubscribe link. It leads to holosearthacademy.org/unsubscribe.',
+      'After you unsubscribe, we stop sending you newsletters and reminders. We keep your address, marked as unsubscribed.',
       'To ask about your data, write to us at the address below.',
     ],
   },
   {
     title: 'Who is responsible',
-    lines: [
-      '[TO CONFIRM: the legal name and address of the organisation behind Holos Earth Academy.]',
-    ],
+    lines: [],
   },
 ]
 </script>
