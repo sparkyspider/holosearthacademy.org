@@ -67,6 +67,7 @@ export default defineNuxtConfig({
         '/alliance',
         '/join',
         '/unsubscribe',
+        '/privacy',
         '/book',
         '/book/region',
         '/sitemap.xml',
