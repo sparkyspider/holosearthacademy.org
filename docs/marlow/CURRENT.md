@@ -177,3 +177,50 @@ Deploy outcome: deployed 2026-11-24.
 - The totals tracker is still not live. It waits on bookmailer-Q12 (name), bookmailer-Q19 (credentials) and the database migration.
 - The permission system blocked the migration for the agent, so Mark runs it.
 - Backend tracker branch `book-totals-tracking` is at db9f667. The go-live runbook was written to the session scratchpad.
+
+Remaining audiences send, 2026-11-24.
+
+What worked: the sender's dry-run plan proved the numbers before anything went out. 77 sent, 0 failed, 0 duplicates.
+
+Mark's request, 2026-11-24 (verbatim): "I think the pri is (1. Asked for the book, 2. Newsletter, 3. Phase 2 Registrants, 4. Claudius Recent Contacts, 5. Phase 1 Registrants. Each one below won't send to the same user as the one above." He also asked for it to be done without questions and fired off.
+
+- This supersedes bookmailer-Q7 "no" (23 Nov) for newsletter subscribers: they are now included, as priority 2.
+- Sent live on 2026-11-24, subject "Could reading a book change the way you see the world?"
+- Counts: asked for the book 1, newsletter 15, Phase 2 registrants 26, Phase 1 registrants 35.
+- Total: 77 sent, 0 failed.
+- NOT sent: Claudius's contacts, 55 people, the "real-correspondence" tier only. Held by Claude because the record (claudius-book Q50, 21 Nov) gives them "a new opening written by Claudius", and Mark ruled "Q50 yes but not to send now." The opening now in the template was written by the agent. Claudius has not seen it. Waiting on Mark's word.
+- Held out entirely: the "thin-or-calendar-only" contacts tier, with no record of approval to contact them.
+- Held out: 19 second addresses of people already covered (one person, one email).
+- Held out: 8 unsubscribed or suppressed.
+- Held out: 1 do-not-contact.
+- Held out: 1 team test address.
+
+Plan proofs before sending: 132 planned, 132 distinct addresses.
+- 0 overlap with the 123 Cohort B recipients.
+- 0 same-person duplicates.
+- Database: 306 addresses = 123 Cohort B + 132 planned + 51 unreached.
+
+Found:
+- Cohort A never went out live before today.
+- The cohort-a traffic in GA was team smoke tests.
+- Cohort B went to 4 people twice, on two addresses each.
+
+Templates:
+- Asked uses Michelle's Cohort B.
+- Phase 2 and Phase 1 use Michelle's Cohort A wording in the Cohort B layout. Cohort A's layout had recorded Gmail faults.
+- Newsletter and contacts are new. They use the Cohort B body with a new opening sentence.
+- The "We trust that you have enjoyed being part of the Festival" sentence is removed.
+
+Link tags:
+- Asked `cohort-b`. Newsletter `cohort-e`. Phase 2 and Phase 1 `cohort-a`. Contacts `cohort-d`.
+- No per-person tokens.
+- The totals tracker's valid-tag list needs `cohort-a`, `cohort-d` and `cohort-e` added before it goes live.
+
+Sender:
+- deepdigital-lambda holos_broadcast/broadcast_book.py at commit 9143512, not pushed.
+- Previews in holos_broadcast/preview/.
+- Recipient lists and send logs in holos_broadcast/sendlog/.
+
+To send the contacts later:
+- `broadcast_book.py --segment contacts --subject "Could reading a book change the way you see the world?" --yes-send-to-everyone`
+- The sender skips anyone already in a book send log.
