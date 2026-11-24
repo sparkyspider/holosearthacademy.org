@@ -107,3 +107,34 @@ Mark's ruling, 2026-11-23 (verbatim): bookmailer-Q11: "Q11 yes, once I've looked
 Mark's ruling, 2026-11-23 (verbatim): bookmailer-Q7: "Q7 no". The 7 whose only book tick came from the newsletter card are left out; Cohort B audience is 123.
 
 Mark, 2026-11-24, after hearing the Q6 and Q11 record quoted back (verbatim): "Can we make a small lambda function that JavaScript calls when someone hits the book page and when someone clicks the go-to-marketplace?" This supersedes his Q6 reply of 23 Nov ("we shouldn't build it") for a totals-only tracker. No per-person token, no names, no email, no IP or user agent stored, nothing written to the browser. Per-person click tracking stays parked. Build is on branches only. The RDS migration, the Lambda deploy and the push to deploy each still need Mark's word.
+
+Totals-only tracker build state, 2026-11-24 (branches only, nothing deployed).
+
+Mark's design instruction, 2026-11-24 (verbatim): "The /book url and just call the lambda function with whatever tag it gets and pass it to the lambda. The lambda will know whether it's a valid tag or not. The spammers won't."
+
+As built: the page sends campaign tags untouched and holds no list. The Lambda holds the list (`VALID_TAGS`, today `cohort-b`). Unknown tags are dropped with the same reply as stored ones.
+
+Assumption by Claude, not Mark's words: visits with no tag are stored with an empty `utm_content`, for an overall page total. One switch, `STORE_UNTAGGED`, turns this off. Awaiting Mark's confirmation.
+
+Stored per event: event_type (`landing` or `store_click`), store_key, edition, utm_source, utm_medium, utm_campaign, utm_content, page_path, created_at. No token, email, name, IP or user agent.
+
+Build state:
+- Frontend: branch `book-totals-tracking`, commit 1e73b5b. `nuxt build` completes.
+- Backend: branch `book-totals-tracking` in deepdigital-lambda, commit 193bed7. Worktree at /Users/sparkyspider/IdeaProjects/deepdigital-lambda-wt-book-totals. 14 unit tests pass.
+- Not verified: typecheck (tooling missing from the repo), and any end to end test (no endpoint exists yet).
+
+Known limits:
+- No per-IP rate limiting, by design.
+- Anyone holding an emailed link knows the tag `cohort-b`. A determined sender can still inflate tagged counts.
+- Changing the tag list needs a redeploy.
+
+Hazard: the parked migration `2026-11-21-email-click-tracking.sql` defines the same table name, `holos_email_click_events`, in the per-person shape. Never run it alongside `2026-11-24-email-click-totals.sql`. The new migration aborts if the old shape exists.
+
+Steps awaiting Mark's word, in order:
+1. Retire the 2026-11-21 migration.
+2. Run the 2026-11-24 migration.
+3. Create the Lambda. Name per bookmailer-Q12, placeholder `LAMBDA_NAME_PENDING_Q12`.
+4. Create its Function URL, with CORS limited to https://holosearthacademy.org.
+5. Smoke test.
+6. Set `ENDPOINT` in `useBookClickLog.ts`.
+7. Merge and deploy the site. The /privacy page (branch `privacy-notice`) ships with it.
