@@ -31,11 +31,11 @@ export default defineNuxtConfig({
         },
         {
           // The landing URL is read here, before Google Analytics or the router
-          // see it. `r` (the per-recipient token on email links) is kept in
-          // memory on window.__holosLanding and taken off the address, so it is
-          // never sent to Google Analytics. Prerendered pages have no query
-          // string, so this is the one reliable place to capture it.
-          innerHTML: `(function(){try{var s=window.location.search;var p=new URLSearchParams(s);var r=p.get('r');window.__holosLanding={search:s,r:r};if(r!==null){p.delete('r');var q=p.toString();window.history.replaceState(window.history.state,'',window.location.pathname+(q?'?'+q:'')+window.location.hash);}}catch(e){}})();
+          // see it. The query string is kept on window.__holosLanding. Any
+          // old per-recipient `r` parameter is taken off the address and not
+          // kept, so it is never sent to Google Analytics. Prerendered pages
+          // have no query string, so this is the one reliable place to read it.
+          innerHTML: `(function(){try{var s=window.location.search;var p=new URLSearchParams(s);window.__holosLanding={search:s};if(p.has('r')){p.delete('r');var q=p.toString();window.history.replaceState(window.history.state,'',window.location.pathname+(q?'?'+q:'')+window.location.hash);}}catch(e){}})();
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
