@@ -31,6 +31,12 @@
         Contact Mark
       </a>
       </div>
+      <p class="mt-6 text-sm font-roboto font-normal text-neutral-500">
+        <NuxtLink
+          to="/privacy"
+          class="font-bold text-trim-teal underline underline-offset-4 decoration-trim-teal/40 hover:decoration-trim-teal transition"
+        >Privacy</NuxtLink>
+      </p>
     </div>
   </div>
 </template>

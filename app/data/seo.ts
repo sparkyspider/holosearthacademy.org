@@ -4,7 +4,7 @@ import type { SpeakerEvent } from './speakers'
 export const SITE_URL = 'https://holosearthacademy.org'
 
 /** Public pages Amplify serves with a trailing slash (home is the bare origin + "/"). */
-export const publicPaths = ['/', '/join/', '/register/', '/register-2/', '/phase-1/', '/alliance/', '/book/']
+export const publicPaths = ['/', '/join/', '/register/', '/register-2/', '/phase-1/', '/alliance/', '/book/', '/privacy/']
 
 /** Every talk and panel dialogue slug, straight from the festival data. */
 export const speakerSlugs: string[] = [...new Set(
