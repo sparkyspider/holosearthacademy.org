@@ -268,3 +268,35 @@ Unreached, 35 addresses:
 - 1 team test address.
 
 Side effect: a later plan run emptied the five earlier recipient list files. The send logs are intact and are the record.
+
+Tracker live, 2026-11-24.
+
+What worked: the go-live script ran clean first time, and the unknown-tag test stored nothing.
+
+- Mark ran `deploy/holosBookClick-go-live.sh` himself at about 19:00 +02:00. It ended `GO_LIVE_OK`.
+- Live: table `holos_email_click_events`.
+- Live: database user `holos_book_click`, with INSERT on that table only.
+- Live: role `holosBookClick-role`, with basic logging only.
+- Live: Lambda `holosBookClick`, reserved concurrency 5.
+- Live: Function URL https://ymwrh3pgxxyu6ep3mguxrmaz3u0dwzkn.lambda-url.eu-west-1.on.aws/, limited to the site's origin.
+- Smoke: valid tag page load returned 204 and was stored.
+- Smoke: valid tag store click returned 204 and was stored.
+- Smoke: unknown tag returned 204 and was not stored.
+- Smoke: wrong origin returned 403.
+- Smoke rows were deleted. The table is left empty.
+- Valid tags: cohort-a, cohort-b, cohort-d, cohort-e.
+- Untagged visits are stored with an empty tag. The switch is `STORE_UNTAGGED`.
+- A new campaign tag needs a Lambda redeploy.
+- Site: origin/deploy b3c34c6. Amplify job 90 succeeded at 19:12 +02:00.
+- The book page now posts `landing` and `store_click` to the Lambda.
+- The privacy page gained the section "The book page".
+- Live check with the dummy tag `deploy-check`: both posts returned 204.
+- That check showed no console errors and added nothing to browser storage.
+- Known small defect: `landing` sends page_path `/book/region`. `store_click` sends `/book/region/`.
+- Totals by path can split on the slash.
+- Not proven live: the browser actually arriving on Amazon after a click. The test blocked Amazon requests.
+- Backend code: deepdigital-lambda branch `book-totals-tracking`, commits b8fd358 and e3e5815.
+- That branch is not merged to that repo's main and not pushed.
+- Totals query: `reports/email-click-totals.sql`. Rollback: `deploy/holosBookClick-rollback.sh`.
+- Per-person click tracking stays parked.
+- The old 2026-11-21 migration is marked superseded and must not be run.
