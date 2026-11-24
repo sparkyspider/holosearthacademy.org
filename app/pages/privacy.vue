@@ -66,6 +66,15 @@ const sections = [
     ],
   },
   {
+    title: 'The book page',
+    lines: [
+      'We count visits to the book page and clicks through to Amazon.',
+      'With each count we record the page, the store, Kindle or paperback, and any campaign tag in the link.',
+      'These counts hold no name, email address, IP address or browser details.',
+      'Nothing is saved in your browser for this.',
+    ],
+  },
+  {
     title: 'Google Analytics',
     lines: [
       'This site uses Google Analytics to count visits and clicks.',

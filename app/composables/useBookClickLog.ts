@@ -22,10 +22,10 @@
 import type { BookStoreLink } from '~/data/book-stores'
 
 /**
- * ENDPOINT NOT SET YET. Put the Function URL of the totals Lambda here once it
- * exists. While this is empty the composable does nothing at all.
+ * Function URL of the totals Lambda (holosBookClick). While this is empty the
+ * composable does nothing at all.
  */
-const ENDPOINT = ''
+const ENDPOINT = 'https://ymwrh3pgxxyu6ep3mguxrmaz3u0dwzkn.lambda-url.eu-west-1.on.aws/'
 
 type EventType = 'landing' | 'store_click'
 
