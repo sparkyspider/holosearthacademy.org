@@ -170,4 +170,10 @@ Found today:
 GA4 is now readable by API: property 528472619.
 - Cohort B in GA so far: 3 book page views and 3 store clicks from 2 people.
 
-Deploy outcome: to be added when the deploy agent reports.
+Deploy outcome: deployed 2026-11-24.
+- origin/deploy moved from 0ff7c1d to 018a996 by fast-forward push.
+- Amplify job 89 succeeded at 18:16 +02:00.
+- Live checks passed. /privacy/ returns 200 with no drafting notes. The home page links to /privacy. /book/ and /book/region/ return 200. The sitemap lists /privacy/.
+- The totals tracker is still not live. It waits on bookmailer-Q12 (name), bookmailer-Q19 (credentials) and the database migration.
+- The permission system blocked the migration for the agent, so Mark runs it.
+- Backend tracker branch `book-totals-tracking` is at db9f667. The go-live runbook was written to the session scratchpad.
