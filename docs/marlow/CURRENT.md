@@ -102,12 +102,12 @@ Mark, 2026-11-23, on bookmailer-Q6 (verbatim): "Q6 So it seems like the question
 |---|---|---|---|---|
 | bookmailer-Q11 | 2026-11-23 | Drop per-person click tracking for the Cohort B send and send with campaign tags only (totals, no names)? Would supersede book-window Q45 "yes" (21 Nov) and bookmailer-Q4 "Build it first" (23 Nov) for this send. | Plan stands: tracking ships first | |
 | bookmailer-Q12 | 2026-11-24 | The totals-only tracker is a new, separate Lambda. What is its function name? The record holds no name for it. Candidates drawn from existing keys: `holosEmailClick` (from the existing action `email_click`), `holosBookClick` (from the branch `book-click-tracking`). Existing Lambdas for pattern: `formToDb`, `holosFestivalBroadcast`, `holosBounceHandler`. | None. A name is Mark's to give. Build proceeds; deploy waits on the name. | |
-| bookmailer-Q13 | 2026-11-24 | The drafted /privacy page has a section "The book email" describing per-person click tracking ("we record it against your email address"). That tracking is parked and not live. What happens to the section? | Remove it now. Add a short totals-only paragraph when the totals tracker goes live. | |
-| bookmailer-Q14 | 2026-11-24 | The /privacy draft has a placeholder for the legal name and address of the organisation behind Holos Earth Academy. What are they? | Ship without a name or address, with the contact line info@holosearthacademy.org only. | |
-| bookmailer-Q15 | 2026-11-24 | The /privacy draft has a placeholder for who else can open the database and how long data is kept. What should it say? | Leave both out. | |
-| bookmailer-Q16 | 2026-11-24 | The /privacy draft asks whether Mark wants a consent banner for UK and EU visitors, since Google Analytics loads with no prompt. Banner, no banner, or remove Google Analytics? | No banner now. The page states plainly that Google Analytics runs, with the opt-out line. | |
-| bookmailer-Q17 | 2026-11-24 | Main carries the parked per-person click log code (97c0f93), not live. Deploying main would ship it with the privacy page. What goes live? | The live build plus the privacy page, the footer link and the one-word book quote fix (ebd8942). The per-person click log stays out. | |
-| bookmailer-Q18 | 2026-11-24 | The only shared footer (FooterCard) shows on the home page, /phase-1 and /alliance. The Privacy link sits there. Add a link on every other page too? That needs a new shared footer line. | Leave as is: footer link on those three pages only. | |
+| bookmailer-Q13 | 2026-11-24 | The drafted /privacy page has a section "The book email" describing per-person click tracking ("we record it against your email address"). That tracking is parked and not live. What happens to the section? | Remove it now. Add a short totals-only paragraph when the totals tracker goes live. | Mark, 2026-11-24: "Please accept defaults for all and deploy." Default taken. |
+| bookmailer-Q14 | 2026-11-24 | The /privacy draft has a placeholder for the legal name and address of the organisation behind Holos Earth Academy. What are they? | Ship without a name or address, with the contact line info@holosearthacademy.org only. | Mark, 2026-11-24: "Please accept defaults for all and deploy." Default taken. |
+| bookmailer-Q15 | 2026-11-24 | The /privacy draft has a placeholder for who else can open the database and how long data is kept. What should it say? | Leave both out. | Mark, 2026-11-24: "Please accept defaults for all and deploy." Default taken. |
+| bookmailer-Q16 | 2026-11-24 | The /privacy draft asks whether Mark wants a consent banner for UK and EU visitors, since Google Analytics loads with no prompt. Banner, no banner, or remove Google Analytics? | No banner now. The page states plainly that Google Analytics runs, with the opt-out line. | Mark, 2026-11-24: "Please accept defaults for all and deploy." Default taken. |
+| bookmailer-Q17 | 2026-11-24 | Main carries the parked per-person click log code (97c0f93), not live. Deploying main would ship it with the privacy page. What goes live? | The live build plus the privacy page, the footer link and the one-word book quote fix (ebd8942). The per-person click log stays out. | Mark, 2026-11-24: "Please accept defaults for all and deploy." Default taken. |
+| bookmailer-Q18 | 2026-11-24 | The only shared footer (FooterCard) shows on the home page, /phase-1 and /alliance. The Privacy link sits there. Add a link on every other page too? That needs a new shared footer line. | Leave as is: footer link on those three pages only. | Mark, 2026-11-24: "Please accept defaults for all and deploy." Default taken. |
 
 Mark's ruling, 2026-11-23 (verbatim): bookmailer-Q11: "Q11 yes, once I've looked at the smoke." So: per-person click tracking is dropped for the Cohort B send (dated supersession of book-window Q45 "yes" of 21 Nov and bookmailer-Q4 "Build it first" of 23 Nov, for this send only); campaign tags only. Full send waits for Mark to look at the smoke and say okay to send. bookmailer-Q6, Q8, Q9, Q10 closed for this send by Q11. bookmailer-Q7 still open. Built tracking stays parked (Nuxt main 97c0f93, lambda branch book-click-tracking, sender e925916); privacy draft parked on branch privacy-notice 6df10a2.
 Mark's ruling, 2026-11-23 (verbatim): bookmailer-Q7: "Q7 no". The 7 whose only book tick came from the newsletter card are left out; Cohort B audience is 123.
@@ -144,3 +144,29 @@ Steps awaiting Mark's word, in order:
 5. Smoke test.
 6. Set `ENDPOINT` in `useBookClickLog.ts`.
 7. Merge and deploy the site. The /privacy page (branch `privacy-notice`) ships with it.
+
+Deploy word, 2026-11-24. Mark gave his word to deploy with: "Please accept defaults for all and deploy."
+
+Going live on that word:
+- The live build (0ff7c1d), plus the privacy page.
+- The "Privacy" link in FooterCard.
+- The one-word book quote fix (ebd8942).
+- The parked per-person click log (97c0f93) stays out.
+
+Privacy page edits made under the defaults:
+- The "book email" section is removed.
+- The three drafting placeholders are removed.
+- The unsubscribe wording is corrected. Registration and calendar confirmations carry no unsubscribe link.
+
+Not deployed:
+- The totals tracker (Lambda, migration, page change). It waits on the Lambda name (bookmailer-Q12) and Mark's word.
+
+Found today:
+- The SES account counts opens and clicks at account level on every send. This is the Virtual Deliverability Manager engagement metrics.
+- Since the Cohort B send, to about 16:00 UTC on 24 Nov: 61 opens and 7 clicks across all Holos mail.
+- Nothing was changed.
+
+GA4 is now readable by API: property 528472619.
+- Cohort B in GA so far: 3 book page views and 3 store clicks from 2 people.
+
+Deploy outcome: to be added when the deploy agent reports.
