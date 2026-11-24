@@ -130,7 +130,7 @@ function onStoreClick(store: BookStoreLink) {
     format: store.format,
     store_domain: store.domain,
   })
-  // Our own click log: sends only when the visitor came from an email link with a token.
+  // Our own totals log: fire and forget, never delays the link.
   logStoreClick(store)
 }
 

@@ -211,7 +211,7 @@ function closeChooser(method: 'button' | 'escape' | 'backdrop') {
 
 onMounted(() => {
   track('book_page_view', { book_page: isRegion.value ? 'book_region' : 'book' })
-  // Our own click log: sends only when the visitor came from an email link with a token.
+  // Our own totals log: one landing event per page load.
   logLanding()
   if (isRegion.value) openChooser('landing')
 })
