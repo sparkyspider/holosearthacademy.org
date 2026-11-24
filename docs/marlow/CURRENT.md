@@ -224,3 +224,17 @@ Sender:
 To send the contacts later:
 - `broadcast_book.py --segment contacts --subject "Could reading a book change the way you see the world?" --yes-send-to-everyone`
 - The sender skips anyone already in a book send log.
+
+Contacts send, 2026-11-24.
+
+- Mark, 2026-11-24, first: "Send to Claudius also." Read as test copies for Claudius.
+- Four test emails went to Claudius's Gmail, one per template. Subjects prefixed [TEST asked], [TEST newsletter], [TEST phase2], [TEST contacts]. All accepted by SES. Logged as tests.
+- Mark, 2026-11-24, then: "Send to all Claudius' personal contacts now."
+- This supersedes "Q50 yes but not to send now" (21 Nov) and lifts the hold recorded above.
+- Sent live: the contacts audience, 55 people, the "real-correspondence" tier, tag `cohort-d`, with the agent-written opening.
+- Claudius had the test copy. No reply from him is on record.
+- After the send, the sender's plan shows 0 left to send.
+- Book send logs hold 255 addresses: 123 Cohort B on 23 Nov, 77 and 55 on 24 Nov.
+- Still unreached, 51 addresses: 41 in no audience, 8 unsubscribed or suppressed, 1 do-not-contact, 1 team test address.
+- The 41 are the "thin-or-calendar-only" contacts tier and second addresses of people already covered.
+- The "thin-or-calendar-only" tier stays held. The opening says they and Claudius "have been in touch during the past year". That may be untrue for them. Mark has been told.
